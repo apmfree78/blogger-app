@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bulmaswatch/slate/bulmaswatch.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
 function App() {
-  return (
-    <div >Markdown Editor</div>
-  );
+  return <div>Markdown Editor</div>;
 }
 
 export default App;
