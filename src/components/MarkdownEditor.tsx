@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import rehypeSanitize from 'rehype-sanitize';
-import '../styles/markdownEditor.css';
+import 'styles/markdownEditor.css';
 
 const MarkdownEditor: React.FC = () => {
-  const [content, setContent] = useState('');
+const [content, setContent] = useState('');
 
-  return (
-    <div className='text-editor'>
-      <MDEditor
-        value={content}
-        onChange={(c) => setContent(c || '')}
-        previewOptions={{
-          rehypePlugins: [[rehypeSanitize]],
-        }}
-        height={500}
-      />
-    </div>
+return (
+<div className='text-editor'>
+<MDEditor
+data-testid='markdown-editor'
+value={content}
+onChange={(c) => setContent(c || '')}
+previewOptions={{
+  rehypePlugins: [[rehypeSanitize]],
+}}
+  height={500}
+  />
+  </div>
   );
 };
 
