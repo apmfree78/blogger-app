@@ -1,3 +1,7 @@
+.text-editor {
+  width: 80vw; 
+}
+
 .w-md-editor .title {
   line-height: unset;
   font-size: unset;
@@ -53,7 +57,8 @@
 .text-editor .w-md-editor-content {
   background-color: #202123;
 }
- 
+
+/* output preview window  */
 .text-editor .wmde-markdown {
   background-color:unset;
   color:white;
