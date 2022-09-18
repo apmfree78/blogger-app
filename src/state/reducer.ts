@@ -1,6 +1,7 @@
-import { Publisher, BlogStateType, PublishAction, ActionType } from 'state/actionTypes';
+import { Publisher, PublishAction, ActionType } from 'state/actionTypes';
+import { BlogStateType } from 'state/initialState';
 
-function publishReducer(state: BlogStateType, action: PublishAction) {
+export default function publishReducer(state: BlogStateType, action: PublishAction) {
   const { type } = action;
 
   switch (type) {
