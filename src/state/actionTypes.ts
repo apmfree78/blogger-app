@@ -11,6 +11,21 @@ export const enum ActionType {
   MEDIUM_START = 'mediumStart',
 }
 
+export enum Publisher {
+  HASHNODE = 'hashnode',
+  DEV_TO = 'dev_to',
+  MEDIUM = 'medium',
+}
+
+export type PublisherType = Publisher;
+
+export interface PublishStatusType {
+  [key: string]: {
+    publisher: PublisherType;
+    loading: boolean;
+    error: string;
+  };
+}
 // defining interfaces for
 // API data, loading error and data state
 // and Action Creators

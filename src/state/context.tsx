@@ -1,23 +1,12 @@
 import React, { createContext, useState } from 'react';
-
+import {
+  Publisher,
+  PublishStatusType,
+  ActionType,
+  PublishAction,
+} from 'state/actionTypes';
 interface Props {
   children?: React.ReactNode;
-}
-
-export enum Publisher {
-  HASHNODE = 'hashnode',
-  DEV_TO = 'dev_to',
-  MEDIUM = 'medium',
-}
-
-export type PublisherType = Publisher;
-
-export interface PublishStatusType {
-  [key: string]: {
-    publisher: PublisherType;
-    loading: boolean;
-    error: string;
-  };
 }
 
 export interface BlogStateType {
@@ -52,4 +41,40 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   // setting up state for blog content and publish state
   const [content, setContent] = useState<string>('');
   const [publishStatus, setPublishStatus] = useState();
+
+  function publishReducer(state: BlogStateType, action: PublishAction) {
+    const { type } = action;
+
+    switch (type) {
+      case ActionType.DEV_TO_START:
+        return {
+          ...state,
+          dev_to: {
+            publisher: Publisher.DEV_TO,
+            loading: true,
+            error: '',
+          },
+        };
+      case ActionType.DEV_TO_ERROR:
+        return {
+          ...state,
+          dev_to: {
+            publisher: Publisher.DEV_TO,
+            loading: false,
+            error: action.payload,
+          },
+        };
+      case ActionType.DEV_TO_SUCCESS:
+        return {
+          ...state,
+          dev_to: {
+            publisher: Publisher.DEV_TO,
+            loading: false,
+            error: '',
+          },
+        };
+      default:
+        return state;
+    }
+  }
 };
