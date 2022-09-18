@@ -4,30 +4,47 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const enum Publisher {
+export enum Publisher {
   HASHNODE = 'hashnode',
   DEV_TO = 'dev_to',
   MEDIUM = 'medium',
 }
 
-type PublisherType = Publisher;
-interface PublisherStatusType {
-  [Publisher.HASHNODE]: {
-    publisher: PublisherType;
-    loading: boolean;
-    error: string;
-  };
-  [Publisher.DEV_TO]: {
-    publisher: PublisherType;
-    loading: boolean;
-    error: string;
-  };
-  [Publisher.MEDIUM]: {
+export type PublisherType = Publisher;
+
+export interface PublishStatusType {
+  [key: string]: {
     publisher: PublisherType;
     loading: boolean;
     error: string;
   };
 }
+
+export interface BlogStateType {
+  content: string;
+  publish: PublishStatusType;
+}
+
+export const initialPublishState: BlogStateType = {
+  content: '',
+  publish: {
+    hasnode: {
+      publisher: Publisher.HASHNODE,
+      loading: false,
+      error: '',
+    },
+    dev_to: {
+      publisher: Publisher.DEV_TO,
+      loading: false,
+      error: '',
+    },
+    medium: {
+      publisher: Publisher.MEDIUM,
+      loading: false,
+      error: '',
+    },
+  },
+};
 
 export const GlobalContext: React.Context<any> = createContext('');
 
