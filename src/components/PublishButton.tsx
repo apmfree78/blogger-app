@@ -7,12 +7,12 @@ const PublishButton: React.FC<ButtonProps> = ({ children }) => {
   return (
     <button
       className='button is-success is-large'
-      style={{ margin: '0em 1em' }}
+      style={{ margin: '1vh 1vw' }}
     >
       <span>
         <i className='fa-solid fa-upload'></i>
       </span>
-      <span style={{ marginLeft: '0.35em' }}>{children}</span>
+      <span style={{ marginLeft: '0.75vw' }}>{children}</span>
     </button>
   );
 };
