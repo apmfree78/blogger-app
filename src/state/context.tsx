@@ -15,7 +15,5 @@ export const GlobalContext: React.Context<any> = createContext('');
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   // setting up state for blog content and publish state
-  const [content, setContent] = useState<string>('');
-  const [publishStatus, setPublishStatus] = useState();
-  const [state, dispatch] = useReducer(publishReducer, initialPublishState)
+  const [state, dispatch] = useReducer(publishReducer, initialPublishState);
 };

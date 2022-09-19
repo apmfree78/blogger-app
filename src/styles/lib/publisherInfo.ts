@@ -22,5 +22,7 @@ export interface HashnodeDataProps {
   coverImageURL: string;
 }
 
-export type PublisherDataType = DevToDataProps |
-  MediumDataProps | HashnodeDataProps;
+export type PublisherDataType =
+  | DevToDataProps
+  | MediumDataProps
+  | HashnodeDataProps;

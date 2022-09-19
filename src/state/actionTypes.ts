@@ -1,4 +1,4 @@
-import { PublisherDataType } from "styles/lib/publisherInfo";
+import { PublisherDataType } from 'styles/lib/publisherInfo';
 
 // defining action types
 export const enum ActionType {

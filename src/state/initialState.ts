@@ -7,7 +7,7 @@ export interface BlogStateType {
 
 // INITIAL REDUX STATE
 export const initialPublishState: BlogStateType = {
-  content: '',
+  content: '', // pre-published content that is written in markdown editor
   publish: {
     hasnode: {
       publisher: Publisher.HASHNODE,
