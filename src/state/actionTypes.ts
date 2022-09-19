@@ -25,6 +25,7 @@ export type PublisherType = Publisher;
 export interface PublishStatusType {
   [key: string]: {
     publisher: PublisherType;
+    publishURL: string,
     article: PublisherDataType;
     loading: boolean;
     error: string;

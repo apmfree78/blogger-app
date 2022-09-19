@@ -1,5 +1,5 @@
 import { Publisher, PublishStatusType } from 'state/actionTypes';
-
+import { devToURL } from 'styles/lib/publisherInfo';
 export interface BlogStateType {
   content: string;
   publish: PublishStatusType;
@@ -11,6 +11,7 @@ export const initialPublishState: BlogStateType = {
   publish: {
     hasnode: {
       publisher: Publisher.HASHNODE,
+      publishURL: devToURL,
       article: {
         title: '',
         contentMarkdown: '',
@@ -22,6 +23,7 @@ export const initialPublishState: BlogStateType = {
     },
     dev_to: {
       publisher: Publisher.DEV_TO,
+      publishURL: devToURL,
       article: {
         title: '',
         published: true,
@@ -34,6 +36,7 @@ export const initialPublishState: BlogStateType = {
     },
     medium: {
       publisher: Publisher.MEDIUM,
+      publishURL: devToURL,
       article: {
         title: '',
         contentFormat: 'markdown',
