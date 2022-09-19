@@ -16,4 +16,15 @@ export const GlobalContext: React.Context<any> = createContext('');
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   // setting up state for blog content and publish state
   const [state, dispatch] = useReducer(publishReducer, initialPublishState);
+
+  return (
+    <GlobalContext.Provider
+      value={{
+        state,
+        dispatch,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  );
 };

@@ -1,4 +1,4 @@
-import { Publisher, PublishAction, ActionType } from 'state/actionTypes';
+import { PublishAction, ActionType } from 'state/actionTypes';
 import { BlogStateType } from 'state/initialState';
 
 export default function publishReducer(

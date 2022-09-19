@@ -1,0 +1,32 @@
+  {
+    "DevTo": {
+      "title": {
+        "loremWords": {
+          "minLength": 5,
+          "maxLength": 30
+        }
+      },
+      "published": {
+        "boolean": {}
+      },
+      "content": {
+        "loremParagraphs": {
+          "minLength": 100,
+          "maxLength": 1000
+        }
+      },
+      "tag": {
+        "string": [
+          "javascript",
+          "react",
+          "leetcode"
+        ]
+      },
+      "series": {
+        "loremWords": {
+          "minLength": 5,
+          "maxLength": 30
+        }
+      }
+    }
+  }
