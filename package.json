@@ -12,6 +12,7 @@
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "@uiw/react-md-editor": "^3.18.1",
+    "axios": "^0.27.2",
     "bulmaswatch": "^0.8.1",
     "mermaid": "^9.1.7",
     "react": "^18.2.0",

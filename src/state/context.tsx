@@ -1,5 +1,7 @@
 import React, { createContext, useReducer, useState } from 'react';
+import axios, { AxiosResponse } from 'axios';
 import publishReducer from './reducer';
+import { devToURL } from 'styles/lib/publisherInfo';
 import { initialPublishState } from './initialState';
 import {
   Publisher,
@@ -17,11 +19,89 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   // setting up state for blog content and publish state
   const [state, dispatch] = useReducer(publishReducer, initialPublishState);
 
+  //action creator for publish action of type START
+  const dispatchPublishStart = (publisher: Publisher) => {
+    switch (publisher) {
+      case Publisher.DEV_TO:
+        dispatch({ type: ActionType.DEV_TO_START });
+        break;
+      case Publisher.MEDIUM:
+        dispatch({ type: ActionType.MEDIUM_START });
+        break;
+      case Publisher.HASHNODE:
+        dispatch({ type: ActionType.HASHNODE_START });
+        break;
+    }
+  };
+
+  //action creator for publish action of type ERROR
+  const dispatchPublishError = (publisher: Publisher, error: string) => {
+    switch (publisher) {
+      case Publisher.DEV_TO:
+        dispatch({ type: ActionType.DEV_TO_ERROR, payload: error });
+        break;
+      case Publisher.MEDIUM:
+        dispatch({ type: ActionType.MEDIUM_ERROR, payload: error });
+        break;
+      case Publisher.HASHNODE:
+        dispatch({ type: ActionType.HASHNODE_ERROR, payload: error });
+        break;
+    }
+  };
+
+  //action creator for publish action of type ERROR
+  const dispatchPublishSuccess = (publisher: Publisher, message: string) => {
+    switch (publisher) {
+      case Publisher.DEV_TO:
+        dispatch({ type: ActionType.DEV_TO_SUCCESS, payload: message });
+        break;
+      case Publisher.MEDIUM:
+        dispatch({ type: ActionType.MEDIUM_SUCCESS, payload: message });
+        break;
+      case Publisher.HASHNODE:
+        dispatch({ type: ActionType.HASHNODE_SUCCESS, payload: message });
+        break;
+    }
+  };
+
+  // making post request to publish blog post to selected publisher
+  // this step happens AFTER users has provided all relevant fields
+  // in input form on modal popup
+  const publishPost = async (
+    publishData: PublishStatusType,
+    publisher: Publisher
+  ) => {
+    // loading state begins
+    dispatchPublishStart(publisher);
+
+    // API POST request to publish article
+    // UPDATE HERE
+    const response: void | AxiosResponse = await axios
+      .post(`${devToURL}`)
+      .catch((err) => {
+        // set error state
+        dispatchPublishError(publisher, err.message);
+        console.error(err);
+      });
+
+    if (!response) {
+      dispatchPublishError(
+        publisher,
+        'sorry, cat is napping and not avaliable for pics today!'
+      );
+      return;
+    }
+
+    // dispatching success action
+    dispatchPublishSuccess(publisher, `Successfully published to ${publisher}`);
+  };
+
   return (
     <GlobalContext.Provider
       value={{
         state,
         dispatch,
+        publishPost
       }}
     >
       {children}
