@@ -1,3 +1,5 @@
+import { PublisherDataType } from "styles/lib/publisherInfo";
+
 // defining action types
 export const enum ActionType {
   HASHNODE_START = 'HashnodeStart',
@@ -9,6 +11,7 @@ export const enum ActionType {
   MEDIUM_ERROR = 'mediumError',
   MEDIUM_SUCCESS = 'mediumSuccess',
   MEDIUM_START = 'mediumStart',
+  UPDATE_CONTENT = 'updateContent',
 }
 
 export enum Publisher {
@@ -22,6 +25,7 @@ export type PublisherType = Publisher;
 export interface PublishStatusType {
   [key: string]: {
     publisher: PublisherType;
+    article: PublisherDataType;
     loading: boolean;
     error: string;
   };
@@ -72,6 +76,11 @@ interface PublishMediumError {
   payload: string;
 }
 
+interface UpdateContent {
+  type: ActionType.UPDATE_CONTENT;
+  payload: string;
+}
+
 export type PublishAction =
   | PublishHashNodeError
   | PublishHashNodeStart
@@ -81,4 +90,5 @@ export type PublishAction =
   | PublishDevToSuccess
   | PublishMediumError
   | PublishMediumStart
-  | PublishMediumSuccess;
+  | PublishMediumSuccess
+  | UpdateContent;

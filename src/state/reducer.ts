@@ -1,10 +1,18 @@
 import { Publisher, PublishAction, ActionType } from 'state/actionTypes';
 import { BlogStateType } from 'state/initialState';
 
-export default function publishReducer(state: BlogStateType, action: PublishAction) {
+export default function publishReducer(
+  state: BlogStateType,
+  action: PublishAction
+) {
   const { type } = action;
 
   switch (type) {
+    case ActionType.UPDATE_CONTENT:
+      return {
+        ...state,
+        content: action.payload
+      };
     case ActionType.DEV_TO_START:
       return {
         ...state,
