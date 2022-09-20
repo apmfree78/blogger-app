@@ -1,4 +1,9 @@
-import { PublisherDataType } from 'styles/lib/publisherInfo';
+import {
+  PublisherDataType,
+  DevToDataProps,
+  MediumDataProps,
+  HashnodeDataProps,
+} from 'styles/lib/publisherInfo';
 
 // defining action types
 export const enum ActionType {
@@ -12,6 +17,9 @@ export const enum ActionType {
   MEDIUM_SUCCESS = 'mediumSuccess',
   MEDIUM_START = 'mediumStart',
   UPDATE_CONTENT = 'updateContent',
+  UPDATE_HASHNODE_DATA = 'updateHasnodeDATA',
+  UPDATE_MEDIUM_DATA = 'updateMediumDATA',
+  UPDATE_DEVTO_DATA = 'UpdateDevtoDATA',
 }
 
 export enum Publisher {
@@ -25,7 +33,7 @@ export type PublisherType = Publisher;
 export interface PublishStatusType {
   [key: string]: {
     publisher: PublisherType;
-    publishURL: string,
+    publishURL: string;
     article: PublisherDataType;
     loading: boolean;
     error: string;
@@ -34,6 +42,21 @@ export interface PublishStatusType {
 // defining interfaces for
 // API data, loading error and data state
 // and Action Creators
+
+interface UpdateHasNodeData {
+  type: ActionType.UPDATE_HASHNODE_DATA;
+  payload: HashnodeDataProps;
+}
+
+interface UpdateMediumData {
+  type: ActionType.UPDATE_MEDIUM_DATA;
+  payload: MediumDataProps;
+}
+
+interface updateDevtoData {
+  type: ActionType.UPDATE_DEVTO_DATA;
+  payload: DevToDataProps;
+}
 
 interface PublishHashNodeStart {
   type: ActionType.HASHNODE_START;
@@ -92,4 +115,7 @@ export type PublishAction =
   | PublishMediumError
   | PublishMediumStart
   | PublishMediumSuccess
-  | UpdateContent;
+  | UpdateContent
+  | UpdateMediumData
+  | UpdateHasNodeData
+  | UpdateDevtoData;

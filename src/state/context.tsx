@@ -1,14 +1,8 @@
-import React, { createContext, useReducer, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import publishReducer from './reducer';
-import { devToURL } from 'styles/lib/publisherInfo';
 import { initialPublishState } from './initialState';
-import {
-  Publisher,
-  PublishStatusType,
-  ActionType,
-  PublishAction,
-} from 'state/actionTypes';
+import { Publisher, PublishStatusType, ActionType } from 'state/actionTypes';
 interface Props {
   children?: React.ReactNode;
 }
@@ -49,7 +43,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  //action creator for publish action of type ERROR
+  //action creator for publish action of type SUCCESS
   const dispatchPublishSuccess = (publisher: Publisher, message: string) => {
     switch (publisher) {
       case Publisher.DEV_TO:
@@ -77,7 +71,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     // API POST request to publish article
     // UPDATE HERE
     const response: void | AxiosResponse = await axios
-      .post(`${devToURL}`)
+      .post(`${publishData.publishURL}`, publishData.article)
       .catch((err) => {
         // set error state
         dispatchPublishError(publisher, err.message);
@@ -87,13 +81,17 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     if (!response) {
       dispatchPublishError(
         publisher,
-        'sorry, cat is napping and not avaliable for pics today!'
+        'sorry, unable to publish article at this time'
       );
       return;
     }
+    // extracting url of published article
+    const {
+      data: { url },
+    } = response;
 
     // dispatching success action
-    dispatchPublishSuccess(publisher, `Successfully published to ${publisher}`);
+    dispatchPublishSuccess(publisher, `Successfully published to ${url}`);
   };
 
   return (
@@ -101,7 +99,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       value={{
         state,
         dispatch,
-        publishPost
+        publishPost,
       }}
     >
       {children}
