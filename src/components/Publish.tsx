@@ -22,16 +22,36 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
   };
 
   return (
-    <div aria-label='publish' style={{ marginTop: '1vh' }}>
-      <PublishButton handleClick={() => openForm(Publisher.HASHNODE)}>
-        Submit to Hashnode
-      </PublishButton>
-      <PublishButton handleClick={() => openForm(Publisher.DEV_TO)}>
-        Submit to Dev.to
-      </PublishButton>
-      <PublishButton handleClick={() => openForm(Publisher.MEDIUM)}>
-        Submit to Medium
-      </PublishButton>
+    <section
+      aria-label='publish'
+      style={{ marginTop: '1vh' }}
+    >
+      <div className='columns'>
+        <div className='column'>
+          <PublishButton
+            buttonStyle='is-success'
+            handleClick={() => openForm(Publisher.HASHNODE)}
+          >
+            Submit to Hashnode
+          </PublishButton>
+        </div>
+        <div className='column'>
+          <PublishButton
+            buttonStyle='is-danger'
+            handleClick={() => openForm(Publisher.DEV_TO)}
+          >
+            Submit to Dev.to
+          </PublishButton>
+        </div>
+        <div className='column'>
+          <PublishButton
+            buttonStyle='is-info'
+            handleClick={() => openForm(Publisher.MEDIUM)}
+          >
+            Submit to Medium
+          </PublishButton>
+        </div>
+      </div>
       <FormModal
         open={open}
         closeModal={() => setOpen(false)}
@@ -39,7 +59,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
       >
         Input Form for Publisher Goes Here
       </FormModal>
-    </div>
+    </section>
   );
 };
 

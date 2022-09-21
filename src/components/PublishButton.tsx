@@ -1,13 +1,14 @@
 interface ButtonProps {
   children: string;
   handleClick: () => void;
+  buttonStyle: string
 }
 
 // Seperate component that will handle styling of publish buttons
-const PublishButton: React.FC<ButtonProps> = ({ children, handleClick }) => {
+const PublishButton: React.FC<ButtonProps> = ({ children, handleClick, buttonStyle }) => {
   return (
     <button
-      className='button is-success is-large'
+      className={`button ${buttonStyle} is-large`}
       style={{ margin: '1vh 1vw' }}
       onClick={handleClick}
     >

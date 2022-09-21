@@ -7,6 +7,7 @@ interface FormModalProps {
   title: string;
 }
 
+// reusable component for bulma modal 
 const FormModal: React.FC<FormModalProps> = ({
   open,
   closeModal,
