@@ -3,7 +3,7 @@ import {
   DevToDataProps,
   MediumDataProps,
   HashnodeDataProps,
-} from 'styles/lib/publisherInfo';
+} from 'lib/publisherInfo';
 
 // defining action types
 export const enum ActionType {
@@ -53,7 +53,7 @@ interface UpdateMediumData {
   payload: MediumDataProps;
 }
 
-interface updateDevtoData {
+interface UpdateDevtoData {
   type: ActionType.UPDATE_DEVTO_DATA;
   payload: DevToDataProps;
 }

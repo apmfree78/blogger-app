@@ -1,5 +1,5 @@
 import { Publisher, PublishStatusType } from 'state/actionTypes';
-import { devToURL } from 'styles/lib/publisherInfo';
+import { devToURL } from 'lib/publisherInfo';
 export interface BlogStateType {
   content: string;
   publish: PublishStatusType;
