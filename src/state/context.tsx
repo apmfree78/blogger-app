@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { useState, createContext, useReducer } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import publishReducer from './reducer';
 import { initialPublishState } from './initialState';
@@ -10,6 +10,11 @@ interface Props {
 export const GlobalContext: React.Context<any> = createContext('');
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
+  //modal toggle state
+  const [open, setOpen] = useState(false);
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+
   // setting up state for blog content and publish state
   const [state, dispatch] = useReducer(publishReducer, initialPublishState);
 
@@ -97,6 +102,9 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
+        open,
+        closeModal,
+        openModal,
         state,
         dispatch,
         publishPost,

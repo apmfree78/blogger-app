@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Publisher } from 'state/actionTypes';
 import PublishButton from 'components/PublishButton';
+import { GlobalContext } from 'state/context';
 import 'styles/Publish.css';
 import FormModal from 'lib/formModal';
 import HashnodeForm from 'components/forms/HashnodeForm';
@@ -12,14 +13,14 @@ interface PublishProps {
 // to various content platforms
 const Publish: React.FC<PublishProps> = ({ content }) => {
   //modal toggle state
-  const [open, setOpen] = useState(false);
+  const { open, openModal } = useContext(GlobalContext);
   // title for form Modal
   const [formTitle, setFormTitle] = useState('Input Form');
 
   // open up Modal with form specific to publisher;
   const openForm = (publisher: Publisher) => {
     // setting formModal state to open
-    setOpen(true);
+    openModal();
 
     // set title for form modal
     setFormTitle(`${publisher} Input Form`);
@@ -27,7 +28,6 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
     switch (publisher) {
       case Publisher.HASHNODE:
     }
-
   };
 
   return (
@@ -58,12 +58,8 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
           </PublishButton>
         </div>
       </div>
-      <FormModal
-        open={open}
-        closeModal={() => setOpen(false)}
-        title={formTitle}
-      >
-        <HashnodeForm closeModal={() => setOpen(false)} />
+      <FormModal title={formTitle}>
+        <HashnodeForm />
       </FormModal>
     </section>
   );

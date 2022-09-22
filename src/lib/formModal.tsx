@@ -1,19 +1,15 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { GlobalContext } from 'state/context';
 interface FormModalProps {
-  open: boolean;
-  closeModal: () => void;
   children: JSX.Element | string;
   title: string;
 }
 
 // reusable component for bulma modal
-const FormModal: React.FC<FormModalProps> = ({
-  open,
-  closeModal,
-  children,
-  title,
-}) => {
+const FormModal: React.FC<FormModalProps> = ({ children, title }) => {
+  //access open, and closeModal from Global context
+  const { open, closeModal } = useContext(GlobalContext);
+
   return (
     <div className={`modal ${open ? 'is-active' : ''}`}>
       <div className='modal-background' onClick={closeModal} />

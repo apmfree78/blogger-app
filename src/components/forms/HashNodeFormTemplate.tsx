@@ -1,18 +1,18 @@
-import { FormEvent } from 'react';
-
+import { useContext, FormEvent } from 'react';
+import { GlobalContext } from 'state/context';
 interface HashnodeFormProps {
   inputs: any;
   handleChange: (e: any) => void;
   handleSubmit: (e: FormEvent) => void;
-  closeModal: () => void;
 }
 
 const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
   inputs,
   handleChange,
   handleSubmit,
-  closeModal,
 }) => {
+  const { closeModal } = useContext(GlobalContext);
+
   return (
     <section>
       <form role='form' onSubmit={handleSubmit}>
