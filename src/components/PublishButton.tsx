@@ -4,7 +4,7 @@ interface ButtonProps {
   buttonStyle: string;
 }
 
-// Seperate component that will handle styling of publish buttons
+// reusable component that will handle styling of buttons
 const PublishButton: React.FC<ButtonProps> = ({
   children,
   handleClick,
