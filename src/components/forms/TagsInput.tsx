@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
+import 'TagsInput.scss'
 interface TagsInputProps {
   tags: string[];
   setTags: (tags: string[]) => void;
 }
 
 const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
+  const [tagInput, setTagInput] = useState('');
 
+  // REMOVE TAG when users presses 'x'
   const removeTags = (indexToRemove: number) => {
     setTags([...tags.filter((tag, index) => index !== indexToRemove)]);
   };
 
-  const addTags = (event: KeyboardEvent) => {
-    if (event.target.value !== '') {
-      setTags([...tags, event.target.value]);
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    //check if user pressed 'Enter'
+    if (event.key === 'Enter') {
+      event.preventDefault();
+
+      // ADDING TAG to global state of tags
+      setTags([...tags, tagInput]);
     }
   };
 
@@ -30,7 +37,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
       </ul>
       <input
         type='text'
-        onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)}
+        onKeyDown={handleKeyDown}
         placeholder='Press enter to add tags'
       />
     </div>
