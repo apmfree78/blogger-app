@@ -21,7 +21,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
             <input
               onChange={handleChange}
               className='input'
-              value={inputs.title}
+              value={inputs.title || ''}
               type='text'
               name='title'
               placeholder='Enter title'
@@ -36,7 +36,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
             <input
               onChange={handleChange}
               className='input'
-              value={inputs.url}
+              value={inputs.url || ''}
               type='url'
               name='url'
               placeholder='Enter URL (optional)'
