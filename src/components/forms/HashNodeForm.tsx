@@ -2,7 +2,10 @@ import React, { FormEvent, useState } from 'react';
 import useForm from './useForm';
 import HashnodeFormTemplate from 'components/forms/HashNodeFormTemplate';
 
-const HashnodeForm: React.FC = () => {
+interface HashnodeFormProps {
+  closeModal: () => void;
+}
+const HashnodeForm: React.FC<HashnodeFormProps> = ({ closeModal }) => {
   const { inputs, handleChange, resetForm, clearForm } = useForm('');
 
   const handleSubmit = (e: FormEvent) => {
@@ -21,6 +24,7 @@ const HashnodeForm: React.FC = () => {
       inputs={inputs}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      closeModal={closeModal}
     />
   );
 };

@@ -55,7 +55,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
         closeModal={() => setOpen(false)}
         title='Input Form'
       >
-        <HashnodeForm />
+        <HashnodeForm closeModal={() => setOpen(false)} />
       </FormModal>
     </section>
   );

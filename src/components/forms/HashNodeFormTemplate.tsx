@@ -1,16 +1,17 @@
-import { HashnodeDataProps } from 'lib/publisherInfo';
 import { FormEvent } from 'react';
 
 interface HashnodeFormProps {
   inputs: any;
   handleChange: (e: any) => void;
   handleSubmit: (e: FormEvent) => void;
+  closeModal: () => void;
 }
 
 const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
   inputs,
   handleChange,
   handleSubmit,
+  closeModal,
 }) => {
   return (
     <section>
@@ -56,6 +57,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
               <span style={{ marginLeft: '0.75vw' }}>Submit</span>
             </button>{' '}
             <button
+              onClick={closeModal}
               className={`button is-link is-danger is-large`}
               style={{ marginLeft: '1vw' }}
             >
