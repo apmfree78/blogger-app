@@ -23,9 +23,9 @@ export const enum ActionType {
 }
 
 export enum Publisher {
-  HASHNODE = 'hashnode',
-  DEV_TO = 'dev_to',
-  MEDIUM = 'medium',
+  HASHNODE = 'Hashnode',
+  DEV_TO = 'Dev.to',
+  MEDIUM = 'Medium',
 }
 
 export type PublisherType = Publisher;

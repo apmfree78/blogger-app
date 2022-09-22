@@ -13,13 +13,21 @@ interface PublishProps {
 const Publish: React.FC<PublishProps> = ({ content }) => {
   //modal toggle state
   const [open, setOpen] = useState(false);
+  // title for form Modal
+  const [formTitle, setFormTitle] = useState('Input Form');
 
   // open up Modal with form specific to publisher;
   const openForm = (publisher: Publisher) => {
     // setting formModal state to open
     setOpen(true);
 
-    // set JSX child element to pass to Modal
+    // set title for form modal
+    setFormTitle(`${publisher} Input Form`);
+    // set JSX child element to pass to Modal and title
+    switch (publisher) {
+      case Publisher.HASHNODE:
+    }
+
   };
 
   return (
@@ -53,7 +61,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
       <FormModal
         open={open}
         closeModal={() => setOpen(false)}
-        title='Input Form'
+        title={formTitle}
       >
         <HashnodeForm closeModal={() => setOpen(false)} />
       </FormModal>
