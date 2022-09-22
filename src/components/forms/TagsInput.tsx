@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'TagsInput.scss'
+import 'TagsInput.scss';
 interface TagsInputProps {
   tags: string[];
   setTags: (tags: string[]) => void;

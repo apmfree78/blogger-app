@@ -7,7 +7,7 @@ interface FormModalProps {
   title: string;
 }
 
-// reusable component for bulma modal 
+// reusable component for bulma modal
 const FormModal: React.FC<FormModalProps> = ({
   open,
   closeModal,
@@ -25,11 +25,11 @@ const FormModal: React.FC<FormModalProps> = ({
         <section className='modal-card-body'>
           <div className='content'>{children}</div>
         </section>
-        <footer className='modal-card-foot'>
-          <a className='button' onClick={closeModal}>
-            Cancel
-          </a>
-        </footer>
+        {/* <footer className='modal-card-foot'> */}
+        {/*   <a className='button' onClick={closeModal}> */}
+        {/*     Cancel */}
+        {/*   </a> */}
+        {/* </footer> */}
       </div>
     </div>
   );

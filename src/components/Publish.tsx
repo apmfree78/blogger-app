@@ -3,6 +3,7 @@ import { Publisher } from 'state/actionTypes';
 import PublishButton from 'components/PublishButton';
 import 'styles/Publish.css';
 import FormModal from 'lib/formModal';
+import HashnodeForm from 'components/forms/HashnodeForm';
 interface PublishProps {
   content: string;
 }
@@ -22,10 +23,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
   };
 
   return (
-    <section
-      aria-label='publish'
-      style={{ marginTop: '1vh' }}
-    >
+    <section aria-label='publish' style={{ marginTop: '1vh' }}>
       <div className='columns'>
         <div className='column'>
           <PublishButton
@@ -57,7 +55,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
         closeModal={() => setOpen(false)}
         title='Input Form'
       >
-        Input Form for Publisher Goes Here
+        <HashnodeForm />
       </FormModal>
     </section>
   );

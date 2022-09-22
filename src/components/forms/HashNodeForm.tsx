@@ -1,42 +1,26 @@
-import { HashnodeDataProps } from 'lib/publisherInfo';
+import React, { FormEvent, useState } from 'react';
+import useForm from './useForm';
+import HashnodeFormTemplate from 'components/forms/HashNodeFormTemplate';
 
-interface HashnodeFormProps {
-  handleChange: () => void;
-  handleSubmit: () => void;
-}
+const HashnodeForm: React.FC = () => {
+  const { inputs, handleChange, resetForm } = useForm('');
 
-const HashnodeForm: React.FC<HashnodeFormProps> = ({
-  handleChange,
-  handleSubmit,
-}) => {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    //dispatch action to submit form data to redux state here
+    // dispatch(...)
+
+    // reset Form
+    resetForm();
+  };
+
   return (
-    <section>
-      <form role='form'>
-        <div className='field'>
-          <label className='label'>Title</label>
-          <div className='control'>
-            <input
-              className='input'
-              type='text'
-              name='title'
-              placeholder='Enter title'
-              maxLength={40}
-              required
-            />
-          </div>
-        </div>
-        <div className='field'>
-          <label className='label'>Cover Image URL</label>
-          <div className='control'>
-            <input
-              className='input'
-              type='url'
-              name='title'
-              placeholder='Enter URL (optional)'
-            />
-          </div>
-        </div>
-      </form>
-    </section>
+    <HashnodeFormTemplate
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
   );
 };
+
+export default HashnodeForm;
