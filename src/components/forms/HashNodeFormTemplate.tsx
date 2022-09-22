@@ -2,11 +2,13 @@ import { HashnodeDataProps } from 'lib/publisherInfo';
 import { FormEvent } from 'react';
 
 interface HashnodeFormProps {
+  inputs: any;
   handleChange: (e: any) => void;
   handleSubmit: (e: FormEvent) => void;
 }
 
 const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
+  inputs,
   handleChange,
   handleSubmit,
 }) => {
@@ -19,6 +21,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
             <input
               onChange={handleChange}
               className='input'
+              value={inputs.title}
               type='text'
               name='title'
               placeholder='Enter title'
@@ -33,8 +36,9 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
             <input
               onChange={handleChange}
               className='input'
+              value={inputs.url}
               type='url'
-              name='title'
+              name='url'
               placeholder='Enter URL (optional)'
             />
           </div>
@@ -42,6 +46,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
         <div className='field is-grouped'>
           <div className='control' style={{ margin: '2vh 0vw 1vh 0vw' }}>
             <button
+              type='submit'
               className={`button is-info is-large`}
               style={{ marginRight: '1vw' }}
             >
@@ -50,7 +55,8 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
               </span>
               <span style={{ marginLeft: '0.75vw' }}>Submit</span>
             </button>{' '}
-            <button className={`button is-link is-danger is-large`}
+            <button
+              className={`button is-link is-danger is-large`}
               style={{ marginLeft: '1vw' }}
             >
               <span>
