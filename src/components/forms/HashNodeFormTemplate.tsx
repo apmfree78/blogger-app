@@ -1,4 +1,5 @@
 import { useContext, FormEvent } from 'react';
+import FormButtons from 'components/forms/FormButtons';
 import { GlobalContext } from 'state/context';
 interface HashnodeFormProps {
   inputs: any;
@@ -46,26 +47,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
         </div>
         <div className='field is-grouped'>
           <div className='control' style={{ margin: '2vh 0vw 1vh 0vw' }}>
-            <button
-              type='submit'
-              className={`button is-info is-large`}
-              style={{ marginRight: '1vw' }}
-            >
-              <span>
-                <i className='fa-solid fa-upload'></i>
-              </span>
-              <span style={{ marginLeft: '0.75vw' }}>Submit</span>
-            </button>{' '}
-            <button
-              onClick={closeModal}
-              className={`button is-link is-danger is-large`}
-              style={{ marginLeft: '1vw' }}
-            >
-              <span>
-                <i className='fa-solid fa-rectangle-xmark'></i>
-              </span>
-              <span style={{ marginLeft: '0.75vw' }}>Cancel</span>
-            </button>
+            <FormButtons />
           </div>
         </div>
       </form>
