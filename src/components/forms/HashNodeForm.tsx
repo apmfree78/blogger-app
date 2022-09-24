@@ -1,7 +1,6 @@
 import React, { FormEvent, useState } from 'react';
 import useForm from './useForm';
 import HashnodeFormTemplate from 'components/forms/HashNodeFormTemplate';
-
 import { TagProp } from 'lib/tagType';
 
 const HashnodeForm: React.FC = () => {
@@ -12,6 +11,8 @@ const HashnodeForm: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log('form submitted');
+    console.log(inputs);
+    console.log(tags);
     //dispatch action to submit form data to redux state here
     // dispatch(...)
 
