@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'TagsInput.scss';
+import './TagsInput.scss';
 interface TagsInputProps {
   tags: string[];
   setTags: (tags: string[]) => void;
@@ -7,7 +7,6 @@ interface TagsInputProps {
 
 const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
   const [tagInput, setTagInput] = useState('');
-
   // REMOVE TAG when users presses 'x'
   const removeTags = (indexToRemove: number) => {
     setTags([...tags.filter((tag, index) => index !== indexToRemove)]);
@@ -20,6 +19,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
 
       // ADDING TAG to global state of tags
       setTags([...tags, tagInput]);
+      setTagInput(''); // resetting
     }
   };
 
@@ -43,3 +43,5 @@ const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
     </div>
   );
 };
+
+export default TagsInput;

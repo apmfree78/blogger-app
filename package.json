@@ -11,6 +11,7 @@
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
+    "@types/react-tag-input": "^6.6.0",
     "@uiw/react-md-editor": "^3.18.1",
     "axios": "^0.27.2",
     "bulmaswatch": "^0.8.1",
@@ -18,7 +19,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "react-tag-input": "^6.8.1",
     "rehype-sanitize": "^5.0.1",
+    "sass": "^1.55.0",
     "typescript": "^4.8.3",
     "web-vitals": "^2.1.4"
   },
