@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import './style.css';
+import React from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
 
 interface TagProp {
@@ -23,10 +22,7 @@ const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 const TagInput = () => {
   const [tags, setTags] = React.useState([
-    { id: 'Thailand', text: 'Thailand' },
-    { id: 'India', text: 'India' },
-    { id: 'Vietnam', text: 'Vietnam' },
-    { id: 'Turkey', text: 'Turkey' },
+    { id: '', text: '' },
   ]);
 
   const handleDelete = (i: number) => {
@@ -52,21 +48,18 @@ const TagInput = () => {
   };
 
   return (
-    <div className='app'>
-      <h1> React Tags Example </h1>
-      <div>
-        <ReactTags
-          tags={tags}
-          suggestions={suggestions}
-          delimiters={delimiters}
-          handleDelete={handleDelete}
-          handleAddition={handleAddition}
-          handleDrag={handleDrag}
-          handleTagClick={handleTagClick}
-          inputFieldPosition='bottom'
-          autocomplete
-        />
-      </div>
+    <div style={{ backgroundColor: 'white', color: 'black' }}>
+      <ReactTags
+        tags={tags}
+        suggestions={suggestions}
+        delimiters={delimiters}
+        handleDelete={handleDelete}
+        handleAddition={handleAddition}
+        handleDrag={handleDrag}
+        handleTagClick={handleTagClick}
+        inputFieldPosition='inline'
+        autocomplete
+      />
     </div>
   );
 };

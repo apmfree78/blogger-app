@@ -1,5 +1,5 @@
 import { useContext, useState, FormEvent } from 'react';
-import TagsInput from 'components/forms/TagsInput';
+import TagInput from 'components/forms/TagInput';
 import FormButtons from 'components/forms/FormButtons';
 import { GlobalContext } from 'state/context';
 interface HashnodeFormProps {
@@ -48,7 +48,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
           </div>
           <label className='label'>Tags</label>
           <div className='control'>
-            <TagsInput tags={tags} setTags={setTags} />
+            <TagInput />
           </div>
         </div>
         <div className='field is-grouped'>
