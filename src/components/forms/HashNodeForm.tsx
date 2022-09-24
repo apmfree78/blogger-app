@@ -1,9 +1,13 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useState } from 'react';
 import useForm from './useForm';
 import HashnodeFormTemplate from 'components/forms/HashNodeFormTemplate';
 
+import { TagProp } from 'lib/tagType';
+
 const HashnodeForm: React.FC = () => {
   const { inputs, handleChange, resetForm, clearForm } = useForm('');
+  /// state for tags is handled seperately
+  const [tags, setTags] = useState<TagProp[]>([]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -19,6 +23,8 @@ const HashnodeForm: React.FC = () => {
   return (
     <HashnodeFormTemplate
       inputs={inputs}
+      tags={tags}
+      setTags={setTags}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />

@@ -1,10 +1,8 @@
 import React from 'react';
+import 'components/forms/TagInput.css';
 import { WithContext as ReactTags } from 'react-tag-input';
+import { TagProp } from 'lib/tagType';
 
-interface TagProp {
-  id: string;
-  text: string;
-}
 const suggestionList = ['javascript', 'typescript', 'node', 'api', 'react'];
 const suggestions = suggestionList.map((topic) => {
   return {
@@ -20,11 +18,12 @@ const KeyCodes = {
 
 const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
-const TagInput = () => {
-  const [tags, setTags] = React.useState([
-    { id: '', text: '' },
-  ]);
+interface TagInputProps {
+  tags: TagProp[];
+  setTags: (tags: TagProp[]) => void;
+}
 
+const TagInput: React.FC<TagInputProps> = ({ tags, setTags }) => {
   const handleDelete = (i: number) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
@@ -58,6 +57,7 @@ const TagInput = () => {
         handleDrag={handleDrag}
         handleTagClick={handleTagClick}
         inputFieldPosition='inline'
+        placeholder='Add a tag'
         autocomplete
       />
     </div>

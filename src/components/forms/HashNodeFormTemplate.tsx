@@ -1,21 +1,23 @@
-import { useContext, useState, FormEvent } from 'react';
+import { FormEvent } from 'react';
 import TagInput from 'components/forms/TagInput';
 import FormButtons from 'components/forms/FormButtons';
-import { GlobalContext } from 'state/context';
+import { TagProp } from 'lib/tagType';
 interface HashnodeFormProps {
   inputs: any;
+  tags: TagProp[];
+  setTags: (tags: TagProp[]) => void;
   handleChange: (e: any) => void;
   handleSubmit: (e: FormEvent) => void;
 }
 
+//form template for Hashnode
 const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
   inputs,
+  tags,
+  setTags,
   handleChange,
   handleSubmit,
 }) => {
-  const { closeModal } = useContext(GlobalContext);
-
-  const [tags, setTags] = useState([]);
   return (
     <section>
       <form role='form' onSubmit={handleSubmit}>
@@ -48,7 +50,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
           </div>
           <label className='label'>Tags</label>
           <div className='control'>
-            <TagInput />
+            <TagInput tags={tags} setTags={setTags} />
           </div>
         </div>
         <div className='field is-grouped'>
