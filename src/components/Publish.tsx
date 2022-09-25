@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { Publisher } from 'state/actionTypes';
 import PublishButton from 'components/PublishButton';
 import { GlobalContext } from 'state/context';
@@ -16,7 +16,8 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
   const { openModal } = useContext(GlobalContext);
   // title for form Modal
   const [formTitle, setFormTitle] = useState('Input Form');
-
+  // useRef for JSX Form component
+  const PublisherFormElement = useRef(<HashnodeForm />);
   // open up Modal with form specific to publisher;
   const openForm = (publisher: Publisher) => {
     // setting formModal state to open
@@ -24,9 +25,17 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
 
     // set title for form modal
     setFormTitle(`${publisher} Input Form`);
-    // set JSX child element to pass to Modal and title
+    // set JSX child element to pass to Modal
     switch (publisher) {
       case Publisher.HASHNODE:
+        PublisherFormElement.current = <HashnodeForm />;
+        break;
+      case Publisher.DEV_TO:
+        PublisherFormElement.current = <HashnodeForm />;
+        break;
+      case Publisher.MEDIUM:
+        PublisherFormElement.current = <HashnodeForm />;
+        break;
     }
   };
 
@@ -58,9 +67,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
           </PublishButton>
         </div>
       </div>
-      <FormModal title={formTitle}>
-        <HashnodeForm />
-      </FormModal>
+      <FormModal title={formTitle}>{PublisherFormElement.current}</FormModal>
     </section>
   );
 };

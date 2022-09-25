@@ -48,9 +48,11 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
               placeholder='Enter URL (optional)'
             />
           </div>
-          <label className='label'>Tags</label>
-          <div className='control'>
-            <TagInput tags={tags} setTags={setTags} />
+          <div className='field' style={{ marginTop: '1vh' }}>
+            <label className='label'>Tags</label>
+            <div className='control'>
+              <TagInput tags={tags} setTags={setTags} />
+            </div>
           </div>
         </div>
         <div className='field is-grouped'>

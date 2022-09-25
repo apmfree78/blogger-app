@@ -3,13 +3,13 @@ import 'components/forms/TagInput.css';
 import { WithContext as ReactTags } from 'react-tag-input';
 import { TagProp } from 'lib/tagType';
 
-const suggestionList = ['javascript', 'typescript', 'node', 'api', 'react'];
-const suggestions = suggestionList.map((topic) => {
-  return {
-    id: topic,
-    text: topic,
-  };
-});
+// const suggestionList = ['javascript', 'typescript', 'node', 'api', 'react'];
+// const suggestions = suggestionList.map((topic) => {
+//   return {
+//     id: topic,
+//     text: topic,
+//   };
+// });
 
 const KeyCodes = {
   comma: 188,
@@ -50,7 +50,7 @@ const TagInput: React.FC<TagInputProps> = ({ tags, setTags }) => {
     <div style={{ backgroundColor: 'white', color: 'black' }}>
       <ReactTags
         tags={tags}
-        suggestions={suggestions}
+        // suggestions={suggestions}
         delimiters={delimiters}
         handleDelete={handleDelete}
         handleAddition={handleAddition}
