@@ -5,6 +5,9 @@ import { GlobalContext } from 'state/context';
 import 'styles/Publish.css';
 import FormModal from 'lib/formModal';
 import HashnodeForm from 'components/forms/HashnodeForm';
+import DevtoForm from 'components/forms/DevtoForm';
+import MediumForm from 'components/forms/MediumForm';
+
 interface PublishProps {
   content: string;
 }
@@ -31,10 +34,10 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
         PublisherFormElement.current = <HashnodeForm />;
         break;
       case Publisher.DEV_TO:
-        PublisherFormElement.current = <HashnodeForm />;
+        PublisherFormElement.current = <DevtoForm />;
         break;
       case Publisher.MEDIUM:
-        PublisherFormElement.current = <HashnodeForm />;
+        PublisherFormElement.current = <MediumForm />;
         break;
     }
   };

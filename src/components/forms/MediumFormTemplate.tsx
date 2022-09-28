@@ -37,7 +37,7 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
           </div>
         </div>
         <div className='field'>
-          <label className='label'>Cover Image URL</label>
+          <label className='label'>Canonical URL</label>
           <div className='control'>
             <input
               onChange={handleChange}
@@ -45,7 +45,7 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
               value={inputs.url || ''}
               type='url'
               name='url'
-              placeholder='Enter URL (optional)'
+              placeholder='Enter URL (if applicable)'
             />
           </div>
           <div className='field' style={{ marginTop: '1vh' }}>
