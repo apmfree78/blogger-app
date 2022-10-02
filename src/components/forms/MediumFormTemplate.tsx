@@ -20,12 +20,13 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
 }) => {
   return (
     <section>
-      <form role='form' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className='field'>
           <label className='label'>Title</label>
           <div className='control'>
             <input
               onChange={handleChange}
+              autoFocus
               className='input'
               value={inputs.title || ''}
               type='text'
@@ -48,11 +49,27 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
               placeholder='Enter URL (if applicable)'
             />
           </div>
-          <div className='field' style={{ marginTop: '1vh' }}>
-            <label className='label'>Tags</label>
-            <div className='control'>
-              <TagInput tags={tags} setTags={setTags} />
-            </div>
+        </div>
+
+        <div className='field' style={{ marginTop: '1vh' }}>
+          <label className='label'>Tags</label>
+          <div className='control'>
+            <TagInput tags={tags} setTags={setTags} />
+          </div>
+        </div>
+        <div className='field'>
+          <label className='label'>Publish Status</label>
+          <div className='control'>
+            <select
+              className='select is-rounded'
+              onChange={handleChange}
+              value={inputs.publishStatus || ''}
+              name='publishStatus'
+            >
+              <option value='public'>public</option>
+              <option value='draft'>draft</option>
+              <option value='unlisted'>unlisted</option>
+            </select>
           </div>
         </div>
         <div className='field is-grouped'>
