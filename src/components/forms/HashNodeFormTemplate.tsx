@@ -55,6 +55,20 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
             </div>
           </div>
         </div>
+        <div className='field'>
+          <label className='label'>Set Article to Published?</label>
+          <div className='control'>
+            <select
+              className='select is-rounded'
+              onChange={handleChange}
+              value={inputs.published || ''}
+              name='published'
+            >
+              <option value='false'>No</option>
+              <option value='true'>Yes</option>
+            </select>
+          </div>
+        </div>
         <div className='field is-grouped'>
           <div className='control' style={{ margin: '2vh 0vw 1vh 0vw' }}>
             <FormButtons />

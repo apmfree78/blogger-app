@@ -37,6 +37,7 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
             />
           </div>
         </div>
+
         <div className='field'>
           <label className='label'>Canonical URL</label>
           <div className='control'>
@@ -57,11 +58,13 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
             <TagInput tags={tags} setTags={setTags} />
           </div>
         </div>
+
         <div className='field'>
           <label className='label'>Publish Status</label>
           <div className='control'>
             <select
               className='select is-rounded'
+              style={{ minWidth: '8vw' }}
               onChange={handleChange}
               value={inputs.publishStatus || ''}
               name='publishStatus'
@@ -72,6 +75,7 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
             </select>
           </div>
         </div>
+
         <div className='field is-grouped'>
           <div className='control' style={{ margin: '2vh 0vw 1vh 0vw' }}>
             <FormButtons />
