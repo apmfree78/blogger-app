@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef } from 'react';
-import { Publisher } from 'state/actionTypes';
+import { Publisher, ActionType } from 'state/actionTypes';
 import PublishButton from 'components/PublishButton';
 import { GlobalContext } from 'state/context';
 import 'styles/Publish.css';
@@ -16,7 +16,7 @@ interface PublishProps {
 // to various content platforms
 const Publish: React.FC<PublishProps> = ({ content }) => {
   //modal toggle state
-  const { openModal } = useContext(GlobalContext);
+  const { state, dispatch, openModal } = useContext(GlobalContext);
   // title for form Modal
   const [formTitle, setFormTitle] = useState('Input Form');
   // useRef for JSX Form component
@@ -25,6 +25,9 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
   const openForm = (publisher: Publisher) => {
     // setting formModal state to open
     openModal();
+
+    // update content on state object
+    dispatch({ type: ActionType.UPDATE_CONTENT, content });
 
     // set title for form modal
     setFormTitle(`${publisher} Input Form`);

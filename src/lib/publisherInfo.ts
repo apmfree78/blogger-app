@@ -5,7 +5,7 @@ export const devToURL = 'https://mockend.com/apmfree78/blogger-app/devtos';
 export interface DevToDataProps {
   title: string;
   published: boolean;
-  content: string;
+  body_markdown: string;
   tags: string[];
   series: string;
 }

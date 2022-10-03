@@ -27,7 +27,7 @@ export const initialPublishState: BlogStateType = {
       article: {
         title: '',
         published: true,
-        content: '',
+        body_markdown: '',
         tags: [],
         series: '',
       },

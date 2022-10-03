@@ -25,6 +25,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
           <label className='label'>Title</label>
           <div className='control'>
             <input
+              autoFocus
               onChange={handleChange}
               className='input'
               value={inputs.title || ''}
@@ -36,6 +37,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
             />
           </div>
         </div>
+
         <div className='field'>
           <label className='label'>Cover Image URL</label>
           <div className='control'>
@@ -48,27 +50,15 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
               placeholder='Enter URL (optional)'
             />
           </div>
-          <div className='field' style={{ marginTop: '1vh' }}>
-            <label className='label'>Tags</label>
-            <div className='control'>
-              <TagInput tags={tags} setTags={setTags} />
-            </div>
-          </div>
         </div>
-        <div className='field'>
-          <label className='label'>Set Article to Published?</label>
+
+        <div className='field' style={{ marginTop: '1vh' }}>
+          <label className='label'>Tags</label>
           <div className='control'>
-            <select
-              className='select is-rounded'
-              onChange={handleChange}
-              value={inputs.published || ''}
-              name='published'
-            >
-              <option value='false'>No</option>
-              <option value='true'>Yes</option>
-            </select>
+            <TagInput tags={tags} setTags={setTags} />
           </div>
         </div>
+
         <div className='field is-grouped'>
           <div className='control' style={{ margin: '2vh 0vw 1vh 0vw' }}>
             <FormButtons />

@@ -25,6 +25,7 @@ const DevtoFormTemplate: React.FC<DevtoFormProps> = ({
           <label className='label'>Title</label>
           <div className='control'>
             <input
+              autoFocus
               onChange={handleChange}
               className='input'
               value={inputs.title || ''}
@@ -61,7 +62,7 @@ const DevtoFormTemplate: React.FC<DevtoFormProps> = ({
         </div>
 
         <div className='field'>
-          <label className='label'>Series</label>
+          <label className='label'>Series (optional)</label>
           <div className='control'>
             <input
               onChange={handleChange}
