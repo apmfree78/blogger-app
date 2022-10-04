@@ -16,7 +16,7 @@ interface PublishProps {
 // to various content platforms
 const Publish: React.FC<PublishProps> = ({ content }) => {
   //modal toggle state
-  const { state, dispatch, openModal } = useContext(GlobalContext);
+  const { dispatch, openModal } = useContext(GlobalContext);
   // title for form Modal
   const [formTitle, setFormTitle] = useState('Input Form');
   // useRef for JSX Form component
