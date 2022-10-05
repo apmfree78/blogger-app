@@ -4,7 +4,7 @@ import HashnodeFormTemplate from 'components/forms/HashNodeFormTemplate';
 import { TagProp } from 'lib/tagType';
 
 const HashnodeForm: React.FC = () => {
-  const { inputs, handleChange, resetForm, clearForm } = useForm('');
+  const { inputs, handleChange, resetForm } = useForm('');
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
 
@@ -18,7 +18,6 @@ const HashnodeForm: React.FC = () => {
 
     // reset Form
     resetForm();
-    clearForm();
   };
 
   return (

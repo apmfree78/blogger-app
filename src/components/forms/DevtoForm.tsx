@@ -5,8 +5,15 @@ import { TagProp } from 'lib/tagType';
 import { GlobalContext } from 'state/context';
 import { ActionType } from 'state/actionTypes';
 
+const initialFormState = {
+  title: '',
+  published: false,
+  body_markdown: '',
+  tags: [],
+  series: '',
+};
 const DevtoForm: React.FC = () => {
-  const { inputs, handleChange, resetForm, clearForm } = useForm('');
+  const { inputs, handleChange, resetForm } = useForm(initialFormState);
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
   const { dispatch } = useContext(GlobalContext);
@@ -17,15 +24,21 @@ const DevtoForm: React.FC = () => {
     console.log(inputs);
     console.log(tags);
 
-
     // update state with form data
-    dispatch({ type: ActionType.UPDATE_DEVTO_DATA, title: inputs.title, published: inputs.published, series: inputs.series, tags: [...tags] });
+    dispatch({
+      type: ActionType.UPDATE_DEVTO_DATA,
+      payload: {
+        title: inputs.title,
+        published: inputs.published,
+        series: inputs.series,
+        tags: [...tags],
+      },
+    });
     //dispatch action to submit form data to redux state here
     // dispatch(...)
 
     // reset Form
     resetForm();
-    clearForm();
   };
 
   return (
