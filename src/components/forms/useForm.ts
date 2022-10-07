@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
-import { PublisherDataType } from '../../lib/publisherInfo';
 
 export default function useForm(initial: any) {
   const [inputs, setInputs] = useState(initial);

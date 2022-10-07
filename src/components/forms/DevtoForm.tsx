@@ -12,6 +12,7 @@ const initialFormState = {
   tags: [],
   series: '',
 };
+
 const DevtoForm: React.FC = () => {
   const { inputs, handleChange, resetForm } = useForm(initialFormState);
   /// state for tags is handled seperately
@@ -23,6 +24,8 @@ const DevtoForm: React.FC = () => {
     console.log('form submitted');
     console.log(inputs);
     console.log(tags);
+
+    const { title, published, series } = inputs;
 
     // update state with form data
     dispatch({
