@@ -17,7 +17,7 @@ const DevtoForm: React.FC = () => {
   const { inputs, handleChange, resetForm } = useForm(initialFormState);
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
-  const { dispatch } = useContext(GlobalContext);
+  const { dispatch, publishPost } = useContext(GlobalContext);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

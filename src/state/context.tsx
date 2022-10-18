@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import publishReducer from './reducer';
 import { initialPublishState } from './initialState';
 import { Publisher, PublishStatusType, ActionType } from 'state/actionTypes';
+import { PublisherDataType } from 'lib/publisherInfo';
 interface Props {
   children?: React.ReactNode;
 }
@@ -67,16 +68,35 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   // this step happens AFTER users has provided all relevant fields
   // in input form on modal popup
   const publishPost = async (
-    publishData: PublishStatusType,
+    // publishData: PublishStatusType,
     publisher: Publisher
   ) => {
+
+    let article: PublisherDataType;
+    let publishURL: string;
+
+    // extracting state
+    switch (publisher) {
+      case Publisher.DEV_TO:
+        article = state.publish.dev_to.article;
+        publishURL = state.publish.dev_to.publishURL;
+        break;
+      case Publisher.MEDIUM:
+        article = state.publish.dev_to.article;
+        publishURL = state.publish.dev_to.publishURL;
+        break;
+      case Publisher.HASHNODE:
+        article = state.publish.dev_to.article;
+        publishURL = state.publish.dev_to.publishURL;
+        break;
+    }
     // loading state begins
     dispatchPublishStart(publisher);
 
     // API POST request to publish article
     // UPDATE HERE
     const response: void | AxiosResponse = await axios
-      .post(`${publishData.publishURL}`, publishData.article)
+      .post(`${publishURL}`, article)
       .catch((err) => {
         // set error state
         dispatchPublishError(publisher, err.message);
