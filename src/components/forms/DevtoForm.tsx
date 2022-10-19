@@ -18,7 +18,7 @@ const DevtoForm: React.FC = () => {
 
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
-  const { dispatch, publishPost } = useContext(GlobalContext);
+  const { state, dispatch, publishPost } = useContext(GlobalContext);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -38,6 +38,8 @@ const DevtoForm: React.FC = () => {
         tags: [...tags],
       },
     });
+
+    console.log(state)
     //dispatch action to submit form data to redux state here
     publishPost(Publisher.DEV_TO);
 

@@ -34,7 +34,8 @@ export default function publishReducer(
       return {
         ...state,
         publish: {
-          ...state.publish,
+          medium: state.publish.medium,
+          dev_to: state.publish.dev_to,
           hasnode: {
             ...state.publish.hashnode,
             article: {
@@ -51,7 +52,8 @@ export default function publishReducer(
       return {
         ...state,
         publish: {
-          ...state.publish,
+          hasnode: state.publish.hasnode,
+          dev_to: state.publish.dev_to,
           medium: {
             ...state.publish.medium,
             article: {
@@ -69,7 +71,8 @@ export default function publishReducer(
       return {
         ...state,
         publish: {
-          ...state.publish,
+          hasnode: state.publish.hasnode,
+          medium: state.publish.medium,
           dev_to: {
             ...state.publish.dev_to,
             loading: true,
