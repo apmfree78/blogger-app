@@ -9,18 +9,6 @@ export interface BlogStateType {
 export const initialPublishState: BlogStateType = {
   content: '', // pre-published content that is written in markdown editor
   publish: {
-    hasnode: {
-      publisher: Publisher.HASHNODE,
-      publishURL: devToURL,
-      article: {
-        title: '',
-        contentMarkdown: '',
-        tags: [],
-        coverImageURL: '',
-      },
-      loading: false,
-      error: '',
-    },
     dev_to: {
       publisher: Publisher.DEV_TO,
       publishURL: devToURL,
@@ -30,6 +18,18 @@ export const initialPublishState: BlogStateType = {
         body_markdown: '',
         tags: [],
         series: '',
+      },
+      loading: false,
+      error: '',
+    },
+    hasnode: {
+      publisher: Publisher.HASHNODE,
+      publishURL: devToURL,
+      article: {
+        title: '',
+        contentMarkdown: '',
+        tags: [],
+        coverImageURL: '',
       },
       loading: false,
       error: '',

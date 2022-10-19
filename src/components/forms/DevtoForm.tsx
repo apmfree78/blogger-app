@@ -15,6 +15,7 @@ const initialFormState = {
 
 const DevtoForm: React.FC = () => {
   const { inputs, handleChange, resetForm } = useForm(initialFormState);
+
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
   const { dispatch, publishPost } = useContext(GlobalContext);
@@ -39,6 +40,7 @@ const DevtoForm: React.FC = () => {
     });
     //dispatch action to submit form data to redux state here
     // dispatch(...)
+    publishPost()
 
     // reset Form
     resetForm();

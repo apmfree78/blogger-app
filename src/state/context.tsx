@@ -82,12 +82,12 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         publishURL = state.publish.dev_to.publishURL;
         break;
       case Publisher.MEDIUM:
-        article = state.publish.dev_to.article;
-        publishURL = state.publish.dev_to.publishURL;
+        article = state.publish.medium.article;
+        publishURL = state.publish.medium.publishURL;
         break;
       case Publisher.HASHNODE:
-        article = state.publish.dev_to.article;
-        publishURL = state.publish.dev_to.publishURL;
+        article = state.publish.hasnode.article;
+        publishURL = state.publish.hasnode.publishURL;
         break;
     }
     // loading state begins

@@ -27,6 +27,6 @@ export interface HashnodeDataProps {
 }
 
 export type PublisherDataType =
-  | DevToDataProps
+  DevToDataProps
   | MediumDataProps
   | HashnodeDataProps;
