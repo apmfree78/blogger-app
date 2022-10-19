@@ -3,7 +3,7 @@ import useForm from './useForm';
 import DevtoFormTemplate from 'components/forms/DevtoFormTemplate';
 import { TagProp } from 'lib/tagType';
 import { GlobalContext } from 'state/context';
-import { ActionType } from 'state/actionTypes';
+import { ActionType, Publisher } from 'state/actionTypes';
 
 const initialFormState = {
   title: '',
@@ -39,8 +39,7 @@ const DevtoForm: React.FC = () => {
       },
     });
     //dispatch action to submit form data to redux state here
-    // dispatch(...)
-    publishPost()
+    publishPost(Publisher.DEV_TO);
 
     // reset Form
     resetForm();

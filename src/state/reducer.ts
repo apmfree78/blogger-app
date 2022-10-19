@@ -35,7 +35,7 @@ export default function publishReducer(
         ...state,
         publish: {
           ...state.publish,
-          dev_to: {
+          hasnode: {
             ...state.publish.hashnode,
             article: {
               ...state.publish.hashnode.article,
@@ -52,7 +52,7 @@ export default function publishReducer(
         ...state,
         publish: {
           ...state.publish,
-          dev_to: {
+          medium: {
             ...state.publish.medium,
             article: {
               ...state.publish.medium.article,

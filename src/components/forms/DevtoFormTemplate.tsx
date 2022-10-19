@@ -20,12 +20,11 @@ const DevtoFormTemplate: React.FC<DevtoFormProps> = ({
 }) => {
   return (
     <section>
-      <form role='form' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className='field'>
           <label className='label'>Title</label>
           <div className='control'>
             <input
-              autoFocus
               onChange={handleChange}
               className='input'
               value={inputs.title || ''}

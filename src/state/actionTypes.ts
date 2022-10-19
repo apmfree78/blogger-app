@@ -30,11 +30,11 @@ export enum Publisher {
 
 export type PublisherType = Publisher;
 
-export interface PublishStatusType<T> {
+export interface PublishStatusType {
   [key: string]: {
     publisher: PublisherType;
     publishURL: string;
-    article: T;
+    article: PublisherDataType;
     loading: boolean;
     error: string;
   };

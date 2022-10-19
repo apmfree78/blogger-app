@@ -68,7 +68,6 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   // this step happens AFTER users has provided all relevant fields
   // in input form on modal popup
   const publishPost = async (
-    // publishData: PublishStatusType,
     publisher: Publisher
   ) => {
 
@@ -82,17 +81,22 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         publishURL = state.publish.dev_to.publishURL;
         break;
       case Publisher.MEDIUM:
-        article = state.publish.medium.article;
-        publishURL = state.publish.medium.publishURL;
+        article = state.publish.dev_to.article;
+        publishURL = state.publish.dev_to.publishURL;
+        // article = state.publish.medium.article;
+        // publishURL = state.publish.medium.publishURL;
         break;
       case Publisher.HASHNODE:
-        article = state.publish.hasnode.article;
-        publishURL = state.publish.hasnode.publishURL;
+        article = state.publish.dev_to.article;
+        publishURL = state.publish.dev_to.publishURL;
+        // article = state.publish.hasnode.article;
+        // publishURL = state.publish.hasnode.publishURL;
         break;
     }
     // loading state begins
     dispatchPublishStart(publisher);
 
+    console.table(article)
     // API POST request to publish article
     // UPDATE HERE
     const response: void | AxiosResponse = await axios
@@ -115,6 +119,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       data: { url },
     } = response;
 
+    console.info('article successfully published')
     // dispatching success action
     dispatchPublishSuccess(publisher, `Successfully published to ${url}`);
   };
