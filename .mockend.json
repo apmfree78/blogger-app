@@ -46,10 +46,10 @@
         "loremParagraphs": {
           "minLength": 100,
           "maxLength": 1000
-        },
+        }
       },
       "canonicalUrl": {
-        "regexp": "https://[a-z]{5,10}\\.[com|to]",
+        "regexp": "https://[a-z]{5,10}\\.[com|to]"
       },
       "tag": {
         "string": [
@@ -64,6 +64,6 @@
           "draft",
           "unlisted"
         ]
-      },
+      }
     }
   }
