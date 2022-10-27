@@ -9,9 +9,8 @@ interface MarkdownProps {
 }
 const MarkdownEditor: React.FC<MarkdownProps> = ({ content, setContent }) => {
   return (
-    <div className='text-editor'>
+    <div data-testid='markdown-editor' className='text-editor'>
       <MDEditor
-        data-testid='markdown-editor'
         value={content}
         onChange={(c) => setContent(c || '')}
         previewOptions={{
