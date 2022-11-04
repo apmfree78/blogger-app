@@ -1,6 +1,6 @@
 // import { render, screen } from '@testing-library/react';
 import React from "react";
-import { render, screen } from "../../test-utils";
+import { render, screen } from "test-utils";
 import user from "@testing-library/user-event";
 
 import Publish from "components/Publish";
