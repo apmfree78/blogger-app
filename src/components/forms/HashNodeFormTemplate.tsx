@@ -22,13 +22,16 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
     <section>
       <form role="form" onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label">Title</label>
+          <label htmlFor="title" className="label">
+            Title
+          </label>
           <div className="control">
             <input
               autoFocus
               onChange={handleChange}
               className="input"
               value={inputs.title || ""}
+              id="title"
               type="text"
               name="title"
               placeholder="Enter title"
@@ -39,12 +42,15 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
         </div>
 
         <div className="field">
-          <label className="label">Cover Image URL</label>
+          <label htmlFor="url" className="label">
+            Cover Image URL
+          </label>
           <div className="control">
             <input
               onChange={handleChange}
               className="input"
               value={inputs.url || ""}
+              id="url"
               type="url"
               name="url"
               placeholder="Enter URL (optional)"
@@ -53,8 +59,10 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
         </div>
 
         <div className="field" style={{ marginTop: "1vh" }}>
-          <label className="label">Tags</label>
-          <div className="control">
+          <label htmlFor="tags" className="label">
+            Tags
+          </label>
+          <div id="tags" className="control">
             <TagInput tags={tags} setTags={setTags} />
           </div>
         </div>

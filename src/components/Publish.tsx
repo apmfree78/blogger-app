@@ -27,7 +27,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
     openModal();
 
     // update content on state object
-    console.log(content);
+    // console.log(content);
     dispatch({ type: ActionType.UPDATE_CONTENT, payload: content });
 
     // set title for form modal

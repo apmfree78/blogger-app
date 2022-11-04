@@ -22,13 +22,16 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
     <section>
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label">Title</label>
+          <label htmlFor="title" className="label">
+            Title
+          </label>
           <div className="control">
             <input
               onChange={handleChange}
               autoFocus
               className="input"
               value={inputs.title || ""}
+              id="title"
               type="text"
               name="title"
               placeholder="Enter title"
@@ -39,12 +42,15 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
         </div>
 
         <div className="field">
-          <label className="label">Canonical URL</label>
+          <label htmlFor="url" className="label">
+            Canonical URL
+          </label>
           <div className="control">
             <input
               onChange={handleChange}
               className="input"
               value={inputs.url || ""}
+              id="url"
               type="url"
               name="url"
               placeholder="Enter URL (if applicable)"
@@ -60,10 +66,13 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
         </div>
 
         <div className="field">
-          <label className="label">Publish Status</label>
+          <label htmlFor="status" className="label">
+            Publish Status
+          </label>
           <div className="control">
             <select
               className="select is-rounded"
+              id="status"
               style={{ minWidth: "8vw" }}
               onChange={handleChange}
               value={inputs.publishStatus || ""}
