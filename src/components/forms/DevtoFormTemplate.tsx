@@ -22,13 +22,16 @@ const DevtoFormTemplate: React.FC<DevtoFormProps> = ({
     <section>
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label">Title</label>
+          <label htmlFor="title" className="label">
+            Title
+          </label>
           <div className="control">
             <input
               onChange={handleChange}
               className="input"
               value={inputs.title || ""}
               type="text"
+              id="title"
               name="title"
               placeholder="Enter title"
               maxLength={40}
@@ -38,10 +41,13 @@ const DevtoFormTemplate: React.FC<DevtoFormProps> = ({
         </div>
 
         <div className="field">
-          <label className="label">Set Article to Published?</label>
+          <label htmlFor="published" className="label">
+            Set Article to Published?
+          </label>
           <div className="control">
             <select
               className="select is-rounded"
+              id="published"
               style={{ minWidth: "5vw" }}
               onChange={handleChange}
               value={inputs.published || ""}
@@ -61,13 +67,16 @@ const DevtoFormTemplate: React.FC<DevtoFormProps> = ({
         </div>
 
         <div className="field">
-          <label className="label">Series (optional)</label>
+          <label htmlFor="series" className="label">
+            Series (optional)
+          </label>
           <div className="control">
             <input
               onChange={handleChange}
               className="input"
               value={inputs.series || ""}
               type="text"
+              id="series"
               name="series"
               placeholder="Enter series"
               maxLength={40}

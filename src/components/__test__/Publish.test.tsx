@@ -98,7 +98,7 @@ test("Hashnode Modal Cancel button is present", async () => {
 
 // testing that modal is properly appearing after
 // user clicks publish button
-// testing Hashnode Modal
+// testing Medium Modal
 test("medium Modal is present", async () => {
   render(<Publish content="test content" />);
   // simulate button click
@@ -171,6 +171,87 @@ test("medium Modal Cancel button is present", async () => {
   // simulate button click
   const button = screen.getByRole("button", {
     name: /submit to medium/i,
+  });
+  await user.click(button);
+  const submit = screen.getByRole("button", { name: /^cancel$/i });
+  expect(submit).toBeInTheDocument();
+});
+
+// testing that modal is properly appearing after
+// user clicks publish button
+// testing devto Modal
+test("devto Modal is present", async () => {
+  render(<Publish content="test content" />);
+  // simulate button click
+  const button = screen.getByRole("button", {
+    name: /submit to dev/i,
+  });
+  await user.click(button);
+  // check that form appears for devto
+  const header = screen.getByText(/dev\.to input form/i);
+  expect(header).toBeInTheDocument();
+});
+
+test("devto Modal title label is present", async () => {
+  render(<Publish content="test content" />);
+  // simulate button click
+  const button = screen.getByRole("button", {
+    name: /submit to dev/i,
+  });
+  await user.click(button);
+  const title = screen.getByLabelText(/title/i);
+  expect(title).toBeInTheDocument();
+});
+
+test("devto Modal tags label is present", async () => {
+  render(<Publish content="test content" />);
+  // simulate button click
+  const button = screen.getByRole("button", {
+    name: /submit to dev/i,
+  });
+  await user.click(button);
+  const tags = screen.getByText(/tags/i);
+  expect(tags).toBeInTheDocument();
+});
+
+test("devto Modal Publish Status label is present", async () => {
+  render(<Publish content="test content" />);
+  // simulate button click
+  const button = screen.getByRole("button", {
+    name: /submit to dev/i,
+  });
+  await user.click(button);
+  const url = screen.getByLabelText(/set article to published/i);
+  expect(url).toBeInTheDocument();
+});
+
+test("devto Modal series label is present", async () => {
+  render(<Publish content="test content" />);
+  // simulate button click
+  const button = screen.getByRole("button", {
+    name: /submit to dev/i,
+  });
+  await user.click(button);
+  const title = screen.getByLabelText(/series/i);
+  expect(title).toBeInTheDocument();
+});
+
+test("devto Modal Submit button is present", async () => {
+  render(<Publish content="test content" />);
+  // simulate button click
+  const button = screen.getByRole("button", {
+    name: /submit to dev/i,
+  });
+  await user.click(button);
+  const submit = screen.getByRole("button", { name: /^submit$/i });
+  expect(submit).toBeInTheDocument();
+});
+
+test("devto Modal Cancel button is present", async () => {
+  render(<Publish content="test content" />);
+  // simulate button click
+  const button = screen.getByRole("button", {
+    name: /submit to dev/i,
   });
   await user.click(button);
   const submit = screen.getByRole("button", { name: /^cancel$/i });
