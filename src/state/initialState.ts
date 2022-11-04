@@ -1,5 +1,5 @@
-import { Publisher, PublishStatusType } from 'state/actionTypes';
-import { devToURL } from 'lib/publisherInfo';
+import { Publisher, PublishStatusType } from "state/actionTypes";
+import { devToURL } from "lib/publisherInfo";
 export interface BlogStateType {
   content: string;
   publish: PublishStatusType;
@@ -7,46 +7,46 @@ export interface BlogStateType {
 
 // INITIAL REDUX STATE
 export const initialPublishState: BlogStateType = {
-  content: '', // pre-published content that is written in markdown editor
+  content: "", // pre-published content that is written in markdown editor
   publish: {
     dev_to: {
       publisher: Publisher.DEV_TO,
       publishURL: devToURL,
       article: {
-        title: '',
+        title: "",
         published: true,
-        body_markdown: '',
+        body_markdown: "",
         tags: [],
-        series: '',
+        series: "",
       },
       loading: false,
-      error: '',
+      error: "",
     },
     hasnode: {
       publisher: Publisher.HASHNODE,
       publishURL: devToURL,
       article: {
-        title: '',
-        contentMarkdown: '',
+        title: "",
+        contentMarkdown: "",
         tags: [],
-        coverImageURL: '',
+        coverImageURL: "",
       },
       loading: false,
-      error: '',
+      error: "",
     },
     medium: {
       publisher: Publisher.MEDIUM,
       publishURL: devToURL,
       article: {
-        title: '',
-        contentFormat: 'markdown',
-        content: '',
-        canonicalUrl: '',
+        title: "",
+        contentFormat: "markdown",
+        content: "",
+        canonicalUrl: "",
         tags: [],
-        publishStatus: 'public',
+        publishStatus: "public",
       },
       loading: false,
-      error: '',
+      error: "",
     },
   },
 };

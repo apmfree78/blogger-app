@@ -1,12 +1,12 @@
-import React, { useState, useContext, useRef } from 'react';
-import { Publisher, ActionType } from 'state/actionTypes';
-import PublishButton from 'components/PublishButton';
-import { GlobalContext } from 'state/context';
-import 'styles/Publish.css';
-import FormModal from 'lib/formModal';
-import HashnodeForm from 'components/forms/HashNodeForm';
-import DevtoForm from 'components/forms/DevtoForm';
-import MediumForm from 'components/forms/MediumForm';
+import React, { useState, useContext, useRef } from "react";
+import { Publisher, ActionType } from "state/actionTypes";
+import PublishButton from "components/PublishButton";
+import { GlobalContext } from "state/context";
+import "styles/Publish.css";
+import FormModal from "lib/formModal";
+import HashnodeForm from "components/forms/HashNodeForm";
+import DevtoForm from "components/forms/DevtoForm";
+import MediumForm from "components/forms/MediumForm";
 
 interface PublishProps {
   content: string;
@@ -18,7 +18,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
   //modal toggle state
   const { dispatch, openModal } = useContext(GlobalContext);
   // title for form Modal
-  const [formTitle, setFormTitle] = useState('Input Form');
+  const [formTitle, setFormTitle] = useState("Input Form");
   // useRef for JSX Form component
   const PublisherFormElement = useRef(<HashnodeForm />);
   // open up Modal with form specific to publisher;
@@ -27,7 +27,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
     openModal();
 
     // update content on state object
-    console.log(content)
+    console.log(content);
     dispatch({ type: ActionType.UPDATE_CONTENT, payload: content });
 
     // set title for form modal
@@ -47,27 +47,27 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
   };
 
   return (
-    <section aria-label='publish' style={{ marginTop: '1vh' }}>
-      <div className='columns'>
-        <div className='column'>
+    <section aria-label="publish" style={{ marginTop: "1vh" }}>
+      <div className="columns">
+        <div className="column">
           <PublishButton
-            buttonStyle='is-success'
+            buttonStyle="is-success"
             handleClick={() => openForm(Publisher.HASHNODE)}
           >
             Submit to Hashnode
           </PublishButton>
         </div>
-        <div className='column'>
+        <div className="column">
           <PublishButton
-            buttonStyle='is-danger'
+            buttonStyle="is-danger"
             handleClick={() => openForm(Publisher.DEV_TO)}
           >
             Submit to Dev.to
           </PublishButton>
         </div>
-        <div className='column'>
+        <div className="column">
           <PublishButton
-            buttonStyle='is-info'
+            buttonStyle="is-info"
             handleClick={() => openForm(Publisher.MEDIUM)}
           >
             Submit to Medium

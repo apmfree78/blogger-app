@@ -1,5 +1,5 @@
-import { PublishAction, ActionType } from 'state/actionTypes';
-import { BlogStateType } from 'state/initialState';
+import { PublishAction, ActionType } from "state/actionTypes";
+import { BlogStateType } from "state/initialState";
 
 export default function publishReducer(
   state: BlogStateType,
@@ -76,7 +76,7 @@ export default function publishReducer(
           dev_to: {
             ...state.publish.dev_to,
             loading: true,
-            error: '',
+            error: "",
           },
         },
       };
@@ -100,7 +100,7 @@ export default function publishReducer(
           dev_to: {
             ...state.publish.dev_to,
             loading: false,
-            error: '',
+            error: "",
           },
         },
       };

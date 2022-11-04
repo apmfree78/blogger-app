@@ -1,14 +1,14 @@
-import React, { useState, createContext, useReducer } from 'react';
-import axios, { AxiosResponse } from 'axios';
-import publishReducer from './reducer';
-import { initialPublishState } from './initialState';
-import { Publisher, PublishStatusType, ActionType } from 'state/actionTypes';
-import { PublisherDataType } from 'lib/publisherInfo';
+import React, { useState, createContext, useReducer } from "react";
+import axios, { AxiosResponse } from "axios";
+import publishReducer from "./reducer";
+import { initialPublishState } from "./initialState";
+import { Publisher, PublishStatusType, ActionType } from "state/actionTypes";
+import { PublisherDataType } from "lib/publisherInfo";
 interface Props {
   children?: React.ReactNode;
 }
 
-export const GlobalContext: React.Context<any> = createContext('');
+export const GlobalContext: React.Context<any> = createContext("");
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   //modal toggle state
@@ -103,7 +103,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     if (!response) {
       dispatchPublishError(
         publisher,
-        'sorry, unable to publish article at this time'
+        "sorry, unable to publish article at this time"
       );
       return;
     }
@@ -112,7 +112,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       data: { url },
     } = response;
 
-    console.info('article successfully published');
+    console.info("article successfully published");
     // dispatching success action
     dispatchPublishSuccess(publisher, `Successfully published to ${url}`);
   };

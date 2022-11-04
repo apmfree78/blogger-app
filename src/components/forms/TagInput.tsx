@@ -1,7 +1,7 @@
-import React from 'react';
-import 'components/forms/TagInput.css';
-import { WithContext as ReactTags } from 'react-tag-input';
-import { TagProp } from 'lib/tagType';
+import React from "react";
+import "components/forms/TagInput.css";
+import { WithContext as ReactTags } from "react-tag-input";
+import { TagProp } from "lib/tagType";
 
 // const suggestionList = ['javascript', 'typescript', 'node', 'api', 'react'];
 // const suggestions = suggestionList.map((topic) => {
@@ -43,11 +43,11 @@ const TagInput: React.FC<TagInputProps> = ({ tags, setTags }) => {
   };
 
   const handleTagClick = (index: number) => {
-    console.log('The tag at index ' + index + ' was clicked');
+    console.log("The tag at index " + index + " was clicked");
   };
 
   return (
-    <div style={{ backgroundColor: 'white', color: 'black' }}>
+    <div style={{ backgroundColor: "white", color: "black" }}>
       <ReactTags
         tags={tags}
         // suggestions={suggestions}
@@ -56,8 +56,8 @@ const TagInput: React.FC<TagInputProps> = ({ tags, setTags }) => {
         handleAddition={handleAddition}
         handleDrag={handleDrag}
         handleTagClick={handleTagClick}
-        inputFieldPosition='inline'
-        placeholder='Add a tag'
+        inputFieldPosition="inline"
+        placeholder="Add a tag"
         autocomplete
       />
     </div>

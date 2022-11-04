@@ -11,7 +11,7 @@ const FormModal: React.FC<FormModalProps> = ({ children, title }) => {
   const { open, closeModal } = useContext(GlobalContext);
 
   return (
-    <div role="modal" className={`modal ${open ? "is-active" : ""}`}>
+    <div className={`modal ${open ? "is-active" : ""}`}>
       <div className="modal-background" onClick={closeModal} />
       <div className="modal-card">
         <header className="modal-card-head">

@@ -1,15 +1,15 @@
-import React, { FormEvent, useContext, useState } from 'react';
-import useForm from './useForm';
-import HashnodeFormTemplate from 'components/forms/HashNodeFormTemplate';
-import { TagProp } from 'lib/tagType';
-import { ActionType } from 'state/actionTypes';
-import { GlobalContext } from 'state/context';
+import React, { FormEvent, useContext, useState } from "react";
+import useForm from "./useForm";
+import HashnodeFormTemplate from "components/forms/HashNodeFormTemplate";
+import { TagProp } from "lib/tagType";
+import { ActionType } from "state/actionTypes";
+import { GlobalContext } from "state/context";
 
 const initialFormState = {
-  title: '',
-  contentMarkdown: '',
+  title: "",
+  contentMarkdown: "",
   tags: [],
-  coverImageURL: '',
+  coverImageURL: "",
 };
 
 const HashnodeForm: React.FC = () => {
@@ -20,7 +20,7 @@ const HashnodeForm: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log('form submitted');
+    console.log("form submitted");
     console.log(inputs);
     console.log(tags);
     //dispatch action to submit form data to redux state here
@@ -33,7 +33,7 @@ const HashnodeForm: React.FC = () => {
       payload: {
         title,
         tags: [...tags],
-        coverImageURL
+        coverImageURL,
       },
     });
     //dispatch action to submit form data to redux state here

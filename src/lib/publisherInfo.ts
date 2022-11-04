@@ -1,6 +1,6 @@
 // mockend endpoints for testing POST requests
 // dev.to : mockend.com/apmfree78/blogger-app/devtos
-export const devToURL = 'https://mockend.com/apmfree78/blogger-app/devtos';
+export const devToURL = "https://mockend.com/apmfree78/blogger-app/devtos";
 
 export interface DevToDataProps {
   title: string;
@@ -27,6 +27,6 @@ export interface HashnodeDataProps {
 }
 
 export type PublisherDataType =
-  DevToDataProps
+  | DevToDataProps
   | MediumDataProps
   | HashnodeDataProps;

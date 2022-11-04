@@ -1,16 +1,16 @@
-import React, { FormEvent, useState, useContext } from 'react';
-import useForm from './useForm';
-import DevtoFormTemplate from 'components/forms/DevtoFormTemplate';
-import { TagProp } from 'lib/tagType';
-import { GlobalContext } from 'state/context';
-import { ActionType, Publisher } from 'state/actionTypes';
+import React, { FormEvent, useState, useContext } from "react";
+import useForm from "./useForm";
+import DevtoFormTemplate from "components/forms/DevtoFormTemplate";
+import { TagProp } from "lib/tagType";
+import { GlobalContext } from "state/context";
+import { ActionType, Publisher } from "state/actionTypes";
 
 const initialFormState = {
-  title: '',
+  title: "",
   published: false,
-  body_markdown: '',
+  body_markdown: "",
   tags: [],
-  series: '',
+  series: "",
 };
 
 const DevtoForm: React.FC = () => {
@@ -22,7 +22,7 @@ const DevtoForm: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log('form submitted');
+    console.log("form submitted");
     console.log(inputs);
     console.log(tags);
 
@@ -39,7 +39,7 @@ const DevtoForm: React.FC = () => {
       },
     });
 
-    console.log(state)
+    console.log(state);
     //dispatch action to submit form data to redux state here
     publishPost(Publisher.DEV_TO);
 

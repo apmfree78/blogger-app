@@ -1,4 +1,5 @@
 // import { render, screen } from '@testing-library/react';
+import React from "react";
 import { render, screen } from "../../test-utils";
 import user from "@testing-library/user-event";
 
@@ -34,8 +35,7 @@ test("Hashnode Modal is present", async () => {
   });
   await user.click(button);
 
+  // check that form appears for Hashnode
   const header = screen.getByText(/hashnode input form/i);
   expect(header).toBeInTheDocument();
-
-  // check that form appears for Hashnode
 });

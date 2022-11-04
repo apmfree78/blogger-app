@@ -3,29 +3,29 @@ import {
   DevToDataProps,
   MediumDataProps,
   HashnodeDataProps,
-} from 'lib/publisherInfo';
+} from "lib/publisherInfo";
 
 // defining action types
 export const enum ActionType {
-  HASHNODE_START = 'HashnodeStart',
-  HASHNODE_ERROR = 'HashnodeError',
-  HASHNODE_SUCCESS = 'HasNodeSuccess',
-  DEV_TO_ERROR = 'devtoError',
-  DEV_TO_SUCCESS = 'devtoSuccess',
-  DEV_TO_START = 'devtoStart',
-  MEDIUM_ERROR = 'mediumError',
-  MEDIUM_SUCCESS = 'mediumSuccess',
-  MEDIUM_START = 'mediumStart',
-  UPDATE_CONTENT = 'updateContent',
-  UPDATE_HASHNODE_DATA = 'updateHasnodeDATA',
-  UPDATE_MEDIUM_DATA = 'updateMediumDATA',
-  UPDATE_DEVTO_DATA = 'UpdateDevtoDATA',
+  HASHNODE_START = "HashnodeStart",
+  HASHNODE_ERROR = "HashnodeError",
+  HASHNODE_SUCCESS = "HasNodeSuccess",
+  DEV_TO_ERROR = "devtoError",
+  DEV_TO_SUCCESS = "devtoSuccess",
+  DEV_TO_START = "devtoStart",
+  MEDIUM_ERROR = "mediumError",
+  MEDIUM_SUCCESS = "mediumSuccess",
+  MEDIUM_START = "mediumStart",
+  UPDATE_CONTENT = "updateContent",
+  UPDATE_HASHNODE_DATA = "updateHasnodeDATA",
+  UPDATE_MEDIUM_DATA = "updateMediumDATA",
+  UPDATE_DEVTO_DATA = "UpdateDevtoDATA",
 }
 
 export enum Publisher {
-  HASHNODE = 'Hashnode',
-  DEV_TO = 'Dev.to',
-  MEDIUM = 'Medium',
+  HASHNODE = "Hashnode",
+  DEV_TO = "Dev.to",
+  MEDIUM = "Medium",
 }
 
 export type PublisherType = Publisher;

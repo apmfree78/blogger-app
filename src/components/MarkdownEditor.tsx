@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import MDEditor from '@uiw/react-md-editor';
-import rehypeSanitize from 'rehype-sanitize';
-import 'styles/markdownEditor.css';
+import React, { useState } from "react";
+import MDEditor from "@uiw/react-md-editor";
+import rehypeSanitize from "rehype-sanitize";
+import "styles/markdownEditor.css";
 
 interface MarkdownProps {
   content: string;
@@ -9,10 +9,10 @@ interface MarkdownProps {
 }
 const MarkdownEditor: React.FC<MarkdownProps> = ({ content, setContent }) => {
   return (
-    <div data-testid='markdown-editor' className='text-editor'>
+    <div data-testid="markdown-editor" className="text-editor">
       <MDEditor
         value={content}
-        onChange={(c) => setContent(c || '')}
+        onChange={(c) => setContent(c || "")}
         previewOptions={{
           rehypePlugins: [[rehypeSanitize]],
         }}

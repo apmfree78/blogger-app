@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function useForm(initial: any) {
   const [inputs, setInputs] = useState(initial);
-  const initialValues = Object.values(initial).join('');
+  const initialValues = Object.values(initial).join("");
 
   useEffect(() => {
     // this functions runs when things we are watching change
@@ -13,7 +13,7 @@ export default function useForm(initial: any) {
   function handleChange(e: any) {
     let { value, name, type } = e.target;
 
-    if (type === 'number') {
+    if (type === "number") {
       value = parseInt(value);
     }
 
