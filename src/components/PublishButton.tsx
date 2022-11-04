@@ -12,14 +12,15 @@ const PublishButton: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      data-testid={`button ${children}`}
       className={`button ${buttonStyle} is-large`}
-      style={{ margin: '1vh 1vw' }}
+      style={{ margin: "1vh 1vw" }}
       onClick={handleClick}
     >
       <span>
-        <i className='fa-solid fa-upload'></i>
+        <i className="fa-solid fa-upload"></i>
       </span>
-      <span style={{ marginLeft: '0.75vw' }}>{children}</span>
+      <span style={{ marginLeft: "0.75vw" }}>{children}</span>
     </button>
   );
 };
