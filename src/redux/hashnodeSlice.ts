@@ -37,6 +37,21 @@ export const hashnodeSlice = createSlice({
       state.article.tags = [...tags];
       return state;
     },
+    publishStart(state) {
+      state.loading = true;
+      state.error = "";
+      return state;
+    },
+    publishError(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+      return state;
+    },
+    publishSuccess(state) {
+      state.loading = false;
+      state.error = "";
+      return state;
+    },
   },
 });
 
