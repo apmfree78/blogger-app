@@ -1,11 +1,15 @@
 import React, { FC, ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import { GlobalProvider } from "./state/context";
-// import store from './state/store';
-// import { Provider } from 'react-redux';
+import { store } from "redux/store";
+import { Provider } from "react-redux";
 
 const AllTheProviders: FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <GlobalProvider>{children}</GlobalProvider>;
+  return (
+    <Provider store={store}>
+      <GlobalProvider>{children}</GlobalProvider>;
+    </Provider>
+  );
 };
 
 const customRender = (
