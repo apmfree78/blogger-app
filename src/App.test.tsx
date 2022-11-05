@@ -6,6 +6,9 @@ jest.mock("react-redux", () => ({
   useDispatch: () => {
     return null;
   },
+  useSelector: () => {
+    return null;
+  },
 }));
 
 jest.mock("@uiw/react-md-editor", () => () => <div></div>);

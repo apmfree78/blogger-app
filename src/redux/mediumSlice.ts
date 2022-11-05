@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { MediumDataProps } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
+import { AppDispatch, RootState } from "redux/store";
 
 export interface MediumPublishStatusType {
   // publisher: PublisherType;
@@ -28,13 +29,18 @@ const initialState: MediumPublishStatusType = {
   error: "",
 };
 
-export const publishPost = createAsyncThunk(
-  "medium/publishPost",
-  async (state: MediumPublishStatusType) => {
-    const response = await axios.post(state.publishURL, state.article);
-    return response.data;
+export const publishPost = createAsyncThunk<
+  any,
+  MediumDataProps,
+  {
+    dispatch: AppDispatch;
+    state: RootState;
   }
-);
+>("medium/publishPost", async (article, { getState }) => {
+  const state: MediumPublishStatusType = getState().medium;
+  const response = await axios.post(state.publishURL, article);
+  return response.data;
+});
 
 export const mediumSlice = createSlice({
   name: "medium",

@@ -4,9 +4,8 @@ import DevtoFormTemplate from "components/forms/DevtoFormTemplate";
 import { TagProp } from "lib/tagType";
 import { GlobalContext } from "state/context";
 import { ActionType, Publisher } from "state/actionTypes";
-import { saveData } from "redux/devToSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { DevToPublishStatusType } from "redux/devToSlice";
+import { saveData, DevToPublishStatusType } from "redux/devToSlice";
 
 const initialFormState = {
   title: "",
