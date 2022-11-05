@@ -25,8 +25,8 @@ const initialState: HashnodePublishStatusType = {
   error: "",
 };
 
-export const mediumSlice = createSlice({
-  name: "medium",
+export const hashnodeSlice = createSlice({
+  name: "hashnode",
   initialState,
   reducers: {
     savePost(state, action: PayloadAction<HashnodeDataProps>) {
@@ -40,5 +40,5 @@ export const mediumSlice = createSlice({
   },
 });
 
-export const { savePost } = mediumSlice.actions;
-export default mediumSlice.reducer;
+export const { savePost } = hashnodeSlice.actions;
+export default hashnodeSlice.reducer;
