@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
 import { MediumDataProps } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 
@@ -27,6 +28,15 @@ const initialState: MediumPublishStatusType = {
   error: "",
 };
 
+export const publishPost = createAsyncThunk(
+  "medium/publishPost",
+  (state: MediumPublishStatusType) => {
+    return axios
+      .post(state.publishURL, state.article)
+      .then((response) => console.log(response));
+  }
+);
+
 export const mediumSlice = createSlice({
   name: "medium",
   initialState,
@@ -41,21 +51,20 @@ export const mediumSlice = createSlice({
       state.article.publishStatus = publishStatus;
       return state;
     },
-    publishStart(state) {
+  },
+  extraReducers: (builder) => {
+    builder.addCase(publishPost.pending, (state) => {
       state.loading = true;
       state.error = "";
-      return state;
-    },
-    publishError(state, action: PayloadAction<string>) {
-      state.loading = false;
-      state.error = action.payload;
-      return state;
-    },
-    publishSuccess(state) {
+    });
+    builder.addCase(publishPost.fulfilled, (state) => {
       state.loading = false;
       state.error = "";
-      return state;
-    },
+    });
+    builder.addCase(publishPost.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || "";
+    });
   },
 });
 
