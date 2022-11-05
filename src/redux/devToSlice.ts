@@ -26,8 +26,8 @@ const initialState: DevToPublishStatusType = {
   error: "",
 };
 
-export const mediumSlice = createSlice({
-  name: "medium",
+export const devtoSlice = createSlice({
+  name: "devto",
   initialState,
   reducers: {
     savePost(state, action: PayloadAction<DevToDataProps>) {
@@ -39,8 +39,23 @@ export const mediumSlice = createSlice({
       state.article.published = published;
       return state;
     },
+    start(state) {
+      state.loading = true;
+      state.error = "";
+      return state;
+    },
+    error(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+      return state;
+    },
+    success(state) {
+      state.loading = false;
+      state.error = "";
+      return state;
+    },
   },
 });
 
-export const { savePost } = mediumSlice.actions;
-export default mediumSlice.reducer;
+export const { savePost } = devtoSlice.actions;
+export default devtoSlice.reducer;

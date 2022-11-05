@@ -41,6 +41,21 @@ export const mediumSlice = createSlice({
       state.article.publishStatus = publishStatus;
       return state;
     },
+    start(state) {
+      state.loading = true;
+      state.error = "";
+      return state;
+    },
+    error(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+      return state;
+    },
+    success(state) {
+      state.loading = false;
+      state.error = "";
+      return state;
+    },
   },
 });
 
