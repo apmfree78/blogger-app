@@ -30,10 +30,9 @@ const initialState: MediumPublishStatusType = {
 
 export const publishPost = createAsyncThunk(
   "medium/publishPost",
-  (state: MediumPublishStatusType) => {
-    return axios
-      .post(state.publishURL, state.article)
-      .then((response) => console.log(response));
+  async (state: MediumPublishStatusType) => {
+    const response = await axios.post(state.publishURL, state.article);
+    return response.data;
   }
 );
 
@@ -41,7 +40,7 @@ export const mediumSlice = createSlice({
   name: "medium",
   initialState,
   reducers: {
-    savePost(state, action: PayloadAction<MediumDataProps>) {
+    saveData(state, action: PayloadAction<MediumDataProps>) {
       const { title, content, canonicalUrl, tags, publishStatus } =
         action.payload;
       state.article.title = title;
@@ -68,5 +67,5 @@ export const mediumSlice = createSlice({
   },
 });
 
-export const { savePost } = mediumSlice.actions;
+export const { saveData } = mediumSlice.actions;
 export default mediumSlice.reducer;

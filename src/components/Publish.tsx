@@ -7,6 +7,8 @@ import FormModal from "lib/formModal";
 import HashnodeForm from "components/forms/HashNodeForm";
 import DevtoForm from "components/forms/DevtoForm";
 import MediumForm from "components/forms/MediumForm";
+import { savePost } from "redux/postSlice";
+import { useDispatch } from "react-redux";
 
 interface PublishProps {
   content: string;
@@ -16,7 +18,9 @@ interface PublishProps {
 // to various content platforms
 const Publish: React.FC<PublishProps> = ({ content }) => {
   //modal toggle state
-  const { dispatch, openModal } = useContext(GlobalContext);
+  const { openModal } = useContext(GlobalContext);
+  // redux dispatch function
+  const dispatch = useDispatch();
   // title for form Modal
   const [formTitle, setFormTitle] = useState("Input Form");
   // useRef for JSX Form component
@@ -28,7 +32,8 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
 
     // update content on state object
     // console.log(content);
-    dispatch({ type: ActionType.UPDATE_CONTENT, payload: content });
+    dispatch(savePost(content));
+    // dispatch({ type: ActionType.UPDATE_CONTENT, payload: content });
 
     // set title for form modal
     setFormTitle(`${publisher} Input Form`);

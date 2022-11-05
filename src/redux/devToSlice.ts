@@ -30,7 +30,7 @@ export const devtoSlice = createSlice({
   name: "devto",
   initialState,
   reducers: {
-    savePost(state, action: PayloadAction<DevToDataProps>) {
+    saveData(state, action: PayloadAction<DevToDataProps>) {
       const { title, body_markdown, series, tags, published } = action.payload;
       state.article.title = title;
       state.article.body_markdown = body_markdown;
@@ -39,17 +39,17 @@ export const devtoSlice = createSlice({
       state.article.published = published;
       return state;
     },
-    start(state) {
+    publishStart(state) {
       state.loading = true;
       state.error = "";
       return state;
     },
-    error(state, action: PayloadAction<string>) {
+    publishError(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
       return state;
     },
-    success(state) {
+    publishSuccess(state) {
       state.loading = false;
       state.error = "";
       return state;
@@ -57,5 +57,5 @@ export const devtoSlice = createSlice({
   },
 });
 
-export const { savePost } = devtoSlice.actions;
+export const { saveData } = devtoSlice.actions;
 export default devtoSlice.reducer;

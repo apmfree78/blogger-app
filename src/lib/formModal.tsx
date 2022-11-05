@@ -21,11 +21,6 @@ const FormModal: React.FC<FormModalProps> = ({ children, title }) => {
         <section className="modal-card-body">
           <div className="content">{children}</div>
         </section>
-        {/* <footer className='modal-card-foot'> */}
-        {/*   <a className='button' onClick={closeModal}> */}
-        {/*     Cancel */}
-        {/*   </a> */}
-        {/* </footer> */}
       </div>
     </div>
   );

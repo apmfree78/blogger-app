@@ -29,7 +29,7 @@ export const hashnodeSlice = createSlice({
   name: "hashnode",
   initialState,
   reducers: {
-    savePost(state, action: PayloadAction<HashnodeDataProps>) {
+    saveData(state, action: PayloadAction<HashnodeDataProps>) {
       const { title, contentMarkdown, coverImageURL, tags } = action.payload;
       state.article.title = title;
       state.article.contentMarkdown = contentMarkdown;
@@ -55,5 +55,5 @@ export const hashnodeSlice = createSlice({
   },
 });
 
-export const { savePost } = hashnodeSlice.actions;
+export const { saveData } = hashnodeSlice.actions;
 export default hashnodeSlice.reducer;
