@@ -4,6 +4,8 @@ import HashnodeFormTemplate from "components/forms/HashNodeFormTemplate";
 import { TagProp } from "lib/tagType";
 import { ActionType } from "state/actionTypes";
 import { GlobalContext } from "state/context";
+import { useDispatch, useSelector } from "react-redux";
+import { saveData, HashnodePublishStatusType } from "redux/hashnodeSlice";
 
 const initialFormState = {
   title: "",
@@ -16,7 +18,11 @@ const HashnodeForm: React.FC = () => {
   const { inputs, handleChange, resetForm } = useForm(initialFormState);
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
-  const { dispatch } = useContext(GlobalContext);
+
+  const article = useSelector(
+    (state: { hashnode: HashnodePublishStatusType }) => state.hashnode.article
+  );
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -28,16 +34,8 @@ const HashnodeForm: React.FC = () => {
 
     const { title, coverImageURL } = inputs;
     // update state with form data
-    dispatch({
-      type: ActionType.UPDATE_HASHNODE_DATA,
-      payload: {
-        title,
-        tags: [...tags],
-        coverImageURL,
-      },
-    });
     //dispatch action to submit form data to redux state here
-    // dispatch(...)
+    dispatch(saveData(article));
 
     // reset Form
     resetForm();
