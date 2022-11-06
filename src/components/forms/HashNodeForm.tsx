@@ -2,7 +2,7 @@ import React, { FormEvent, useContext, useState } from "react";
 import useForm from "./useForm";
 import HashnodeFormTemplate from "components/forms/HashNodeFormTemplate";
 import { TagProp } from "lib/tagType";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import {
   saveData,
   publishPost,
@@ -21,10 +21,10 @@ const HashnodeForm: React.FC = () => {
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
 
-  const article = useSelector(
+  const article = useAppSelector(
     (state: { hashnode: HashnodePublishStatusType }) => state.hashnode.article
   );
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // Takes form input data and does 2 things
   // dispatches form input and saves to redux store with saveData
@@ -46,7 +46,7 @@ const HashnodeForm: React.FC = () => {
     dispatch(saveData(article));
 
     // calling API endpoint to publish post
-    publishPost(article);
+    dispatch(publishPost(article));
 
     // reset Form
     resetForm();

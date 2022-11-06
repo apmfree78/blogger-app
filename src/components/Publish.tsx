@@ -8,7 +8,8 @@ import HashnodeForm from "components/forms/HashNodeForm";
 import DevtoForm from "components/forms/DevtoForm";
 import MediumForm from "components/forms/MediumForm";
 import { savePost } from "redux/postSlice";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 
 interface PublishProps {
   content: string;
@@ -20,7 +21,7 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
   //modal toggle state
   const { openModal } = useContext(GlobalContext);
   // redux dispatch function
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   // title for form Modal
   const [formTitle, setFormTitle] = useState("Input Form");
   // useRef for JSX Form component

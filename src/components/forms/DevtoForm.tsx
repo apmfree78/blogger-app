@@ -1,9 +1,8 @@
-import React, { FormEvent, useState, useContext } from "react";
+import React, { FormEvent, useState } from "react";
 import useForm from "./useForm";
 import DevtoFormTemplate from "components/forms/DevtoFormTemplate";
 import { TagProp } from "lib/tagType";
-import { Publisher } from "state/actionTypes";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import {
   saveData,
   publishPost,
@@ -23,10 +22,10 @@ const DevtoForm: React.FC = () => {
 
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
-  const article = useSelector(
+  const article = useAppSelector(
     (state: { devto: DevToPublishStatusType }) => state.devto.article
   );
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

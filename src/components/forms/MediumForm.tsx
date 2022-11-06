@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from "react";
 import useForm from "./useForm";
 import MediumFormTemplate from "components/forms/MediumFormTemplate";
 import { TagProp } from "lib/tagType";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import {
   saveData,
   publishPost,
@@ -20,10 +20,10 @@ const MediumForm: React.FC = () => {
   const { inputs, handleChange, resetForm } = useForm(initialFormState);
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
-  const article = useSelector(
+  const article = useAppSelector(
     (state: { medium: MediumPublishStatusType }) => state.medium.article
   );
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ const MediumForm: React.FC = () => {
     dispatch(saveData(article));
 
     // calling API endpoint to publish post
-    publishPost(article);
+    dispatch(publishPost(article));
 
     // reset Form
     resetForm();
