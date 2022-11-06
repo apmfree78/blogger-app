@@ -2,10 +2,12 @@ import React, { FormEvent, useContext, useState } from "react";
 import useForm from "./useForm";
 import HashnodeFormTemplate from "components/forms/HashNodeFormTemplate";
 import { TagProp } from "lib/tagType";
-import { ActionType } from "state/actionTypes";
-import { GlobalContext } from "state/context";
 import { useDispatch, useSelector } from "react-redux";
-import { saveData, HashnodePublishStatusType } from "redux/hashnodeSlice";
+import {
+  saveData,
+  publishPost,
+  HashnodePublishStatusType,
+} from "redux/hashnodeSlice";
 
 const initialFormState = {
   title: "",
@@ -34,8 +36,16 @@ const HashnodeForm: React.FC = () => {
 
     const { title, coverImageURL } = inputs;
     // update state with form data
+    // update article with form input;s
+    article.title = title;
+    article.coverImageURL = coverImageURL;
+    article.tags = [...tags.map((tag) => tag.text)];
+
     //dispatch action to submit form data to redux state here
     dispatch(saveData(article));
+
+    // calling API endpoint to publish post
+    publishPost(article);
 
     // reset Form
     resetForm();

@@ -1,6 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 import { HashnodeDataProps } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
+import { AppDispatch, RootState } from "redux/store";
 
 export interface HashnodePublishStatusType {
   // publisher: PublisherType;
@@ -25,6 +27,19 @@ const initialState: HashnodePublishStatusType = {
   error: "",
 };
 
+export const publishPost = createAsyncThunk<
+  any,
+  HashnodeDataProps,
+  {
+    dispatch: AppDispatch;
+    state: RootState;
+  }
+>("medium/publishPost", async (article, { getState }) => {
+  const state: HashnodePublishStatusType = getState().hashnode;
+  const response = await axios.post(state.publishURL, article);
+  return response.data;
+});
+
 export const hashnodeSlice = createSlice({
   name: "hashnode",
   initialState,
@@ -37,21 +52,20 @@ export const hashnodeSlice = createSlice({
       state.article.tags = [...tags];
       return state;
     },
-    publishStart(state) {
+  },
+  extraReducers: (builder) => {
+    builder.addCase(publishPost.pending, (state) => {
       state.loading = true;
       state.error = "";
-      return state;
-    },
-    publishError(state, action: PayloadAction<string>) {
-      state.loading = false;
-      state.error = action.payload;
-      return state;
-    },
-    publishSuccess(state) {
+    });
+    builder.addCase(publishPost.fulfilled, (state) => {
       state.loading = false;
       state.error = "";
-      return state;
-    },
+    });
+    builder.addCase(publishPost.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || "";
+    });
   },
 });
 
