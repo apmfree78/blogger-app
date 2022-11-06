@@ -26,17 +26,18 @@ const HashnodeForm: React.FC = () => {
   );
   const dispatch = useDispatch();
 
+  // Takes form input data and does 2 things
+  // dispatches form input and saves to redux store with saveData
+  // submits all data plus post to API endpoint for hashnode
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("form submitted");
     console.log(inputs);
     console.log(tags);
-    //dispatch action to submit form data to redux state here
-    // dispatch(...)
 
     const { title, coverImageURL } = inputs;
     // update state with form data
-    // update article with form input;s
+    // update article with form input;inputs.coverImageURL;s
     article.title = title;
     article.coverImageURL = coverImageURL;
     article.tags = [...tags.map((tag) => tag.text)];

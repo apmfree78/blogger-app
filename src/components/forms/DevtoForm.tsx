@@ -2,10 +2,13 @@ import React, { FormEvent, useState, useContext } from "react";
 import useForm from "./useForm";
 import DevtoFormTemplate from "components/forms/DevtoFormTemplate";
 import { TagProp } from "lib/tagType";
-import { GlobalContext } from "state/context";
-import { ActionType, Publisher } from "state/actionTypes";
+import { Publisher } from "state/actionTypes";
 import { useDispatch, useSelector } from "react-redux";
-import { saveData, DevToPublishStatusType } from "redux/devToSlice";
+import {
+  saveData,
+  publishPost,
+  DevToPublishStatusType,
+} from "redux/devToSlice";
 
 const initialFormState = {
   title: "",
@@ -20,7 +23,6 @@ const DevtoForm: React.FC = () => {
 
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
-  const { publishPost } = useContext(GlobalContext);
   const article = useSelector(
     (state: { devto: DevToPublishStatusType }) => state.devto.article
   );
@@ -33,6 +35,11 @@ const DevtoForm: React.FC = () => {
     console.log(tags);
 
     const { title, published, series } = inputs;
+
+    article.title = title;
+    article.series = series;
+    article.tags = [...tags.map((tag) => tag.text)];
+    article.published = published;
 
     // update state with form data
     dispatch(saveData(article));
