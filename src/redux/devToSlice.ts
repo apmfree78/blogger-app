@@ -1,4 +1,9 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  PayloadAction,
+  AnyAction,
+  createAsyncThunk,
+} from "@reduxjs/toolkit";
 import { DevToDataProps } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";

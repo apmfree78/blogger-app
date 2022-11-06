@@ -44,7 +44,7 @@ const DevtoForm: React.FC = () => {
     // update state with form data
     dispatch(saveData(article));
     //dispatch action to submit form data to redux state here
-    publishPost(Publisher.DEV_TO);
+    dispatch(publishPost(article));
 
     // reset Form
     resetForm();
