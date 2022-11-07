@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "bulmaswatch/slate/bulmaswatch.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Publish from "components/Publish";

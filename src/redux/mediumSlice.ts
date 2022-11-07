@@ -16,6 +16,7 @@ const initialState: PublishStatusType<MediumDataProps> = {
   },
   loading: false,
   error: "",
+  success: "",
 };
 
 export const publishPost = createAsyncThunk<

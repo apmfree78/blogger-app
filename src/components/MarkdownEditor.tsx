@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 import "styles/markdownEditor.css";

@@ -1,9 +1,4 @@
-import {
-  createSlice,
-  PayloadAction,
-  AnyAction,
-  createAsyncThunk,
-} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { DevToDataProps, PublishStatusType } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
@@ -20,6 +15,7 @@ const initialState: PublishStatusType<DevToDataProps> = {
   },
   loading: false,
   error: "",
+  success: "",
 };
 
 export const publishPost = createAsyncThunk<
@@ -29,7 +25,7 @@ export const publishPost = createAsyncThunk<
     dispatch: AppDispatch;
     state: RootState;
   }
->("medium/publishPost", async (article, { getState }) => {
+>("devto/publishPost", async (article, { getState }) => {
   const state: PublishStatusType<DevToDataProps> = getState().devto;
   const response = await axios.post(state.publishURL, article);
   return response.data;

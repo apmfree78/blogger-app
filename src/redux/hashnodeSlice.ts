@@ -14,6 +14,7 @@ const initialState: PublishStatusType<HashnodeDataProps> = {
   },
   loading: false,
   error: "",
+  success: "",
 };
 
 export const publishPost = createAsyncThunk<
@@ -23,7 +24,7 @@ export const publishPost = createAsyncThunk<
     dispatch: AppDispatch;
     state: RootState;
   }
->("medium/publishPost", async (article, { getState }) => {
+>("hashnode/publishPost", async (article, { getState }) => {
   const state: PublishStatusType<HashnodeDataProps> = getState().hashnode;
   const response = await axios.post(state.publishURL, article);
   return response.data;

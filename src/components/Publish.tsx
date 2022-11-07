@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef } from "react";
-import { Publisher, ActionType } from "state/actionTypes";
+import { Publisher } from "state/actionTypes";
 import PublishButton from "components/PublishButton";
 import { GlobalContext } from "state/context";
 import "styles/Publish.css";
@@ -9,7 +9,7 @@ import DevtoForm from "components/forms/DevtoForm";
 import MediumForm from "components/forms/MediumForm";
 import { savePost } from "redux/postSlice";
 // import { useDispatch } from "react-redux";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { useAppDispatch } from "redux/hooks";
 
 interface PublishProps {
   content: string;

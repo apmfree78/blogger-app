@@ -5,6 +5,15 @@ export const hashnodeURL =
   "https://mockend.com/apmfree78/blogger-app/hashnodes";
 export const mediumURL = "https://mockend.com/apmfree78/blogger-app/mediums";
 
+export interface PublishStatusType<T> {
+  // publisher: PublisherType;
+  publishURL: string;
+  article: T;
+  loading: boolean;
+  error: string;
+  success: string;
+}
+
 export interface DevToDataProps {
   title: string;
   published: boolean;
