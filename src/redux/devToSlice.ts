@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { DevToDataProps, PublishStatusType } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const initialState: PublishStatusType<DevToDataProps> = {
   publishURL: devToURL,
@@ -19,7 +19,7 @@ const initialState: PublishStatusType<DevToDataProps> = {
 };
 
 export const publishPost = createAsyncThunk<
-  any,
+  string,
   DevToDataProps,
   {
     dispatch: AppDispatch;
@@ -27,8 +27,13 @@ export const publishPost = createAsyncThunk<
   }
 >("devto/publishPost", async (article, { getState }) => {
   const state: PublishStatusType<DevToDataProps> = getState().devto;
-  const response = await axios.post(state.publishURL, article);
-  return response.data;
+  const response: AxiosResponse = await axios.post(state.publishURL, article);
+  // if response successful return success message
+  if (response.statusText === "OK") {
+    const successMessage = "Dev.to Post Successfully Published!";
+    console.log(successMessage);
+    return successMessage;
+  } else return "";
 });
 
 export const devtoSlice = createSlice({

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { HashnodeDataProps, PublishStatusType } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
@@ -18,7 +18,7 @@ const initialState: PublishStatusType<HashnodeDataProps> = {
 };
 
 export const publishPost = createAsyncThunk<
-  any,
+  string,
   HashnodeDataProps,
   {
     dispatch: AppDispatch;
@@ -26,8 +26,12 @@ export const publishPost = createAsyncThunk<
   }
 >("hashnode/publishPost", async (article, { getState }) => {
   const state: PublishStatusType<HashnodeDataProps> = getState().hashnode;
-  const response = await axios.post(state.publishURL, article);
-  return response.data;
+  const response: AxiosResponse = await axios.post(state.publishURL, article);
+  if (response.statusText === "OK") {
+    const successMessage = "Hashnode Post Successfully Published!";
+    console.log(successMessage);
+    return successMessage;
+  } else return "";
 });
 
 export const hashnodeSlice = createSlice({
