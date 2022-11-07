@@ -48,10 +48,14 @@ export const hashnodeSlice = createSlice({
       state.loading = true;
       state.error = "";
     });
-    builder.addCase(publishPost.fulfilled, (state) => {
-      state.loading = false;
-      state.error = "";
-    });
+    builder.addCase(
+      publishPost.fulfilled,
+      (state, action: PayloadAction<string>) => {
+        state.loading = false;
+        state.error = "";
+        state.success = action.payload;
+      }
+    );
     builder.addCase(publishPost.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message || "";
