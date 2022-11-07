@@ -4,23 +4,12 @@ import {
   AnyAction,
   createAsyncThunk,
 } from "@reduxjs/toolkit";
-import { DevToDataProps } from "lib/publisherInfo";
+import { DevToDataProps, PublishStatusType } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
 import axios from "axios";
 
-export interface DevToPublishStatusType {
-  // publisher: PublisherType;
-  publishURL: string;
-  article: DevToDataProps;
-  loading: boolean;
-  error: string;
-}
-// defining interfaces for
-// API data, loading error and data state
-// and Action Creators
-
-const initialState: DevToPublishStatusType = {
+const initialState: PublishStatusType<DevToDataProps> = {
   publishURL: devToURL,
   article: {
     title: "",
@@ -41,7 +30,7 @@ export const publishPost = createAsyncThunk<
     state: RootState;
   }
 >("medium/publishPost", async (article, { getState }) => {
-  const state: DevToPublishStatusType = getState().devto;
+  const state: PublishStatusType<DevToDataProps> = getState().devto;
   const response = await axios.post(state.publishURL, article);
   return response.data;
 });

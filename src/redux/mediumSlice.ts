@@ -1,21 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { MediumDataProps } from "lib/publisherInfo";
+import { MediumDataProps, PublishStatusType } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
 
-export interface MediumPublishStatusType {
-  // publisher: PublisherType;
-  publishURL: string;
-  article: MediumDataProps;
-  loading: boolean;
-  error: string;
-}
-// defining interfaces for
-// API data, loading error and data state
-// and Action Creators
-
-const initialState: MediumPublishStatusType = {
+const initialState: PublishStatusType<MediumDataProps> = {
   publishURL: devToURL,
   article: {
     title: "",
@@ -37,7 +26,7 @@ export const publishPost = createAsyncThunk<
     state: RootState;
   }
 >("medium/publishPost", async (article, { getState }) => {
-  const state: MediumPublishStatusType = getState().medium;
+  const state: PublishStatusType<MediumDataProps> = getState().medium;
   const response = await axios.post(state.publishURL, article);
   return response.data;
 });

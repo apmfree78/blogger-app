@@ -1,21 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { HashnodeDataProps } from "lib/publisherInfo";
+import { HashnodeDataProps, PublishStatusType } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
 
-export interface HashnodePublishStatusType {
-  // publisher: PublisherType;
-  publishURL: string;
-  article: HashnodeDataProps;
-  loading: boolean;
-  error: string;
-}
-// defining interfaces for
-// API data, loading error and data state
-// and Action Creators
-
-const initialState: HashnodePublishStatusType = {
+const initialState: PublishStatusType<HashnodeDataProps> = {
   publishURL: devToURL,
   article: {
     title: "",
@@ -35,7 +24,7 @@ export const publishPost = createAsyncThunk<
     state: RootState;
   }
 >("medium/publishPost", async (article, { getState }) => {
-  const state: HashnodePublishStatusType = getState().hashnode;
+  const state: PublishStatusType<HashnodeDataProps> = getState().hashnode;
   const response = await axios.post(state.publishURL, article);
   return response.data;
 });
