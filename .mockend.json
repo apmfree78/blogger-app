@@ -65,5 +65,29 @@
           "unlisted"
         ]
       }
-    }
+    },
+    "Hashnode": {
+      "title": {
+        "loremWords": {
+          "minLength": 5,
+          "maxLength": 30
+        }
+      },
+      "contentMarkdown": {
+        "loremParagraphs": {
+          "minLength": 100,
+          "maxLength": 1000
+        }
+      },
+      "tag": {
+        "string": [
+          "javascript",
+          "react",
+          "leetcode"
+        ]
+      },
+      "coverImageURL": {
+        "regexp": "https://[a-z]{5,10}\\.[com|to]"
+      },
+    },
   }
