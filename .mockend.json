@@ -88,6 +88,6 @@
       },
       "coverImageURL": {
         "regexp": "https://[a-z]{5,10}\\.[com|to]"
-      },
-    },
+      }
+    }
   }
