@@ -31,11 +31,14 @@ export const publishPost = createAsyncThunk<
   const response: AxiosResponse = await axios.post(state.publishURL, article);
 
   // if response successful return success message
-  if (response.statusText === "OK") {
+  if (response.status === 200 || response.status === 201) {
     const successMessage = "Medium Post Successfully Published!";
     console.log(successMessage);
     return successMessage;
-  } else return "";
+  } else {
+    console.log("Issue Posting Message", response.status);
+    return "";
+  }
 });
 
 export const mediumSlice = createSlice({

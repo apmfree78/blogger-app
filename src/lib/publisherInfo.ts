@@ -5,7 +5,7 @@ export const hashnodeURL =
   "https://mockend.com/apmfree78/blogger-app/hashnodes";
 export const mediumURL = "https://mockend.com/apmfree78/blogger-app/mediums";
 
-export interface PublishStatusType<T> {
+export interface PublishStatusType<T extends object> {
   // publisher: PublisherType;
   publishURL: string;
   article: T;
@@ -38,7 +38,7 @@ export interface HashnodeDataProps {
   coverImageURL: string;
 }
 
-export type PublisherDataType =
-  | DevToDataProps
-  | MediumDataProps
-  | HashnodeDataProps;
+// export type PublisherDataType =
+//   | DevToDataProps
+//   | MediumDataProps
+//   | HashnodeDataProps;

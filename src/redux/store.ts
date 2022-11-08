@@ -4,7 +4,10 @@ import mediumReducer from "redux/mediumSlice";
 import hashnodeReducer from "redux/hashnodeSlice";
 import devtoReducer from "redux/devToSlice";
 import { savePost } from "redux/postSlice";
-import { saveData } from "redux/mediumSlice";
+import {
+  saveData as mediumSaveData,
+  publishPost as mediumPublishPost,
+} from "redux/mediumSlice";
 
 export const store = configureStore({
   reducer: {
@@ -27,8 +30,22 @@ store.dispatch(savePost("hello"));
 
 console.log(store.getState());
 
+//save medium post
 store.dispatch(
-  saveData({
+  mediumSaveData({
+    title: "how to code",
+    contentFormat: "markdown",
+    content: "YO",
+    canonicalUrl: "",
+    tags: ["typescript", "react"],
+    publishStatus: "public",
+  })
+);
+
+console.log(store.getState());
+
+store.dispatch(
+  mediumPublishPost({
     title: "how to code",
     contentFormat: "markdown",
     content: "YO",
