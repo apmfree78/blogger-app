@@ -1,15 +1,16 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { lazy, Suspense, useState, useContext, useRef } from "react";
 import { Publisher } from "state/actionTypes";
 import PublishButton from "components/PublishButton";
 import { GlobalContext } from "state/context";
 import "styles/Publish.css";
-import FormModal from "lib/formModal";
+// import FormModal from 'lib/formModal';
 import HashnodeForm from "components/forms/HashNodeForm";
 import DevtoForm from "components/forms/DevtoForm";
 import MediumForm from "components/forms/MediumForm";
 import { savePost } from "redux/postSlice";
 // import { useDispatch } from "react-redux";
 import { useAppDispatch } from "redux/hooks";
+const FormModal = lazy(() => import("lib/formModal"));
 
 interface PublishProps {
   content: string;
@@ -80,7 +81,9 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
           </PublishButton>
         </div>
       </div>
-      <FormModal title={formTitle}>{PublisherFormElement.current}</FormModal>
+      <Suspense>
+        <FormModal title={formTitle}>{PublisherFormElement.current}</FormModal>
+      </Suspense>
     </section>
   );
 };
