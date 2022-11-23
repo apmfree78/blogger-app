@@ -1,9 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import useForm from "./useForm";
-import DevtoFormTemplate from "components/forms/DevtoFormTemplate";
 import { TagProp } from "lib/tagType";
 import { useAppDispatch } from "redux/hooks";
-import { DevToDataProps } from "lib/publisherInfo";
 import { ActionCreatorWithPayload, AsyncThunk } from "@reduxjs/toolkit";
 
 // const initialFormState: DevToDataProps = {
@@ -23,12 +21,14 @@ interface PublishFormProps<T> {
   initialFormState: T;
   saveData: ActionCreatorWithPayload<T, any>;
   publishData: AsyncThunk<string, T, any>;
+  children: React.ReactElement;
 }
 
 const PublisherForm = <T extends BaseArticle>({
   initialFormState,
   saveData,
   publishData,
+  children,
 }: PublishFormProps<T>) => {
   const { inputs, handleChange, resetForm } = useForm<T>(initialFormState);
 
@@ -59,16 +59,21 @@ const PublisherForm = <T extends BaseArticle>({
     // reset Form
     resetForm();
   };
+  // <DevtoFormTemplate
+  //   inputs={inputs}
+  //   tags={tags}
+  //   setTags={setTags}
+  //   handleChange={handleChange}
+  //   handleSubmit={handleSubmit}
+  // />
 
-  return (
-    <DevtoFormTemplate
-      inputs={inputs}
-      tags={tags}
-      setTags={setTags}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-    />
-  );
+  return React.cloneElement(children, {
+    inputs,
+    tags,
+    setTags,
+    handleChange,
+    handleSubmit,
+  });
 };
 
 export default PublisherForm;
