@@ -3,13 +3,10 @@ import useForm from "./useForm";
 import DevtoFormTemplate from "components/forms/DevtoFormTemplate";
 import { TagProp } from "lib/tagType";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
-import {
-  saveData,
-  publishPost,
-  DevToPublishStatusType,
-} from "redux/devToSlice";
+import { DevToDataProps, PublishStatusType } from "lib/publisherInfo";
+import { saveData, publishPost } from "redux/devToSlice";
 
-const initialFormState = {
+const initialFormState: DevToDataProps = {
   title: "",
   published: false,
   body_markdown: "",
@@ -18,12 +15,13 @@ const initialFormState = {
 };
 
 const DevtoForm: React.FC = () => {
-  const { inputs, handleChange, resetForm } = useForm(initialFormState);
+  const { inputs, handleChange, resetForm } =
+    useForm<DevToDataProps>(initialFormState);
 
   /// state for tags is handled seperately
   const [tags, setTags] = useState<TagProp[]>([]);
   const article = useAppSelector(
-    (state: { devto: DevToPublishStatusType }) => state.devto.article
+    (state: { devto: PublishStatusType<DevToDataProps> }) => state.devto.article
   );
   const dispatch = useAppDispatch();
 
