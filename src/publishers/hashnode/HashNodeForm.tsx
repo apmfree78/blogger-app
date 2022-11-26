@@ -1,7 +1,7 @@
 import React from "react";
 import HashNodeFormTemplate from "publishers/hashnode/HashNodeFormTemplate";
 import PublisherForm from "publishers/PublisherForm";
-import { initialHashNodeFormState } from "state/initialState";
+import { initialHashNodeFormState } from "publishers/publisherInfo";
 import { saveData, publishPost } from "publishers/hashnode/hashnodeSlice";
 import { HashNodeDataProps } from "publishers/publisherInfo";
 

@@ -3,38 +3,14 @@ import {
   devToURL,
   mediumURL,
   hashnodeURL,
-  DevToDataProps,
-  HashNodeDataProps,
-  MediumDataProps,
+  initialMediumFormState,
+  initialHashNodeFormState,
+  initialDevtoFormState,
 } from "publishers/publisherInfo";
 export interface BlogStateType {
   content: string;
   publish: PublishStatusType;
 }
-
-export const initialDevtoFormState: DevToDataProps = {
-  title: "",
-  published: false,
-  body_markdown: "",
-  tags: [],
-  series: "",
-};
-
-export const initialHashNodeFormState: HashNodeDataProps = {
-  title: "",
-  contentMarkdown: "",
-  tags: [],
-  coverImageURL: "",
-};
-
-export const initialMediumFormState: MediumDataProps = {
-  title: "",
-  contentFormat: "markdown",
-  content: "",
-  canonicalUrl: "",
-  tags: [],
-  publishStatus: "public",
-};
 
 // INITIAL REDUX STATE
 export const initialPublishState: BlogStateType = {
@@ -43,39 +19,21 @@ export const initialPublishState: BlogStateType = {
     dev_to: {
       publisher: Publisher.DEV_TO,
       publishURL: devToURL,
-      article: {
-        title: "",
-        published: true,
-        body_markdown: "",
-        tags: [],
-        series: "",
-      },
+      article: initialDevtoFormState,
       loading: false,
       error: "",
     },
     hasnode: {
       publisher: Publisher.HASHNODE,
       publishURL: hashnodeURL,
-      article: {
-        title: "",
-        contentMarkdown: "",
-        tags: [],
-        coverImageURL: "",
-      },
+      article: initialHashNodeFormState,
       loading: false,
       error: "",
     },
     medium: {
       publisher: Publisher.MEDIUM,
       publishURL: mediumURL,
-      article: {
-        title: "",
-        contentFormat: "markdown",
-        content: "",
-        canonicalUrl: "",
-        tags: [],
-        publishStatus: "public",
-      },
+      article: initialMediumFormState,
       loading: false,
       error: "",
     },
