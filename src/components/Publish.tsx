@@ -3,14 +3,11 @@ import { Publisher } from "state/actionTypes";
 import PublishButton from "components/PublishButton";
 import { GlobalContext } from "state/context";
 import "styles/Publish.css";
-// import FormModal from 'lib/formModal';
-import HashnodeForm from "publishers/hashnode/HashNodeForm";
-import DevtoForm from "publishers/devto/DevtoForm";
-import MediumForm from "publishers/medium/MediumForm";
 import { savePost } from "redux/postSlice";
 
 // import { useDispatch } from "react-redux";
 import { useAppDispatch } from "redux/hooks";
+import FormElementByPublisher from "publishers/FormElementByPublisher";
 const FormModal = lazy(() => import("components/forms/formModal"));
 
 interface PublishProps {
@@ -26,32 +23,20 @@ const Publish: React.FC<PublishProps> = ({ content }: { content: string }) => {
   const dispatch = useAppDispatch();
   // title for form Modal
   const [formTitle, setFormTitle] = useState("Input Form");
-  // useRef for JSX Form component
-  const PublisherFormElement = useRef(<HashnodeForm />);
-  // open up Modal with form specific to publisher;
+  // publisher state
+  const [publisher, setPublisher] = useState<Publisher>(Publisher.HASHNODE);
+
+  // open up Modal with form to specific publisher;
   const openForm = (publisher: Publisher) => {
     // setting formModal state to open
     openModal();
 
-    // update content on state object
-    // console.log(content);
-    dispatch(savePost(content));
-    // dispatch({ type: ActionType.UPDATE_CONTENT, payload: content });
-
-    // set title for form modal
     setFormTitle(`${publisher} Input Form`);
-    // set JSX child element to pass to Modal
-    switch (publisher) {
-      case Publisher.HASHNODE:
-        PublisherFormElement.current = <HashnodeForm />;
-        break;
-      case Publisher.DEV_TO:
-        PublisherFormElement.current = <DevtoForm />;
-        break;
-      case Publisher.MEDIUM:
-        PublisherFormElement.current = <MediumForm />;
-        break;
-    }
+
+    setPublisher(publisher);
+
+    // update content on state object
+    dispatch(savePost(content));
   };
   return (
     <section aria-label="publish" style={{ marginTop: "1vh" }}>
@@ -82,7 +67,9 @@ const Publish: React.FC<PublishProps> = ({ content }: { content: string }) => {
         </div>
       </div>
       <Suspense>
-        <FormModal title={formTitle}>{PublisherFormElement.current}</FormModal>
+        <FormModal title={formTitle}>
+          <FormElementByPublisher publisher={publisher} />
+        </FormModal>
       </Suspense>
     </section>
   );
