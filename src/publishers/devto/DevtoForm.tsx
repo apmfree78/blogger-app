@@ -1,9 +1,9 @@
 import React from "react";
-import DevtoFormTemplate from "components/forms/DevtoFormTemplate";
-import PublisherForm from "components/forms/PublisherForm";
-import { initialDevtoFormState } from "state/initialState";
-import { saveData, publishPost } from "redux/devToSlice";
-import { DevToDataProps } from "lib/publisherInfo";
+import DevtoFormTemplate from "publishers/devto/DevtoFormTemplate";
+import PublisherForm from "publishers/PublisherForm";
+import { initialDevtoFormState } from "publishers/publisherInfo";
+import { saveData, publishPost } from "publishers/devto/devToSlice";
+import { DevToDataProps } from "publishers/publisherInfo";
 
 const DevtoForm: React.FC = () => {
   return (
