@@ -1,7 +1,7 @@
 import {
   DevToDataProps,
   MediumDataProps,
-  HashnodeDataProps,
+  HashNodeDataProps,
 } from "lib/publisherInfo";
 
 // defining action types

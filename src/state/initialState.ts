@@ -5,6 +5,7 @@ import {
   hashnodeURL,
   DevToDataProps,
   HashNodeDataProps,
+  MediumDataProps,
 } from "lib/publisherInfo";
 export interface BlogStateType {
   content: string;
@@ -24,6 +25,15 @@ export const initialHashNodeFormState: HashNodeDataProps = {
   contentMarkdown: "",
   tags: [],
   coverImageURL: "",
+};
+
+export const initialMediumFormState: MediumDataProps = {
+  title: "",
+  contentFormat: "markdown",
+  content: "",
+  canonicalUrl: "",
+  tags: [],
+  publishStatus: "public",
 };
 
 // INITIAL REDUX STATE
