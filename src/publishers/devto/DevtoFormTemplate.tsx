@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
-import TagInput from "components/forms/TagInput";
+import TagInput from "components/tag/TagInput";
 import FormButtons from "components/forms/FormButtons";
-import { TagProp } from "lib/tagType";
+import { TagProp } from "components/tag/tagType";
 
 interface DevtoFormProps {
   inputs: any;

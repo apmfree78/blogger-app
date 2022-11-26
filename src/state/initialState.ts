@@ -6,7 +6,7 @@ import {
   DevToDataProps,
   HashNodeDataProps,
   MediumDataProps,
-} from "lib/publisherInfo";
+} from "publishers/publisherInfo";
 export interface BlogStateType {
   content: string;
   publish: PublishStatusType;

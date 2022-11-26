@@ -1,15 +1,7 @@
 import React from "react";
-import "components/forms/TagInput.css";
+import "components/tag/TagInput.css";
 import { WithContext as ReactTags } from "react-tag-input";
-import { TagProp } from "lib/tagType";
-
-// const suggestionList = ['javascript', 'typescript', 'node', 'api', 'react'];
-// const suggestions = suggestionList.map((topic) => {
-//   return {
-//     id: topic,
-//     text: topic,
-//   };
-// });
+import { TagProp } from "components/tag/tagType";
 
 const KeyCodes = {
   comma: 188,

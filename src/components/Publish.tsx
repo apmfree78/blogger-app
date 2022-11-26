@@ -11,7 +11,7 @@ import { savePost } from "redux/postSlice";
 
 // import { useDispatch } from "react-redux";
 import { useAppDispatch } from "redux/hooks";
-const FormModal = lazy(() => import("lib/formModal"));
+const FormModal = lazy(() => import("components/forms/formModal"));
 
 interface PublishProps {
   content: string;

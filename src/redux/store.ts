@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postReducer from "redux/postSlice";
-import mediumReducer from "redux/mediumSlice";
-import hashnodeReducer from "redux/hashnodeSlice";
-import devtoReducer from "redux/devToSlice";
+import mediumReducer from "publishers/medium/mediumSlice";
+import hashnodeReducer from "publishers/hashnode/hashnodeSlice";
+import devtoReducer from "publishers/devto/devToSlice";
 import { savePost } from "redux/postSlice";
 import {
   saveData as mediumSaveData,
   publishPost as mediumPublishPost,
-} from "redux/mediumSlice";
+} from "publishers/medium/mediumSlice";
 
 export const store = configureStore({
   reducer: {
