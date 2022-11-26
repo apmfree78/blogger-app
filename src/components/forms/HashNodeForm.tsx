@@ -1,66 +1,26 @@
-import React, { FormEvent, useContext, useState } from "react";
-import useForm from "./useForm";
-import HashnodeFormTemplate from "components/forms/HashNodeFormTemplate";
-import { TagProp } from "lib/tagType";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
-import {
-  saveData,
-  publishPost,
-  HashnodePublishStatusType,
-} from "redux/hashnodeSlice";
+import React from "react";
+import HashNodeFormTemplate from "components/forms/HashNodeFormTemplate";
+import PublisherForm from "components/forms/PublisherForm";
+import { initialHashNodeFormState } from "state/initialState";
+import { saveData, publishPost } from "redux/hashnodeSlice";
+import { HashNodeDataProps } from "lib/publisherInfo";
 
-const initialFormState = {
-  title: "",
-  contentMarkdown: "",
-  tags: [],
-  coverImageURL: "",
-};
-
-const HashnodeForm: React.FC = () => {
-  const { inputs, handleChange, resetForm } = useForm(initialFormState);
-  /// state for tags is handled seperately
-  const [tags, setTags] = useState<TagProp[]>([]);
-
-  const article = useAppSelector(
-    (state: { hashnode: HashnodePublishStatusType }) => state.hashnode.article
-  );
-  const dispatch = useAppDispatch();
-
-  // Takes form input data and does 2 things
-  // dispatches form input and saves to redux store with saveData
-  // submits all data plus post to API endpoint for hashnode
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("form submitted");
-    console.log(inputs);
-    console.log(tags);
-
-    const { title, coverImageURL } = inputs;
-    // update state with form data
-    // update article with form input;inputs.coverImageURL;s
-    article.title = title;
-    article.coverImageURL = coverImageURL;
-    article.tags = [...tags.map((tag) => tag.text)];
-
-    //dispatch action to submit form data to redux state here
-    dispatch(saveData(article));
-
-    // calling API endpoint to publish post
-    dispatch(publishPost(article));
-
-    // reset Form
-    resetForm();
-  };
-
+const HashNodeForm: React.FC = () => {
   return (
-    <HashnodeFormTemplate
-      inputs={inputs}
-      tags={tags}
-      setTags={setTags}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-    />
+    <PublisherForm<HashNodeDataProps>
+      saveData={saveData}
+      publishData={publishPost}
+      initialFormState={initialHashNodeFormState}
+    >
+      <HashNodeFormTemplate
+        inputs={[]}
+        tags={[]}
+        setTags={() => {}}
+        handleChange={() => {}}
+        handleSubmit={() => {}}
+      />
+    </PublisherForm>
   );
 };
 
-export default HashnodeForm;
+export default HashNodeForm;

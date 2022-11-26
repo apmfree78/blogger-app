@@ -8,6 +8,7 @@ import HashnodeForm from "components/forms/HashNodeForm";
 import DevtoForm from "components/forms/DevtoForm";
 import MediumForm from "components/forms/MediumForm";
 import { savePost } from "redux/postSlice";
+
 // import { useDispatch } from "react-redux";
 import { useAppDispatch } from "redux/hooks";
 const FormModal = lazy(() => import("lib/formModal"));
@@ -18,7 +19,7 @@ interface PublishProps {
 
 // main component that will handle publishing of content
 // to various content platforms
-const Publish: React.FC<PublishProps> = ({ content }) => {
+const Publish: React.FC<PublishProps> = ({ content }: { content: string }) => {
   //modal toggle state
   const { openModal } = useContext(GlobalContext);
   // redux dispatch function
@@ -52,7 +53,6 @@ const Publish: React.FC<PublishProps> = ({ content }) => {
         break;
     }
   };
-
   return (
     <section aria-label="publish" style={{ marginTop: "1vh" }}>
       <div className="columns">

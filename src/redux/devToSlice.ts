@@ -1,4 +1,9 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  PayloadAction,
+  createAsyncThunk,
+  current,
+} from "@reduxjs/toolkit";
 import { DevToDataProps, PublishStatusType } from "lib/publisherInfo";
 import { devToURL } from "lib/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
@@ -47,6 +52,7 @@ export const devtoSlice = createSlice({
       state.article.series = series;
       state.article.tags = [...tags];
       state.article.published = published;
+      // console.log(current(state));
       return state;
     },
   },

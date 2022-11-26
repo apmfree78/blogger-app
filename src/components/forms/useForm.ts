@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 
-export default function useForm(initial: any) {
+export default function useForm<T extends object>(initial: T) {
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join("");
 

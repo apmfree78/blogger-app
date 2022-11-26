@@ -31,7 +31,7 @@ export interface MediumDataProps {
   publishStatus: string;
 }
 
-export interface HashnodeDataProps {
+export interface HashNodeDataProps {
   title: string;
   contentMarkdown: string;
   tags: string[];

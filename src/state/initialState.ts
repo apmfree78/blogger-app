@@ -1,9 +1,30 @@
 import { Publisher, PublishStatusType } from "state/actionTypes";
-import { devToURL, mediumURL, hashnodeURL } from "lib/publisherInfo";
+import {
+  devToURL,
+  mediumURL,
+  hashnodeURL,
+  DevToDataProps,
+  HashNodeDataProps,
+} from "lib/publisherInfo";
 export interface BlogStateType {
   content: string;
   publish: PublishStatusType;
 }
+
+export const initialDevtoFormState: DevToDataProps = {
+  title: "",
+  published: false,
+  body_markdown: "",
+  tags: [],
+  series: "",
+};
+
+export const initialHashNodeFormState: HashNodeDataProps = {
+  title: "",
+  contentMarkdown: "",
+  tags: [],
+  coverImageURL: "",
+};
 
 // INITIAL REDUX STATE
 export const initialPublishState: BlogStateType = {

@@ -4,14 +4,6 @@ import { TagProp } from "lib/tagType";
 import { useAppDispatch } from "redux/hooks";
 import { ActionCreatorWithPayload, AsyncThunk } from "@reduxjs/toolkit";
 
-// const initialFormState: DevToDataProps = {
-//   title: '',
-//   published: false,
-//   body_markdown: '',
-//   tags: [],
-//   series: '',
-// };
-
 type BaseArticle = {
   title: string;
   tags: string[];
@@ -33,7 +25,7 @@ const PublisherForm = <T extends BaseArticle>({
   const { inputs, handleChange, resetForm } = useForm<T>(initialFormState);
 
   /// state for tags is handled seperately
-  const [tags, setTags] = useState<TagProp[]>([]);
+  const [tags, setTags] = useState<TagProp[]>([{ id: "", text: "" }]);
   // const article = useAppSelector(
   //   (state: { devto: PublishStatusType<DevToDataProps> }) => state.devto.article
   // );

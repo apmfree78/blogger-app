@@ -29,15 +29,16 @@ export enum Publisher {
 
 export type PublisherType = Publisher;
 
-// export interface PublishStatusType {
-//   [key: string]: {
-//     publisher: PublisherType;
-//     publishURL: string;
-//     article: PublisherDataType;
-//     loading: boolean;
-//     error: string;
-//   };
-// }
+export interface PublishStatusType {
+  [key: string]: {
+    publisher: PublisherType;
+    publishURL: string;
+    article: any;
+    loading: boolean;
+    error: string;
+  };
+}
+
 // defining interfaces for
 // API data, loading error and data state
 // and Action Creators
