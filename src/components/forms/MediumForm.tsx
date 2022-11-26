@@ -1,5 +1,5 @@
 import React from "react";
-import MediumFormTemplate from "components/forms/DevtoFormTemplate";
+import MediumFormTemplate from "components/forms/MediumFormTemplate";
 import PublisherForm from "components/forms/PublisherForm";
 import { initialMediumFormState } from "state/initialState";
 import { saveData, publishPost } from "redux/mediumSlice";
