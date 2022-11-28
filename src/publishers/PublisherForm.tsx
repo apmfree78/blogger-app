@@ -38,10 +38,7 @@ const PublisherForm = <T extends BaseArticle>({
     console.log(tags);
 
     const newArticle: T = { ...inputs };
-    // article.title = title;
-    // article.series = series;
     newArticle.tags = [...tags.map((tag) => tag.text)];
-    // article.published = published;
 
     // update state with form data
     dispatch(saveData(newArticle));
@@ -51,13 +48,6 @@ const PublisherForm = <T extends BaseArticle>({
     // reset Form
     resetForm();
   };
-  // <DevtoFormTemplate
-  //   inputs={inputs}
-  //   tags={tags}
-  //   setTags={setTags}
-  //   handleChange={handleChange}
-  //   handleSubmit={handleSubmit}
-  // />
 
   return React.cloneElement(children, {
     inputs,
