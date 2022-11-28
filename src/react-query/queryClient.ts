@@ -1,3 +1,4 @@
+import { customToast } from "components/hooks/useToast";
 import { QueryClient } from "react-query";
 // import { theme } from '../theme';
 
@@ -10,7 +11,7 @@ function queryErrorHandler(error: unknown): void {
   console.warn(title);
   // prevent duplicate toasts
   // toast.closeAll();
-  // toast({ title, status: 'error', variant: 'subtle', isClosable: true });
+  customToast(title, "is-warning");
 }
 
 // to satisfy typescript until this file has uncommented contents

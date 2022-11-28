@@ -1,9 +1,8 @@
 import type { User } from "shared/types";
 import { axiosInstance } from "axiosInstance";
-import { client } from "server/config";
 import { queryKeys } from "react-query/constants";
 import { clearStoredUser, getStoredUser, setStoredUser } from "user-storage";
-import { useQuery, useQueryClient, UseQueryResult } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { AxiosResponse } from "axios";
 
 async function getUser(user: User | null): Promise<User | null> {
@@ -48,5 +47,6 @@ export function useUser(): UseUser {
     queryClient.removeQueries([queryKeys.posts, queryKeys.user]);
   }
 
-  return { user, updateUser, clearUser };
+  if (user === undefined) return { user: null, updateUser, clearUser };
+  else return { user, updateUser, clearUser };
 }
