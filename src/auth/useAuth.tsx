@@ -7,13 +7,20 @@ import { useUser } from "user/hooks/useUser";
 
 interface UseAuth {
   signin: (email: string, password: string) => Promise<void>;
-  signup: (email: string, password: string) => Promise<void>;
+  signup: (
+    email: string,
+    password: string,
+    passwordConfirm: string
+  ) => Promise<void>;
   signout: () => void;
 }
 
-type UserResponse = { user: User };
+type UserSignInResponse = { token: string; record: User };
+type UserSignUpResponse = User;
 type ErrorResponse = { message: string };
-type AuthResponseType = UserResponse | ErrorResponse;
+type CustomAxiosResponse = AxiosResponse<UserSignInResponse> &
+  AxiosResponse<UserSignUpResponse> &
+  AxiosResponse<ErrorResponse>;
 
 export function useAuth(): UseAuth {
   const SERVER_ERROR = "There was an error contacting the server.";
@@ -32,13 +39,12 @@ export function useAuth(): UseAuth {
     else requestData = { identity: email, password };
 
     try {
-      const { data, status }: AxiosResponse<AuthResponseType> =
-        await axiosInstance({
-          url: urlEndpoint,
-          method: "POST",
-          data: requestData,
-          headers: { "Content-Type": "application/json" },
-        });
+      const { data, status }: CustomAxiosResponse = await axiosInstance({
+        url: urlEndpoint,
+        method: "POST",
+        data: requestData,
+        headers: { "Content-Type": "application/json" },
+      });
 
       if (status === 400) {
         const message = "message" in data ? data.message : "Unauthorized";
@@ -46,19 +52,18 @@ export function useAuth(): UseAuth {
         return;
       }
 
-      if ("user" in data && "token" in data.user) {
-        customToast(`Logged in as ${data.user.email}`, "is-success");
+      if ("email" in data.record && "token" in data) {
+        customToast(`Logged in as ${data.record.email}`, "is-success");
 
         // update stored user data
-        updateUser(data.user);
+        updateUser(data.record);
       }
     } catch (errorResponse) {
       let message = SERVER_ERROR; //default error message
 
-      if (axios.isAxiosError(errorResponse) && errorResponse?.response?.data)
-        message = errorResponse?.response?.data?.message;
+      if (axios.isAxiosError(errorResponse)) message = errorResponse?.message;
 
-      customToast(SERVER_ERROR, "is-warning");
+      customToast(message, "is-warning");
     }
   }
 
