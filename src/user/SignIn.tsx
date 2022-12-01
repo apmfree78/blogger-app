@@ -4,7 +4,7 @@ import { useUser } from "user/hooks/useUser";
 import {
   SignInCredentials,
   SignInCredentialsType,
-  zodErrorToast,
+  displayZodErrorToast,
 } from "validation";
 import { customToast } from "components/hooks/useToast";
 import "styles/SignUpSignIn.css";
@@ -27,7 +27,7 @@ const SignIn: React.FC = () => {
 
     if (!validationIs.success) {
       // display errors in toast
-      zodErrorToast<SignInCredentialsType>(validationIs.error);
+      displayZodErrorToast<SignInCredentialsType>(validationIs.error);
     } else {
       // submit credentials for authentication
       authenticate.signin(email, password);

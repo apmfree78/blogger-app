@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import "styles/App.css";
 import SignIn from "user/SignIn";
+import SignUp from "user/SignUp";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App center">
-        <SignIn />
+        <SignUp />
         {/* <h1 className='title is-1'>Developer Blogger App</h1> */}
         {/* <MarkdownEditor content={content} setContent={setContent} /> */}
         {/* <Publish content={content} /> */}

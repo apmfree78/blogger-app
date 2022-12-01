@@ -11,7 +11,7 @@ export const SignInCredentials = z.object({
 
 export const SignUpCredentials = SignInCredentials.and(
   z.object({
-    passwordConfirm: z.string().min(8, "password must be 8 or more characters"),
+    passwordConfirm: z.string(),
   })
 ).superRefine(({ password, passwordConfirm }, ctx) => {
   if (passwordConfirm !== password) {
@@ -26,7 +26,9 @@ export type SignInCredentialsType = z.infer<typeof SignInCredentials>;
 export type SignUpCredentialsType = z.infer<typeof SignUpCredentials>;
 
 // parses Zod Error and displays errors as toasts on screen
-export function zodErrorToast<T extends object>(error: z.ZodError<T>): void {
+export function displayZodErrorToast<T extends object>(
+  error: z.ZodError<T>
+): void {
   // parsing error messages
   const errorData = JSON.parse(error.message);
   const errorMessages = errorData.map((error: any) => error.message);
