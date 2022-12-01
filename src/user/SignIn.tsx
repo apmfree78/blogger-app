@@ -6,13 +6,34 @@ import "styles/SignUpSignIn.css";
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const authenticate = useAuth();
+  const { user } = useUser();
+
+  // if already login, then redirect to main page
+  if (user) {
+    //redirect to main page
+    return <div>{user.email}</div>;
+  }
+
+  const handleLoginCredentials = () => {
+    // valide using zod
+
+    // submit credentials for authentication
+    authenticate.signin(email, password);
+  };
 
   return (
     <div className="login">
       <h2 className="title is-3">Sign In to Your Account</h2>
       <div className="field">
         <p className="control has-icons-left has-icons-right">
-          <input className="input" type="email" required placeholder="Email" />
+          <input
+            className="input"
+            type="email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
           <span className="icon is-small is-left">
             <i className="fas fa-envelope"></i>
           </span>
@@ -29,6 +50,7 @@ const SignIn: React.FC = () => {
             required
             minLength={8}
             placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
           <span className="icon is-small is-left">
             <i className="fas fa-lock"></i>
@@ -38,7 +60,14 @@ const SignIn: React.FC = () => {
 
       <div className="field">
         <p className="control">
-          <button className="button is-success">Login</button>
+          <button
+            type="submit"
+            disabled={!email || !password}
+            onClick={handleLoginCredentials}
+            className="button is-success"
+          >
+            Login
+          </button>
         </p>
       </div>
     </div>
