@@ -2,7 +2,11 @@ import { useAuth } from "auth/useAuth";
 import { useState } from "react";
 import { useUser } from "user/hooks/useUser";
 import { customToast } from "components/hooks/useToast";
-import { z } from "zod";
+import {
+  SignUpCredentials,
+  SignUpCredentialsType,
+  DisplayZodErrorToast,
+} from "validation";
 import "styles/SignUpSignIn.css";
 
 const SignUp: React.FC = () => {
@@ -11,25 +15,6 @@ const SignUp: React.FC = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const authenticate = useAuth();
   const { user } = useUser();
-  // zod schema for validation
-  const Credentials = z
-    .object({
-      email: z.string().email({ message: "Invalid email address" }),
-      password: z
-        .string()
-        .min(8, { message: "password must be 8 or more characters" }),
-      passwordConfirm: z
-        .string()
-        .min(8, { message: "password must be 8 or more characters" }),
-    })
-    .superRefine(({ password, passwordConfirm }, ctx) => {
-      if (passwordConfirm !== password) {
-        ctx.addIssue({
-          code: "custom",
-          message: "passwords do not match",
-        });
-      }
-    });
 
   // if already login, then redirect to main page
   if (user) {
@@ -39,21 +24,15 @@ const SignUp: React.FC = () => {
 
   const handleSignUpCredentials = () => {
     // valide using zod
-    const validationIs = Credentials.safeParse({
+    const validationIs = SignUpCredentials.safeParse({
       email,
       password,
       passwordConfirm,
     });
 
     if (!validationIs.success) {
-      // parsing error messages
-      const errorData = JSON.parse(validationIs.error.message);
-      const errorMessages = errorData.map((error: any) => error.message);
-
-      // toast for each error
-      errorMessages.forEach((errorMessage: string) =>
-        customToast(errorMessage, "is-warning")
-      );
+      // display errors in toast
+      DisplayZodErrorToast<SignUpCredentialsType>(validationIs.error);
     } else {
       // submit credentials for authentication
       authenticate.signup(email, password, passwordConfirm);

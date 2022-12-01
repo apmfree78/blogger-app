@@ -1,8 +1,12 @@
 import { useAuth } from "auth/useAuth";
 import { useState } from "react";
 import { useUser } from "user/hooks/useUser";
+import {
+  SignInCredentials,
+  SignInCredentialsType,
+  zodErrorToast,
+} from "validation";
 import { customToast } from "components/hooks/useToast";
-import { z } from "zod";
 import "styles/SignUpSignIn.css";
 
 const SignIn: React.FC = () => {
@@ -10,13 +14,6 @@ const SignIn: React.FC = () => {
   const [password, setPassword] = useState("");
   const authenticate = useAuth();
   const { user } = useUser();
-  // zod schema for validation
-  const Credentials = z.object({
-    email: z.string().email({ message: "Invalid email address" }),
-    password: z
-      .string()
-      .min(8, { message: "password must be 8 or more characters" }),
-  });
 
   // if already login, then redirect to main page
   if (user) {
@@ -26,17 +23,11 @@ const SignIn: React.FC = () => {
 
   const handleLoginCredentials = () => {
     // valide using zod
-    const validationIs = Credentials.safeParse({ email, password });
+    const validationIs = SignInCredentials.safeParse({ email, password });
 
     if (!validationIs.success) {
-      // parsing error messages
-      const errorData = JSON.parse(validationIs.error.message);
-      const errorMessages = errorData.map((error: any) => error.message);
-
-      // toast for each error
-      errorMessages.forEach((errorMessage: string) =>
-        customToast(errorMessage, "is-warning")
-      );
+      // display errors in toast
+      zodErrorToast<SignInCredentialsType>(validationIs.error);
     } else {
       // submit credentials for authentication
       authenticate.signin(email, password);
