@@ -23,7 +23,7 @@ type CustomAxiosResponse = AxiosResponse<UserSignInResponse> &
   AxiosResponse<ErrorResponse>;
 
 export function useAuth(): UseAuth {
-  const SERVER_ERROR = "There was an error contacting the server.";
+  // const SERVER_ERROR = 'There was an error contacting the server.';
   const { clearUser, updateUser } = useUser();
 
   async function authServerCall(
@@ -59,11 +59,11 @@ export function useAuth(): UseAuth {
         updateUser(data.record);
       }
     } catch (errorResponse) {
-      let message = SERVER_ERROR; //default error message
+      // let message = SERVER_ERROR; //default error message
 
-      if (axios.isAxiosError(errorResponse)) message = errorResponse?.message;
+      // if (axios.isAxiosError(errorResponse)) message = errorResponse?.message;
 
-      customToast(message, "is-warning");
+      customToast("Invalid email / password combo", "is-warning");
     }
   }
 

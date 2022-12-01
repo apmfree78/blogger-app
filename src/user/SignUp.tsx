@@ -5,18 +5,31 @@ import { customToast } from "components/hooks/useToast";
 import { z } from "zod";
 import "styles/SignUpSignIn.css";
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const authenticate = useAuth();
   const { user } = useUser();
   // zod schema for validation
-  const Credentials = z.object({
-    email: z.string().email({ message: "Invalid email address" }),
-    password: z
-      .string()
-      .min(8, { message: "password must be 8 or more characters" }),
-  });
+  const Credentials = z
+    .object({
+      email: z.string().email({ message: "Invalid email address" }),
+      password: z
+        .string()
+        .min(8, { message: "password must be 8 or more characters" }),
+      passwordConfirm: z
+        .string()
+        .min(8, { message: "password must be 8 or more characters" }),
+    })
+    .superRefine(({ password, passwordConfirm }, ctx) => {
+      if (passwordConfirm !== password) {
+        ctx.addIssue({
+          code: "custom",
+          message: "passwords do not match",
+        });
+      }
+    });
 
   // if already login, then redirect to main page
   if (user) {
@@ -24,9 +37,13 @@ const SignIn: React.FC = () => {
     return <div>{user.email}</div>;
   }
 
-  const handleLoginCredentials = () => {
+  const handleSignUpCredentials = () => {
     // valide using zod
-    const validationIs = Credentials.safeParse({ email, password });
+    const validationIs = Credentials.safeParse({
+      email,
+      password,
+      passwordConfirm,
+    });
 
     if (!validationIs.success) {
       // parsing error messages
@@ -39,13 +56,13 @@ const SignIn: React.FC = () => {
       );
     } else {
       // submit credentials for authentication
-      authenticate.signin(email, password);
+      authenticate.signup(email, password, passwordConfirm);
     }
   };
 
   return (
     <div className="login">
-      <h2 className="title is-3">Sign In to Your Account</h2>
+      <h2 className="title is-3">Sign Up for Free</h2>
       <div className="field">
         <p className="control has-icons-left has-icons-right">
           <input
@@ -63,6 +80,7 @@ const SignIn: React.FC = () => {
           </span>
         </p>
       </div>
+
       <div className="field">
         <p className="control has-icons-left">
           <input
@@ -80,11 +98,27 @@ const SignIn: React.FC = () => {
       </div>
 
       <div className="field">
+        <p className="control has-icons-left">
+          <input
+            className="input"
+            type="password"
+            required
+            minLength={8}
+            placeholder="Confirm Password"
+            onChange={(e) => setPasswordConfirm(e.target.value)}
+          />
+          <span className="icon is-small is-left">
+            <i className="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
+
+      <div className="field">
         <p className="control">
           <button
             type="submit"
             disabled={!email || !password}
-            onClick={handleLoginCredentials}
+            onClick={handleSignUpCredentials}
             className="button is-success"
           >
             Login
@@ -95,4 +129,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
