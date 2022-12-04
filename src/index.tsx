@@ -1,8 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { GlobalProvider } from "state/context";
 import { Provider } from "react-redux";
+import App from "./App";
+import { QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { queryClient } from "react-query/queryClient";
+import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "redux/store";
 
@@ -13,7 +17,12 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <GlobalProvider>
-        <App />
+        <BrowserRouter>
+          <QueryClientProvider client={queryClient}>
+            <App />
+            <ReactQueryDevtools />
+          </QueryClientProvider>
+        </BrowserRouter>
       </GlobalProvider>
     </Provider>
   </React.StrictMode>

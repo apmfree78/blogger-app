@@ -1,29 +1,26 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "bulmaswatch/sandstone/bulmaswatch.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Publish from "components/Publish";
-import MarkdownEditor from "components/MarkdownEditor";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import "styles/App.css";
+import Dashboard from "components/DashBoard";
 import SignIn from "user/SignIn";
-import SignUp from "user/SignUp";
-
-const queryClient = new QueryClient();
+import ProtectedRoute from "routes/ProtectedRoute";
+import "styles/App.css";
 
 function App() {
-  const [content, setContent] = useState("");
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App center">
-        <SignUp />
-        {/* <h1 className='title is-1'>Developer Blogger App</h1> */}
-        {/* <MarkdownEditor content={content} setContent={setContent} /> */}
-        {/* <Publish content={content} /> */}
-      </div>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <div className="App center">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/login" element={<SignIn />} />
+      </Routes>
+    </div>
   );
 }
 

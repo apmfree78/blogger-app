@@ -40,13 +40,14 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="login">
+    <div role="form" className="login">
       <h2 className="title is-3">Sign Up for Free</h2>
       <div className="field">
         <p className="control has-icons-left has-icons-right">
           <input
             className="input"
             type="email"
+            value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
@@ -65,6 +66,7 @@ const SignUp: React.FC = () => {
           <input
             className="input"
             type="password"
+            value={password}
             required
             minLength={8}
             placeholder="Password"

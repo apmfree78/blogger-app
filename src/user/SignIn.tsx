@@ -1,5 +1,6 @@
-import { useAuth } from "auth/useAuth";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "auth/useAuth";
 import { useUser } from "user/hooks/useUser";
 import {
   SignInCredentials,
@@ -18,7 +19,7 @@ const SignIn: React.FC = () => {
   // if already login, then redirect to main page
   if (user) {
     //redirect to main page
-    return <div>{user.email}</div>;
+    return <Navigate to="/" />;
   }
 
   const handleLoginCredentials = () => {
@@ -35,13 +36,15 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <div className="login">
+    <div role="form" className="login">
       <h2 className="title is-3">Sign In to Your Account</h2>
+
       <div className="field">
         <p className="control has-icons-left has-icons-right">
           <input
             className="input"
             type="email"
+            value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
@@ -54,11 +57,13 @@ const SignIn: React.FC = () => {
           </span>
         </p>
       </div>
+
       <div className="field">
         <p className="control has-icons-left">
           <input
             className="input"
             type="password"
+            value={password}
             required
             minLength={8}
             placeholder="Password"
