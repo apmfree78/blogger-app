@@ -1,4 +1,5 @@
 import { useAuth } from "auth/useAuth";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import { useUser } from "user/hooks/useUser";
 import { customToast } from "components/hooks/useToast";
@@ -7,6 +8,7 @@ import {
   SignUpCredentialsType,
   displayZodErrorToast,
 } from "validation";
+import Layout from "layout";
 import "styles/SignUpSignIn.css";
 
 const SignUp: React.FC = () => {
@@ -19,7 +21,7 @@ const SignUp: React.FC = () => {
   // if already login, then redirect to main page
   if (user) {
     //redirect to main page
-    return <div>{user.email}</div>;
+    return <Navigate to="/" />;
   }
 
   const handleSignUpCredentials = () => {
@@ -40,73 +42,75 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div role="form" className="login">
-      <h2 className="title is-3">Sign Up for Free</h2>
-      <div className="field">
-        <p className="control has-icons-left has-icons-right">
-          <input
-            className="input"
-            type="email"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-          />
-          <span className="icon is-small is-left">
-            <i className="fas fa-envelope"></i>
-          </span>
-          <span className="icon is-small is-right">
-            <i className="fas fa-check"></i>
-          </span>
-        </p>
-      </div>
+    <Layout>
+      <div role="form" className="login">
+        <h2 className="title is-3">Sign Up for Free</h2>
+        <div className="field">
+          <p className="control has-icons-left has-icons-right">
+            <input
+              className="input"
+              type="email"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+            <span className="icon is-small is-left">
+              <i className="fas fa-envelope"></i>
+            </span>
+            <span className="icon is-small is-right">
+              <i className="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
 
-      <div className="field">
-        <p className="control has-icons-left">
-          <input
-            className="input"
-            type="password"
-            value={password}
-            required
-            minLength={8}
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <span className="icon is-small is-left">
-            <i className="fas fa-lock"></i>
-          </span>
-        </p>
-      </div>
+        <div className="field">
+          <p className="control has-icons-left">
+            <input
+              className="input"
+              type="password"
+              value={password}
+              required
+              minLength={8}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span className="icon is-small is-left">
+              <i className="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
 
-      <div className="field">
-        <p className="control has-icons-left">
-          <input
-            className="input"
-            type="password"
-            required
-            minLength={8}
-            placeholder="Confirm Password"
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-          />
-          <span className="icon is-small is-left">
-            <i className="fas fa-lock"></i>
-          </span>
-        </p>
-      </div>
+        <div className="field">
+          <p className="control has-icons-left">
+            <input
+              className="input"
+              type="password"
+              required
+              minLength={8}
+              placeholder="Confirm Password"
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+            />
+            <span className="icon is-small is-left">
+              <i className="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
 
-      <div className="field">
-        <p className="control">
-          <button
-            type="submit"
-            disabled={!email || !password}
-            onClick={handleSignUpCredentials}
-            className="button is-success"
-          >
-            Login
-          </button>
-        </p>
+        <div className="field">
+          <p className="control">
+            <button
+              type="submit"
+              disabled={!email || !password}
+              onClick={handleSignUpCredentials}
+              className="button is-success"
+            >
+              Login
+            </button>
+          </p>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
