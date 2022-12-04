@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import "styles/Navbar.css";
+import { useAuth } from "auth/useAuth";
 
 const Navbar = () => {
+  const { signout } = useAuth();
+
   const linkStyle = {
     color: "white",
     fontWieght: "bold",
   };
+
   return (
     <nav role="navbar" className="navbar is-info is-fixed-top">
       <div className="navbar-item">
@@ -14,9 +18,15 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-item">
-        <Link to="/" style={linkStyle}>
+        <div
+          onClick={signout}
+          onMouseOver={(e) => {
+            e.currentTarget.style.cursor = "pointer";
+          }}
+          style={linkStyle}
+        >
           Sign Out
-        </Link>
+        </div>
       </div>
     </nav>
   );
