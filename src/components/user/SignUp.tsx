@@ -1,7 +1,7 @@
 import { useAuth } from "auth/useAuth";
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
-import { useUser } from "user/hooks/useUser";
+import { useUser } from "components/user/hooks/useUser";
 import {
   SignUpCredentials,
   SignUpCredentialsType,
@@ -100,7 +100,7 @@ const SignUp: React.FC = () => {
           <p className="control">
             <button
               type="submit"
-              disabled={!email || !password}
+              disabled={!email || !password || !passwordConfirm}
               onClick={handleSignUpCredentials}
               className="button is-success"
             >

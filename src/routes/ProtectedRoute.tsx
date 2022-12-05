@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useUser } from "user/hooks/useUser";
+import { useUser } from "components/user/hooks/useUser";
 import Navbar from "routes/Navbar";
 
 export const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({

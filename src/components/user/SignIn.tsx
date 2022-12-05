@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "auth/useAuth";
-import { useUser } from "user/hooks/useUser";
+import { useUser } from "components/user/hooks/useUser";
 import {
   SignInCredentials,
   SignInCredentialsType,

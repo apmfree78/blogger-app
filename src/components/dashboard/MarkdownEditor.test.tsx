@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import MarkdownEditor from "components/MarkdownEditor";
+import MarkdownEditor from "components/dashboard/MarkdownEditor";
 
 jest.mock("@uiw/react-md-editor", () => () => <div></div>);
 jest.mock("rehype-sanitize", () => () => <div></div>);
