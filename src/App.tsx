@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "bulmaswatch/sandstone/bulmaswatch.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Dashboard from "components/DashBoard";
+import Dashboard from "components/dashboard/DashBoard";
 import SignIn from "user/SignIn";
 import SignUp from "user/SignUp";
 import ProtectedRoute from "routes/ProtectedRoute";

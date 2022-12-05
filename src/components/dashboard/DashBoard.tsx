@@ -1,6 +1,6 @@
 import { useState } from "react";
-import MarkdownEditor from "components/MarkdownEditor";
-import Publish from "components/Publish";
+import MarkdownEditor from "components/dashboard/MarkdownEditor";
+import Publish from "components/dashboard/Publish";
 import Layout from "layout";
 
 const Dashboard = () => {

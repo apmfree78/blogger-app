@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useState, useContext } from "react";
 import { Publisher } from "state/actionTypes";
-import PublishButton from "components/PublishButton";
+import PublishButton from "components/dashboard/PublishButton";
 import { GlobalContext } from "state/context";
 import "styles/Publish.css";
 import { savePost } from "redux/postSlice";

@@ -13,7 +13,7 @@ jest.mock("react-redux", () => ({
 
 jest.mock("@uiw/react-md-editor", () => () => <div></div>);
 jest.mock("rehype-sanitize", () => () => <div></div>);
-test("renders headline", () => {
+test.skip("renders headline", () => {
   render(<App />);
   const linkElement = screen.getByRole("heading");
   expect(linkElement).toBeInTheDocument();
