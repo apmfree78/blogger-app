@@ -17,7 +17,7 @@ pipeline {
 
         stage('Front-End Unit Test') {
           steps {
-            sh 'cd blogger-app && npm i && npm run test'
+            sh 'npm i && npm run test'
           }
         }
 
