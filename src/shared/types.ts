@@ -20,6 +20,29 @@ export interface NewUser {
 // user type
 export type User = Id & NewUser;
 
+export interface PostId {
+  id: string;
+  "@collectionId": string;
+  "@collectionName": string;
+  created: string;
+  updated: string;
+  author: string;
+}
+
+export interface publishStatusType {
+  published: boolean;
+  publisher: string;
+  publishDate: Date | "";
+}
+
+export interface NewPost {
+  content: string;
+  publishStatus: publishStatusType;
+}
+
+// user post
+export type Post = PostId & NewPost;
+
 //holds publication status of a given publisher: hashnode, medium, devto, etc
 export interface IsPublishedType {
   isPublished: boolean;

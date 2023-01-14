@@ -39,6 +39,7 @@
     "build": "react-scripts build",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
     "lint": "eslint --ignore-path .gitignore .",
+    "server": "./src/server/pocketbase serve",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install"
