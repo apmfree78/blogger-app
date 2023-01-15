@@ -17,6 +17,13 @@ const Navbar = () => {
           Home
         </Link>
       </div>
+
+      <div className="navbar-item">
+        <Link to="/posts" style={linkStyle}>
+          Posts
+        </Link>
+      </div>
+
       <div className="navbar-item">
         <div
           onClick={signout}

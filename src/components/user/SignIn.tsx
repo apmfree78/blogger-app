@@ -90,9 +90,7 @@ const SignIn: React.FC = () => {
         </div>
         <div className="field">
           <p className="control">
-            <Link to="/signup">
-              <a>No Account? Sign Up for Free!</a>
-            </Link>
+            <Link to="/signup">No Account? Sign Up for Free!</Link>
           </p>
         </div>
       </div>

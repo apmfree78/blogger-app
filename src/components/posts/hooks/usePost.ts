@@ -1,4 +1,4 @@
-import type { Post, User } from "shared/types";
+import type { Post, PostData, User } from "shared/types";
 import { axiosInstance, getJWTHeader } from "axiosInstance";
 import { useUser } from "components/user/hooks/useUser";
 import { queryKeys } from "react-query/constants";
@@ -13,9 +13,9 @@ const postsPerPage = 5;
 async function fetchUserPosts(
   user: User | null,
   pageNumber: number
-): Promise<Post[] | null> {
+): Promise<PostData | null> {
   if (!user) return null;
-  const { data }: AxiosResponse<Post[]> = await axiosInstance.get(
+  const { data }: AxiosResponse<PostData> = await axiosInstance.get(
     `/collections/posts/records?perPage=${postsPerPage}&page=${pageNumber}`,
     { headers: getJWTHeader(user) }
   );
@@ -24,8 +24,10 @@ async function fetchUserPosts(
 
 interface UsePost {
   posts: Post[] | null;
-  updatePost: (post: Post) => void;
-  deletePost: (post: Post) => void;
+  page: number;
+  totalPages: number;
+  totalItems: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 // hooks that returns user posts by page
@@ -36,7 +38,7 @@ export function useUserPosts(): UsePost {
   const queryClient = useQueryClient();
 
   // get user posts from pocketbase
-  const { data: posts = [] } = useQuery(
+  const { data: postData } = useQuery(
     [queryKeys.posts, queryKeys.user, page],
     () => fetchUserPosts(user, page),
     { enabled: !!user }
@@ -52,15 +54,15 @@ export function useUserPosts(): UsePost {
     }
   }, [page, user, queryClient]);
 
-  function updatePost(post: Post): void {
-    //queryClient.setQueryData(queryKeys.posts, newUser);
-  }
+  const posts = postData?.items || null;
+  const totalPages = postData?.totalPages || 0;
+  const totalItems = postData?.totalItems || 0;
 
-  function deletePost(): void {
-    // queryClient.setQueryData(queryKeys.posts, null);
-    // queryClient.removeQueries([queryKeys.posts, queryKeys.user]);
-  }
-
-  if (posts === undefined) return { posts: null, updatePost, deletePost };
-  else return { posts, updatePost, deletePost };
+  return {
+    posts,
+    totalPages,
+    totalItems,
+    page,
+    setPage,
+  };
 }

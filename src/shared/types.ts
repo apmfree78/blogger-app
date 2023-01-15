@@ -43,6 +43,15 @@ export interface NewPost {
 // user post
 export type Post = PostId & NewPost;
 
+// the is structure pocketbase will return
+export type PostData = {
+  page: number;
+  perPage: number;
+  totalPages: number;
+  totalItems: number;
+  items: Post[];
+};
+
 //holds publication status of a given publisher: hashnode, medium, devto, etc
 export interface IsPublishedType {
   isPublished: boolean;

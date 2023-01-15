@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useUser } from "components/user/hooks/useUser";
 import Navbar from "routes/Navbar";
+import Layout from "layout";
 
 export const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({
   children,
@@ -11,10 +12,12 @@ export const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({
     return <Navigate to="/login" />;
   }
   return (
-    <>
-      <Navbar />
-      {children}
-    </>
+    <Layout>
+      <>
+        <Navbar />
+        {children}
+      </>
+    </Layout>
   );
 };
 

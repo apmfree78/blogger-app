@@ -110,9 +110,7 @@ const SignUp: React.FC = () => {
         </div>
         <div className="field">
           <p className="control">
-            <Link to="/login">
-              <a>Have Account? Click Here to Login</a>
-            </Link>
+            <Link to="/login">Have Account? Click Here to Login</Link>
           </p>
         </div>
       </div>
