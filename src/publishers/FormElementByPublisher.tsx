@@ -1,8 +1,8 @@
+import React, { ReactElement } from "react";
 import { Publisher } from "state/actionTypes";
 import HashnodeForm from "publishers/hashnode/HashNodeForm";
 import DevtoForm from "publishers/devto/DevtoForm";
 import MediumForm from "publishers/medium/MediumForm";
-import { ReactElement } from "react";
 
 const FormElementByPublisher = ({
   publisher,

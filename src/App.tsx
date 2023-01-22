@@ -6,7 +6,6 @@ import SignIn from "components/user/SignIn";
 import SignUp from "components/user/SignUp";
 import Posts from "components/posts/Posts";
 import ProtectedRoute from "routes/ProtectedRoute";
-import Layout from "layout";
 
 function App() {
   return (
@@ -15,9 +14,7 @@ function App() {
         path="/"
         element={
           <ProtectedRoute>
-            <Layout>
-              <Dashboard />
-            </Layout>
+            <Dashboard />
           </ProtectedRoute>
         }
       />

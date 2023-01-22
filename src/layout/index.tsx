@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import "styles/App.css";
 
 const Layout: React.FC<{ children: ReactElement }> = ({ children }) => {

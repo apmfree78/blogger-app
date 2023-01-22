@@ -6,7 +6,7 @@ interface ListPostsProps {
 }
 const ListPosts = ({ posts }: ListPostsProps) => {
   return (
-    <table className="table is-bordered is-striped is-hoverable">
+    <table className="table is-striped is-hoverable">
       <thead>
         <tr style={{ backgroundColor: "#F5F5F5" }}>
           <th>Post</th>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "styles/Navbar.css";
 import { useAuth } from "auth/useAuth";
 
@@ -13,15 +13,15 @@ const Navbar = () => {
   return (
     <nav role="navbar" className="navbar is-info is-fixed-top">
       <div className="navbar-item">
-        <Link to="/" style={linkStyle}>
+        <NavLink to="/" style={linkStyle}>
           Home
-        </Link>
+        </NavLink>
       </div>
 
       <div className="navbar-item">
-        <Link to="/posts" style={linkStyle}>
+        <NavLink to="/posts" style={linkStyle}>
           Posts
-        </Link>
+        </NavLink>
       </div>
 
       <div className="navbar-item">

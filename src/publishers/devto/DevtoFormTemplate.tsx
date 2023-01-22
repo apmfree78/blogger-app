@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import React, { FormEvent } from "react";
 import TagInput from "components/tag/TagInput";
 import FormButtons from "components/forms/FormButtons";
 import { TagProp } from "components/tag/tagType";

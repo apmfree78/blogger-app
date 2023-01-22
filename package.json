@@ -40,7 +40,7 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
     "lint": "eslint --ignore-path .gitignore .",
     "server": "./src/server/pocketbase serve",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -67,7 +67,9 @@
     "@babel/preset-typescript": "^7.18.6",
     "eslint-plugin-jest-dom": "^4.0.2",
     "husky": "^8.0.0",
-    "lint-staged": "^13.0.3"
+    "identity-obj-proxy": "^3.0.0",
+    "lint-staged": "^13.0.3",
+    "msw": "^0.49.3"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

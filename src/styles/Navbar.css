@@ -8,3 +8,11 @@ nav {
   margin-top: 0vh;
   margin-bottom: 3vh;
 }
+
+nav a {
+  text-decoration: none;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
