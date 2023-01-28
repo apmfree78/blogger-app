@@ -8,6 +8,12 @@ interface ListPostsProps {
 const ListPosts = ({ posts }: ListPostsProps) => {
   const deletePost = useDeletePost();
 
+  const confirmAndDeletePost = (postId: string) => {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      deletePost(postId);
+    }
+  };
+
   return (
     <table className="table is-striped is-hoverable">
       <thead>
@@ -31,7 +37,7 @@ const ListPosts = ({ posts }: ListPostsProps) => {
               <th style={{ textAlign: "center" }}>{isPublished}</th>
               <th style={{ textAlign: "center" }}>
                 <i
-                  onClick={() => deletePost(post.id)}
+                  onClick={() => confirmAndDeletePost(post.id)}
                   className="fa-regular fa-circle-xmark"
                 />
               </th>
