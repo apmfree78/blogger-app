@@ -17,15 +17,26 @@ type ErrorResponse = {
 
 console.log("setting up servers");
 
+export const mockUserResponse = {
+  token: "123",
+  record: {
+    id: "abc",
+    email: "test@example.com",
+    posts: [],
+  },
+};
+
 const server = setupServer(
   rest.post<string, SuccessResponse | ErrorResponse, any>(
     `${baseUrl}collections/users/auth-with-password`,
     (req, res, ctx) => {
       console.log("intercepting server request");
+      console.log(req);
       if (!!req) {
         const { email, password } = JSON.parse(req.body);
+        console.log(email, password);
         if (email === "test@example.com" && password === "testpassword") {
-          return res(ctx.status(200), ctx.json({ token: "testtoken" }));
+          return res(ctx.status(200), ctx.json(mockUserResponse));
         }
       }
 

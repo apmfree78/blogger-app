@@ -21,6 +21,7 @@ const ListPosts = ({ posts }: ListPostsProps) => {
           <th>Post</th>
           <th>Published?</th>
           <th> </th>
+          <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -40,6 +41,9 @@ const ListPosts = ({ posts }: ListPostsProps) => {
                   onClick={() => confirmAndDeletePost(post.id)}
                   className="fa-regular fa-circle-xmark"
                 />
+              </th>
+              <th style={{ textAlign: "center" }}>
+                <i onClick={() => {}} className="fa-solid fa-pencil" />
               </th>
             </tr>
           );
