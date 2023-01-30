@@ -20,7 +20,7 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
 }) => {
   return (
     <section>
-      <form role="form" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="title" className="label">
             Title

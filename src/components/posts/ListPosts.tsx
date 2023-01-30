@@ -1,6 +1,6 @@
-import { useUserPosts } from "./hooks/usePost";
 import { Post } from "shared/types";
 import { useDeletePost } from "./hooks/useDeletePost";
+import { Link } from "react-router-dom";
 
 interface ListPostsProps {
   posts: Post[];
@@ -43,7 +43,9 @@ const ListPosts = ({ posts }: ListPostsProps) => {
                 />
               </th>
               <th style={{ textAlign: "center" }}>
-                <i onClick={() => {}} className="fa-solid fa-pencil" />
+                <Link to={`/post/${post.id}`}>
+                  <i className="fa-solid fa-pencil" />
+                </Link>
               </th>
             </tr>
           );

@@ -1,5 +1,3 @@
-import { useUserPosts } from "./hooks/usePost";
-
 interface PaginationProps {
   page: number;
   setPage: (page: number) => void;

@@ -1,10 +1,9 @@
-import type { Post, PostData, User } from "shared/types";
+import type { Post, User } from "shared/types";
 import { axiosInstance, getJWTHeader } from "axiosInstance";
 import { useUser } from "components/user/hooks/useUser";
 import { queryKeys } from "react-query/constants";
 import { UseMutateFunction, useMutation, useQueryClient } from "react-query";
 import { customToast } from "components/hooks/useToast";
-import { AxiosResponse } from "axios";
 
 //fetch user posts with authorization token
 async function updateUserPost(post: Post, user: User | null): Promise<void> {

@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav role="navbar" className="navbar is-info is-fixed-top">
+    <nav role="navigation" className="navbar is-info is-fixed-top">
       <div className="navbar-item">
         <NavLink to="/" style={linkStyle}>
           Home

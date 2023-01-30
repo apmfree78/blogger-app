@@ -1,14 +1,11 @@
-import type { Post, PostData, User } from "shared/types";
+import type { Post, User } from "shared/types";
 import { axiosInstance, getJWTHeader } from "axiosInstance";
 import { useUser } from "components/user/hooks/useUser";
 import { queryKeys } from "react-query/constants";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { AxiosResponse } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useUpdatePost } from "./useUpdatePost";
-
-const maxPostPage = 5;
-const postsPerPage = 5;
 
 //fetch user posts with authorization token
 async function fetchUserPostById(
@@ -36,17 +33,18 @@ export function usePostById(id: string): UsePost {
   const savePostTimer = useRef<number | null>(null);
   const { user } = useUser();
 
+  // load initial post
   // get user posts from pocketbase
   const { data: postData } = useQuery(
-    [queryKeys.posts, queryKeys.user],
+    [queryKeys.posts, queryKeys.user, id],
     () => fetchUserPostById(id, user),
     { enabled: !!user }
   );
 
-  // load initial post
+  // update post state every time new post is loaded
   useEffect(() => {
     if (postData) setPost(postData);
-  }, []);
+  }, [id, postData?.id, postData]);
 
   // save post every 30 seconds
   useEffect(() => {
@@ -57,7 +55,7 @@ export function usePostById(id: string): UsePost {
     return () => {
       if (savePostTimer.current !== null) clearTimeout(savePostTimer.current);
     };
-  }, [post]);
+  }, [post?.id, post?.content, post, updatePost]);
 
   // postContent - content of user post with 'id'
   const postContent = post?.content || null;

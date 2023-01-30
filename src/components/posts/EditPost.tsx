@@ -1,18 +1,18 @@
-import React from "react";
-import { useState } from "react";
 import MarkdownEditor from "components/dashboard/MarkdownEditor";
 import Publish from "components/dashboard/Publish";
-import { Post } from "shared/types";
+import { usePostById } from "./hooks/usePostById";
+import { useParams } from "react-router-dom";
 
 const EditPost = () => {
-  const [content, setContent] = useState("");
-  const [post, setPost] = useState<Post>();
+  const { id } = useParams();
+  const { postContent, savePostContent } = usePostById(id || "");
 
+  if (postContent === null) return <div>Post not found!</div>;
   return (
     <>
       <h1 className="title is-1">Developer Blogger App</h1>
-      <MarkdownEditor content={content} setContent={setContent} />
-      <Publish content={content} />
+      <MarkdownEditor content={postContent} setContent={savePostContent} />
+      <Publish content={postContent} />
     </>
   );
 };

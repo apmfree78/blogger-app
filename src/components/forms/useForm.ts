@@ -8,7 +8,7 @@ export default function useForm<T extends object>(initial: T) {
   useEffect(() => {
     // this functions runs when things we are watching change
     setInputs(initial);
-  }, [initialValues]);
+  }, [initialValues, initial]);
 
   function handleChange(e: any) {
     let { value, name, type } = e.target;
