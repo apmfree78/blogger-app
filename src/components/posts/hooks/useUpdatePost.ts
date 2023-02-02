@@ -23,7 +23,7 @@ export function useUpdatePost() {
   const { mutate } = useMutation((post: Post) => updateUserPost(post, user), {
     onSuccess: () => {
       queryClient.invalidateQueries([queryKeys.posts]);
-      customToast("Post has been updated", "is-success");
+      customToast("post saved", "is-success");
     },
   });
   return mutate;

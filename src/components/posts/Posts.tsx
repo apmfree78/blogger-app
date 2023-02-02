@@ -1,4 +1,4 @@
-import { useUserPosts } from "./hooks/usePost";
+import { useUserPosts } from "./hooks/useUserPosts";
 import ListPosts from "components/posts/ListPosts";
 import Pagination from "components/posts/Pagination";
 
