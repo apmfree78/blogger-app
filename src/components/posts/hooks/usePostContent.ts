@@ -46,7 +46,6 @@ interface UsePost {
 export function usePostContent(id: string | null = null): UsePost {
   const { post, setPost } = usePost();
   const savePost = useUpdatePost();
-  const savePostTimer = useRef<number | null>(null);
   const { user } = useUser();
 
   // load initial post

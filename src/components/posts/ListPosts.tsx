@@ -1,12 +1,14 @@
 import { Post } from "shared/types";
 import { useDeletePost } from "./hooks/useDeletePost";
 import { Link } from "react-router-dom";
+import { usePostContent } from "./hooks/usePostContent";
 
 interface ListPostsProps {
   posts: Post[];
 }
 const ListPosts = ({ posts }: ListPostsProps) => {
   const deletePost = useDeletePost();
+  const { createPost } = usePostContent();
 
   const confirmAndDeletePost = (postId: string) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
