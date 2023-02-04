@@ -22,30 +22,14 @@ async function fetchUserPostById(
   return data;
 }
 
-async function fetchNewPost(user: User | null): Promise<Post | null> {
-  if (!user) return null;
-  const { data }: AxiosResponse<Post> = await axiosInstance.post(
-    `/collections/posts/records`,
-    {
-      content: "",
-      publishStatus: { published: false, publisher: "", publishDate: "" },
-      author: user.id,
-    },
-    { headers: getJWTHeader(user) }
-  );
-  return data;
-}
-
 interface UsePost {
   postContent: string | null;
   savePostContent: (content: string) => void;
-  createPost: () => void;
 }
 
 // hook that returns post by ID and function to create new post and save posts
 export function usePostContent(id: string | null = null): UsePost {
   const { post, setPost } = usePost();
-  const savePost = useUpdatePost();
   const { user } = useUser();
 
   // load initial post
@@ -64,20 +48,6 @@ export function usePostContent(id: string | null = null): UsePost {
   // postContent - content of user post with 'id'
   const postContent = post?.content || null;
 
-  // function to create new post
-  const { mutate: createPost } = useMutation(() => fetchNewPost(user), {
-    onSuccess: (newPostData: Post | null) => {
-      if (!newPostData) return;
-      // save existing post first, in case there are unsaved changes
-      if (post !== null) savePost(post);
-      //set state to new user Post
-      setPost(newPostData);
-      //clear cache
-      queryClient.invalidateQueries([queryKeys.posts]);
-      customToast("post created", "is-success");
-    },
-  });
-
   // function to save updated post to server
   const savePostContent = (content: string) => {
     if (post === null) return;
@@ -88,6 +58,5 @@ export function usePostContent(id: string | null = null): UsePost {
   return {
     postContent,
     savePostContent,
-    createPost,
   };
 }

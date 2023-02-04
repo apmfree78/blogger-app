@@ -1,21 +1,11 @@
 import { Post } from "shared/types";
-import { useDeletePost } from "./hooks/useDeletePost";
-import { Link } from "react-router-dom";
-import { usePostContent } from "./hooks/usePostContent";
+import ListPostRow from "./ListPostRow";
 
 interface ListPostsProps {
   posts: Post[];
 }
+
 const ListPosts = ({ posts }: ListPostsProps) => {
-  const deletePost = useDeletePost();
-  const { createPost } = usePostContent();
-
-  const confirmAndDeletePost = (postId: string) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
-      deletePost(postId);
-    }
-  };
-
   return (
     <table className="table is-striped is-hoverable">
       <thead>
@@ -27,31 +17,9 @@ const ListPosts = ({ posts }: ListPostsProps) => {
         </tr>
       </thead>
       <tbody>
-        {posts.map((post) => {
-          const isPublished = post.publishStatus.published ? (
-            <i style={{ color: "green" }} className="fas fa-check" />
-          ) : (
-            <i style={{ color: "red" }} className="fa-solid fa-xmark" />
-          );
-
-          return (
-            <tr key={post.id}>
-              <th>{post.content}</th>
-              <th style={{ textAlign: "center" }}>{isPublished}</th>
-              <th style={{ textAlign: "center" }}>
-                <i
-                  onClick={() => confirmAndDeletePost(post.id)}
-                  className="fa-regular fa-circle-xmark"
-                />
-              </th>
-              <th style={{ textAlign: "center" }}>
-                <Link to={`/post/${post.id}`}>
-                  <i className="fa-solid fa-pencil" />
-                </Link>
-              </th>
-            </tr>
-          );
-        })}
+        {posts.map((post) => (
+          <ListPostRow post={post} />
+        ))}
       </tbody>
     </table>
   );
