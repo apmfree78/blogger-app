@@ -2,7 +2,7 @@ import { Post } from "shared/types";
 import { useDeletePost } from "components/posts/hooks/useDeletePost";
 import { Link } from "react-router-dom";
 
-const ListPostRow = ({ post }: { post: Post }) => {
+const PostRow = ({ post }: { post: Post }) => {
   const deletePost = useDeletePost();
 
   const confirmAndDeletePost = (postId: string) => {
@@ -40,4 +40,4 @@ const ListPostRow = ({ post }: { post: Post }) => {
   );
 };
 
-export default ListPostRow;
+export default PostRow;

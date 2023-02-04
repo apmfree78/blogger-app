@@ -1,11 +1,11 @@
 import { Post } from "shared/types";
-import ListPostRow from "./ListPostRow";
+import PostRow from "./PostRow";
 
 interface ListPostsProps {
   posts: Post[];
 }
 
-const ListPosts = ({ posts }: ListPostsProps) => {
+const PostTable = ({ posts }: ListPostsProps) => {
   return (
     <table className="table is-striped is-hoverable">
       <thead>
@@ -18,11 +18,11 @@ const ListPosts = ({ posts }: ListPostsProps) => {
       </thead>
       <tbody>
         {posts.map((post) => (
-          <ListPostRow post={post} />
+          <PostRow post={post} />
         ))}
       </tbody>
     </table>
   );
 };
 
-export default ListPosts;
+export default PostTable;

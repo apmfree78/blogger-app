@@ -1,6 +1,7 @@
 import { useUserPosts } from "./hooks/useUserPosts";
-import ListPosts from "components/posts/ListPosts";
 import Pagination from "components/posts/Pagination";
+import NewPostButton from "components/posts/NewPostButton";
+import PostTable from "components/posts/table/PostTable";
 
 const Posts = () => {
   const { posts, page, setPage, totalPages } = useUserPosts();
@@ -8,7 +9,10 @@ const Posts = () => {
 
   return (
     <>
-      <ListPosts posts={posts} />
+      <section style={{ paddingBottom: "1.5vh" }}>
+        <NewPostButton />
+      </section>
+      <PostTable posts={posts} />
       <Pagination page={page} setPage={setPage} totalPages={totalPages} />
     </>
   );
