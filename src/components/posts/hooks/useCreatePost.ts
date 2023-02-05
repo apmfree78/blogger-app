@@ -12,7 +12,7 @@ async function fetchNewPost(user: User | null): Promise<Post | null> {
   const { data }: AxiosResponse<Post> = await axiosInstance.post(
     `/collections/posts/records`,
     {
-      content: "",
+      content: "new post placeholder text",
       publishStatus: { published: false, publisher: "", publishDate: "" },
       author: user.id,
     },
@@ -25,12 +25,19 @@ async function fetchNewPost(user: User | null): Promise<Post | null> {
 export function useCreatePost() {
   const { user } = useUser();
 
-  const { mutate: createPost } = useMutation(() => fetchNewPost(user), {
+  const {
+    data,
+    isSuccess,
+    isLoading,
+    mutate: createPost,
+  } = useMutation(() => fetchNewPost(user), {
     onSuccess: () => {
       //clear cache
       queryClient.invalidateQueries([queryKeys.posts]);
       customToast("post created", "is-success");
     },
   });
-  return createPost;
+
+  const postId = data?.id;
+  return { createPost, postId, isSuccess, isLoading };
 }
