@@ -1,29 +1,3 @@
-const esModules = [
-  // Copy from here 👈
-  'react-markdown',
-  'vfile',
-  'unist-.+',
-  'unified',
-  'bail',
-  'is-plain-obj',
-  'trough',
-  'remark-.+',
-  'mdast-util-.+',
-  'micromark',
-  'parse-entities',
-  'character-entities',
-  'property-information',
-  'comma-separated-tokens',
-  'hast-util-whitespace',
-  'remark-.+',
-  'space-separated-tokens',
-  'decode-named-character-reference',
-  'ccount',
-  'escape-string-regexp',
-  'markdown-table',
-  'trim-lines',
-].join('|'); // To here 👈
-
 module.exports = {
   // It indicates that each one imported modules in the tests must be mocked automatically
   // 	automock: false,
@@ -37,9 +11,9 @@ module.exports = {
   // clearMocks: true,
   // It shows whether or not it have to have the coverage data collected while executing the test
   collectCoverage: true,
-  collectCoverageFrom: ['./src/**'],
-  coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: ['node_modules', 'coverage'],
+  collectCoverageFrom: ["./src/**"],
+  coverageDirectory: "coverage",
+  coveragePathIgnorePatterns: ["node_modules", "coverage"],
   coverageThreshold: {
     global: {
       statements: 10,
@@ -57,7 +31,7 @@ module.exports = {
   // notifyMode: "always",
   // It indicates the framework to have a preset this is used as a base for Jest's configuration
   // preset: null,
-  moduleDirectories: ['node_modules', 'src'],
+  moduleDirectories: ["node_modules", "src"],
   // It suggests to run tests from one or extra projects
   // projects: null,
   // This indicates using the configuration to add custom newshounds to Jest
@@ -84,14 +58,16 @@ module.exports = {
   // This property points to the setting of the price to "faux" lets in the use of fake timers for capabilities which includes "setTimeout"
   // timers: 'real',
   // This property suggests the Jest to a map from regular expressions to paths to transformers
-  // transform: null,
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest",
+  },
   // This configuration shows the Jest to an array of regex expression sample strings which are matched towards all source record paths, matched documents will pass transformation
-  transformIgnorePatterns: ['/node_modules/'],
+  transformIgnorePatterns: ["/node_modules/"],
   // It suggests that a map from ordinary regex to module names that permit to stub out assets with a single module
   moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/__mocks__/fileMock.js',
-    '\\.(css|less)$': 'identity-obj-proxy',
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|less)$": "identity-obj-proxy",
   },
   // It suggests that an array of regex expression sample strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -99,21 +75,21 @@ module.exports = {
   // notify: false,
   // This configuration indicates the Jest which take a look at  test environment it need to use for the testing run
   // testEnvironment: 'jest-environment-jsdom',
-  testEnvironment: 'jsdom',
+  testEnvironment: "jsdom",
   // This configuration shows the Jest to the options so one can be passed to the testEnvironment
   // testEnvironmentOptions: {},
   // This configuration shows the Jest to add a location field to test the outcome of the run
   // testLocationInResults: false,
   // This configuration factors to the glob patterns Jest uses to detect test files
-  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
   // This configuration indicates the Jest to an array of regexp pattern strings that are matched towards all test paths, matched tests are skipped
-  testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ["/node_modules/"],
   // This configuration suggests framework to the root listing that Jest should check for the test cases and modules inside them
-  rootDir: '.',
+  rootDir: ".",
   // This configuration shows the Jest framework to the list of paths to directories that Jest ought to use to look for files inside them
   // roots: ['<rootDir>'],
   // This configuration indicates the Jest to the direction to a module that runs some code to configure or installation the testing framework before than each test run
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   // This configuration shows the  Jest testing framework to an array of regexp sample strings which might be matched against all modules earlier than the module loader will mechanically return a mock data for the test case
   // unmockedModulePathPatterns: undefined,
   // This configuration shows the  Jest testing framework whether or not each separate test cases should be reported during the executed test run
