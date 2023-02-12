@@ -62,6 +62,7 @@ The upgrade command:
 - Changes all `user` type fields to `relation` and update the references to point to the new user ids.
 - Renames all `@collection.profiles.*`, `@request.user.*` and `@request.user.profile.*` filters to `@collection.users.*` and `@request.auth.*`.
 - Appends `2` to all **schema field names** and **api filter rules** that conflicts with the new system reserved ones:
+
   ```
   collectionId   => collectionId2
   collectionName => collectionName2
@@ -83,6 +84,7 @@ The upgrade command:
 Please check the individual SDK package changelog and apply the necessary changes in your code:
 
 - [**JavaScript SDK changelog**](https://github.com/pocketbase/js-sdk/blob/master/CHANGELOG.md)
+
   ```sh
   npm install pocketbase@latest --save
   ```
@@ -272,6 +274,7 @@ Please check the individual SDK package changelog and apply the necessary change
   </table>
 
 - To prevent confusion with the auth method responses, the following endpoints now returns 204 with empty body (previously 200 with token and auth model):
+
   ```
   POST /api/admins/confirm-password-reset
   POST /api/collections/:collection/confirm-password-reset
@@ -484,6 +487,7 @@ Please check the individual SDK package changelog and apply the necessary change
   </table>
 
 - Added new auth collection `models.Record` helpers:
+
   ```go
   func (m *Record) Username() string
   func (m *Record) SetUsername(username string) error
@@ -506,6 +510,7 @@ Please check the individual SDK package changelog and apply the necessary change
   ```
 
 - Added option to return serialized custom `models.Record` fields data:
+
   ```go
   func (m *Record) UnknownData() map[string]any
   func (m *Record) WithUnkownData(state bool)
@@ -649,11 +654,12 @@ Please check the individual SDK package changelog and apply the necessary change
   </table>
 
 - Marked as "Deprecated" and will be removed in v0.9:
-    ```
-    core.Settings.EmailAuth{}
-    core.EmailAuthConfig{}
-    schema.FieldTypeUser
-    schema.UserOptions{}
-    ```
+
+  ```
+  core.Settings.EmailAuth{}
+  core.EmailAuthConfig{}
+  schema.FieldTypeUser
+  schema.UserOptions{}
+  ```
 
 - The second argument of `apis.StaticDirectoryHandler(fileSystem, enableIndexFallback)` now is used to enable/disable index.html forwarding on missing file (eg. in case of SPA).

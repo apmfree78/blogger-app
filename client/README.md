@@ -57,7 +57,6 @@ yarn clean     # remove 'node_modules' 'yarn.lock' 'dist' completely
 yarn serve     # launch server for production bundle in local
 ```
 
-
 # Background
 
 The evolution of the React framework is accelerating more than ever before.  

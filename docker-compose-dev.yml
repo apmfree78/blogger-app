@@ -1,0 +1,30 @@
+version: '1'
+services:
+  web:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: blogger
+    ports:
+      - "8080:5173"
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  pocketbase:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: pocketbase
+    restart: unless-stopped
+    ports:
+      - '8090:8090'
+    volumes:
+      - ./server/pb_data:/pb_data
+  tests:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    command: ["npm","run","test"]
