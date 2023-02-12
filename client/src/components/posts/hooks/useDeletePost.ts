@@ -1,10 +1,10 @@
-import type { PostData, User } from "shared/types";
-import { axiosInstance, getJWTHeader } from "axiosInstance";
-import { useUser } from "components/user/hooks/useUser";
-import { queryKeys } from "react-query/constants";
-import { UseMutateFunction, useMutation, useQueryClient } from "react-query";
-import { customToast } from "components/hooks/useToast";
 import { AxiosResponse } from "axios";
+import { axiosInstance, getJWTHeader } from "axiosInstance";
+import { customToast } from "components/hooks/useToast";
+import { useUser } from "components/user/hooks/useUser";
+import { UseMutateFunction, useMutation, useQueryClient } from "react-query";
+import { queryKeys } from "react-query/constants";
+import type { PostData, User } from "shared/types";
 
 //fetch user posts with authorization token
 async function deleteUserPost(

@@ -1,10 +1,11 @@
-import React, { lazy, Suspense, useState, useContext } from "react";
-import { Publisher } from "state/actionTypes";
-import PublishButton from "components/dashboard/PublishButton";
-import { GlobalContext } from "state/context";
 import "styles/Publish.css";
-import { savePost } from "redux/postSlice";
+
+import PublishButton from "components/dashboard/PublishButton";
+import React, { lazy, Suspense, useContext, useState } from "react";
 import { useAppDispatch } from "redux/hooks";
+import { savePost } from "redux/postSlice";
+import { Publisher } from "state/actionTypes";
+import { GlobalContext } from "state/context";
 const FormElementByPublisher = lazy(
   () => import("publishers/FormElementByPublisher")
 );

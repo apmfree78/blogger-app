@@ -1,7 +1,8 @@
-import React from "react";
-import MDEditor from "@uiw/react-md-editor";
-import rehypeSanitize from "rehype-sanitize";
 import "styles/markdownEditor.css";
+
+import MDEditor from "@uiw/react-md-editor";
+import React from "react";
+import rehypeSanitize from "rehype-sanitize";
 
 interface MarkdownProps {
   content: string;

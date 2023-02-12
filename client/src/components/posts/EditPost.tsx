@@ -1,7 +1,8 @@
 import MarkdownEditor from "components/dashboard/MarkdownEditor";
 import Publish from "components/dashboard/Publish";
-import { usePostContent } from "./hooks/usePostContent";
 import { useParams } from "react-router-dom";
+
+import { usePostContent } from "./hooks/usePostContent";
 
 const EditPost = () => {
   const { id } = useParams();

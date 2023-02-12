@@ -1,9 +1,9 @@
-import React from "react";
 import MediumFormTemplate from "publishers/medium/MediumFormTemplate";
+import { publishPost, saveData } from "publishers/medium/mediumSlice";
 import PublisherForm from "publishers/PublisherForm";
 import { initialMediumFormState } from "publishers/publisherInfo";
-import { saveData, publishPost } from "publishers/medium/mediumSlice";
 import { MediumDataProps } from "publishers/publisherInfo";
+import React from "react";
 
 const MediumForm: React.FC = () => {
   return (

@@ -1,12 +1,13 @@
-import { Routes, Route } from "react-router-dom";
 import "bulmaswatch/sandstone/bulmaswatch.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+
 import Dashboard from "components/dashboard/DashBoard";
+import EditPost from "components/posts/EditPost";
+import Posts from "components/posts/Posts";
 import SignIn from "components/user/SignIn";
 import SignUp from "components/user/SignUp";
-import Posts from "components/posts/Posts";
+import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "routes/ProtectedRoute";
-import EditPost from "components/posts/EditPost";
 
 function App() {
   return (

@@ -1,6 +1,6 @@
-import { Post } from "shared/types";
 import { useDeletePost } from "components/posts/hooks/useDeletePost";
 import { Link } from "react-router-dom";
+import { Post } from "shared/types";
 
 const PostRow = ({ post }: { post: Post }) => {
   const deletePost = useDeletePost();

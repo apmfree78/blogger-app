@@ -1,7 +1,7 @@
-import React, { FormEvent } from "react";
-import TagInput from "components/tag/TagInput";
 import FormButtons from "components/forms/FormButtons";
+import TagInput from "components/tag/TagInput";
 import { TagProp } from "components/tag/tagType";
+import React, { FormEvent } from "react";
 interface HashnodeFormProps {
   inputs: any;
   tags: TagProp[];

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Post } from "shared/types";
+
 import { useUpdatePost } from "./useUpdatePost";
 
 // hook to manage state of current post user is working on

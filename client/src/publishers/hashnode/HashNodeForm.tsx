@@ -1,9 +1,9 @@
-import React from "react";
 import HashNodeFormTemplate from "publishers/hashnode/HashNodeFormTemplate";
+import { publishPost, saveData } from "publishers/hashnode/hashnodeSlice";
 import PublisherForm from "publishers/PublisherForm";
 import { initialHashNodeFormState } from "publishers/publisherInfo";
-import { saveData, publishPost } from "publishers/hashnode/hashnodeSlice";
 import { HashNodeDataProps } from "publishers/publisherInfo";
+import React from "react";
 
 const HashNodeForm: React.FC = () => {
   return (

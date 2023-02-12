@@ -1,7 +1,8 @@
-import { useUserPosts } from "./hooks/useUserPosts";
-import Pagination from "components/posts/Pagination";
 import NewPostButton from "components/posts/NewPostButton";
+import Pagination from "components/posts/Pagination";
 import PostTable from "components/posts/table/PostTable";
+
+import { useUserPosts } from "./hooks/useUserPosts";
 
 const Posts = () => {
   const { posts, page, setPage, totalPages } = useUserPosts();

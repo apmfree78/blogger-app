@@ -1,12 +1,12 @@
-import { Publisher, PublishStatusType } from "state/actionTypes";
 import {
   devToURL,
-  mediumURL,
   hashnodeURL,
-  initialMediumFormState,
-  initialHashNodeFormState,
   initialDevtoFormState,
+  initialHashNodeFormState,
+  initialMediumFormState,
+  mediumURL,
 } from "publishers/publisherInfo";
+import { Publisher, PublishStatusType } from "state/actionTypes";
 export interface BlogStateType {
   content: string;
   publish: PublishStatusType;

@@ -1,10 +1,10 @@
-import type { Post, PostData, User } from "shared/types";
+import { AxiosResponse } from "axios";
 import { axiosInstance, getJWTHeader } from "axiosInstance";
 import { useUser } from "components/user/hooks/useUser";
-import { queryKeys } from "react-query/constants";
-import { useQuery, useQueryClient } from "react-query";
-import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
+import { useQuery, useQueryClient } from "react-query";
+import { queryKeys } from "react-query/constants";
+import type { Post, PostData, User } from "shared/types";
 
 const maxPostPage = 5;
 const postsPerPage = 5;

@@ -1,11 +1,12 @@
-import React, { FC, ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
-import { GlobalProvider } from "./state/context";
-import { store } from "redux/store";
-import { Provider } from "react-redux";
+import React, { FC, ReactElement } from "react";
 import { QueryClientProvider, setLogger } from "react-query";
 import { generateQueryClient } from "react-query/queryClient";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "redux/store";
+
+import { GlobalProvider } from "./state/context";
 
 setLogger({
   log: console.log,

@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios, { AxiosResponse } from "axios";
 import { DevToDataProps, PublishStatusType } from "publishers/publisherInfo";
 import { devToURL } from "publishers/publisherInfo";
 import { AppDispatch, RootState } from "redux/store";
-import axios, { AxiosResponse } from "axios";
 
 const initialState: PublishStatusType<DevToDataProps> = {
   publishURL: devToURL,

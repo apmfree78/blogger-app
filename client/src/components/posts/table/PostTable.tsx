@@ -1,4 +1,5 @@
 import { Post } from "shared/types";
+
 import PostRow from "./PostRow";
 
 interface ListPostsProps {
@@ -7,7 +8,7 @@ interface ListPostsProps {
 
 const PostTable = ({ posts }: ListPostsProps) => {
   return (
-    <table className="table is-striped is-hoverable">
+    <table className="is-striped is-hoverable table">
       <thead>
         <tr style={{ backgroundColor: "#F5F5F5" }}>
           <th>Post</th>

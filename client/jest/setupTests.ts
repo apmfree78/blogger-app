@@ -1,19 +1,19 @@
-import '@testing-library/jest-dom'
-
+import "@testing-library/jest-dom";
 // Polyfill "window.fetch" used in the React component.
-import 'whatwg-fetch'
-import { server } from '../mocks/server'
+import "whatwg-fetch";
+
+import { server } from "../mocks/server";
 
 beforeAll(() => {
-  server.listen()
-})
+  server.listen();
+});
 
 beforeAll(() => {
-  server.resetHandlers()
-})
+  server.resetHandlers();
+});
 
-afterEach(() => server.resetHandlers())
+afterEach(() => server.resetHandlers());
 
 afterAll(() => {
-  server.close()
-})
+  server.close();
+});

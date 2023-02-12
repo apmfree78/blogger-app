@@ -1,9 +1,8 @@
 // import { render, screen } from '@testing-library/react';
+import user from "@testing-library/user-event";
+import Publish from "components/dashboard/Publish";
 import React from "react";
 import { render, screen } from "test-utils";
-import user from "@testing-library/user-event";
-
-import Publish from "components/dashboard/Publish";
 
 jest.mock("@uiw/react-md-editor", () => () => <div></div>);
 jest.mock("rehype-sanitize", () => () => <div></div>);

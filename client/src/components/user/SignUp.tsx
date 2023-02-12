@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import "styles/SignUpSignIn.css";
+
 import { useAuth } from "auth/useAuth";
-import { Link, Navigate } from "react-router-dom";
 import { useUser } from "components/user/hooks/useUser";
+import Layout from "layout";
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import {
+  displayZodErrorToast,
   SignUpCredentials,
   SignUpCredentialsType,
-  displayZodErrorToast,
 } from "validation";
-import Layout from "layout";
-import "styles/SignUpSignIn.css";
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState("");

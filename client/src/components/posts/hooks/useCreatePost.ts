@@ -1,11 +1,11 @@
-import type { Post, User } from "shared/types";
-import { axiosInstance, getJWTHeader } from "axiosInstance";
-import { useUser } from "components/user/hooks/useUser";
-import { queryKeys } from "react-query/constants";
-import { useMutation } from "react-query";
 import { AxiosResponse } from "axios";
-import { queryClient } from "react-query/queryClient";
+import { axiosInstance, getJWTHeader } from "axiosInstance";
 import { customToast } from "components/hooks/useToast";
+import { useUser } from "components/user/hooks/useUser";
+import { useMutation } from "react-query";
+import { queryKeys } from "react-query/constants";
+import { queryClient } from "react-query/queryClient";
+import type { Post, User } from "shared/types";
 
 async function fetchNewPost(user: User | null): Promise<Post | null> {
   if (!user) return null;
