@@ -38,11 +38,9 @@ test('login button is disabled initially', () => {
 test('login button is enabled once email and password field filled', () => {
   render(<SignIn />)
   const emailInput = screen.getByPlaceholderText('Email')
-  user.type(emailInput, 'test123@gmail.com')
   fireEvent.change(emailInput, { target: { value: 'test123@gmail.com' } })
 
   const passwordInput = screen.getByPlaceholderText('Password')
-  user.type(passwordInput, 'abc123')
   fireEvent.change(passwordInput, { target: { value: 'abc123' } })
 
   const loginButton = screen.getByRole('button', {
