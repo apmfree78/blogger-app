@@ -11,7 +11,8 @@ export default function useForm<T extends object>(initial: T) {
   }, [initialValues, initial]);
 
   function handleChange(e: any) {
-    let { value, name, type } = e.target;
+    let { value } = e.target;
+    const { name, type } = e.target;
 
     if (type === "number") {
       value = parseInt(value);

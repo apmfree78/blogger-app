@@ -27,7 +27,6 @@ const HashnodeFormTemplate: React.FC<HashnodeFormProps> = ({
           </label>
           <div className="control">
             <input
-              autoFocus
               onChange={handleChange}
               className="input"
               value={inputs.title || ""}

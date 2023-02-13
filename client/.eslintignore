@@ -4,3 +4,6 @@ dist-ssr
 *.test.tsx
 *.test.ts
 *.config.js
+jest
+validation
+setupTests.ts

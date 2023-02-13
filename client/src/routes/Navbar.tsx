@@ -31,6 +31,9 @@ const Navbar = () => {
           onMouseOver={(e) => {
             e.currentTarget.style.cursor = "pointer";
           }}
+          onFocus={(e) => {
+            e.currentTarget.style.cursor = "pointer";
+          }}
           style={linkStyle}
         >
           Sign Out

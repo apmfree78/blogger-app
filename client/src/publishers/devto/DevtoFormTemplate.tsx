@@ -61,8 +61,8 @@ const DevtoFormTemplate: React.FC<DevtoFormProps> = ({
         </div>
 
         <div className="field" style={{ marginTop: "1vh" }}>
-          <label className="label">Tags</label>
           <div className="control">
+            <label className="label">Tags</label>
             <TagInput tags={tags} setTags={setTags} />
           </div>
         </div>

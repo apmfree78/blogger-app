@@ -28,7 +28,6 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
           <div className="control">
             <input
               onChange={handleChange}
-              autoFocus
               className="input"
               value={inputs.title || ""}
               id="title"
@@ -59,8 +58,8 @@ const MediumFormTemplate: React.FC<MediumFormProps> = ({
         </div>
 
         <div className="field" style={{ marginTop: "1vh" }}>
-          <label className="label">Tags</label>
           <div className="control">
+            <label className="label">Tags</label>
             <TagInput tags={tags} setTags={setTags} />
           </div>
         </div>

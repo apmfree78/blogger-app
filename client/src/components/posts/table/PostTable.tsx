@@ -19,7 +19,7 @@ const PostTable = ({ posts }: ListPostsProps) => {
       </thead>
       <tbody>
         {posts.map((post) => (
-          <PostRow post={post} />
+          <PostRow key={post.id} post={post} />
         ))}
       </tbody>
     </table>

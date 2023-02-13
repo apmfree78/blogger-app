@@ -1,15 +1,12 @@
 import { AxiosResponse } from "axios";
 import { axiosInstance, getJWTHeader } from "axiosInstance";
-import { customToast } from "components/hooks/useToast";
 import { useUser } from "components/user/hooks/useUser";
-import { useEffect, useRef, useState } from "react";
-import { useMutation, useQuery } from "react-query";
+import { useEffect } from "react";
+import { useQuery } from "react-query";
 import { queryKeys } from "react-query/constants";
-import { queryClient } from "react-query/queryClient";
 import type { Post, User } from "shared/types";
 
 import { usePost } from "./usePost";
-import { useUpdatePost } from "./useUpdatePost";
 
 async function fetchUserPostById(
   id: string | null,
