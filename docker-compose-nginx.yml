@@ -1,0 +1,36 @@
+version: '1'
+services:
+  nginx:
+    depends_on:
+      - pocketbase
+      - web
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3050:80'
+  web:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: blogger
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  pocketbase:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: pocketbase
+    restart: unless-stopped
+    volumes:
+      - ./server/pb_data:/pb_data
+  tests:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    command: ["npm","run","test"]
